@@ -1,8 +1,4 @@
-var assertNumber = function (value, label) {
-  if (value === undefined || typeof value !== 'number') {
-    throw new Error(label + ' should be a number')
-  }
-}
+const assertNumber = require('./validation/assert-number')
 
 class TierTotals {
   constructor (caseCount, warrantCaseCount, unpaidWorkCaseCount, overdueTerminationCaseCount) {
