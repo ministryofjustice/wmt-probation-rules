@@ -1,3 +1,4 @@
+
 class CaseDetails {
   constructor (rowType, caseRefNo, tierCode, teamCode, omGradeCode, omKey, location) {
     this.rowType = rowType
