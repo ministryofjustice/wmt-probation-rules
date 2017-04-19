@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "description": "The business logic required to process probation cases in the Workload Management Tool",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "test-unit": "mocha --recursive -u exports test/unit/"
   },
   "standard": {
     "ignore": [
@@ -19,6 +20,7 @@
     ]
   },
   "devDependencies": {
+    "gulp-nsp": "^2.4.2",
     "gulp-standard": "9.0.x",
     "standard": "9.0.x"
   },
