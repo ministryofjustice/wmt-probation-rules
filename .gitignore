@@ -1,3 +1,4 @@
+node_modules
 # Exclude all VSCode configuration files.
 **.vscode/
 

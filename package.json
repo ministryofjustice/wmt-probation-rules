@@ -1,0 +1,31 @@
+{
+  "name": "wmt-probation-rules",
+  "version": "0.1.0",
+  "description": "The business logic required to process probation cases in the Workload Management Tool",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "standard": {
+    "ignore": [
+      "node_modules/*"
+    ],
+    "globals": [
+      "describe",
+      "before",
+      "beforeEach",
+      "afterEach",
+      "after",
+      "it"
+    ]
+  },
+  "devDependencies": {
+    "gulp-standard": "9.0.x",
+    "standard": "9.0.x"
+  },
+  "dependencies": {
+    "chai": "3.5.x",
+    "gulp": "3.9.x",
+    "gulp-mocha": "4.2.x",
+    "mocha": "3.2.x"
+  }
+}
