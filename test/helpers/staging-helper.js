@@ -26,7 +26,7 @@ module.exports.getTestCourtReport = function () {
 }
 
 module.exports.getTestCaseDetails = function (caseRefNo, omKey, location) {
-  return new CaseDetails('U', caseRefNo, '1', 'KNS', 'Q', omKey, location)
+  return new CaseDetails(getRandomRowType(), caseRefNo, '1', 'KNS', 'Q', omKey, location)
 }
 
 module.exports.getTestCaseSummary = function (omKey, timestamp) {
@@ -78,4 +78,9 @@ function getRandomRegionCode () {
 
 function getRandomPoints () {
   return (Math.floor(Math.random() * 30) + 1).toString()
+}
+
+function getRandomRowType () {
+  const tierCodes = ['U', 'W', 'O']
+  return tierCodes[Math.floor(Math.random() * tierCodes.length)]
 }
