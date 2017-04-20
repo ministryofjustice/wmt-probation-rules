@@ -1,5 +1,5 @@
 const CaseDetails = require('../../app/staging/domain/case-details')
-const CaseSummary = require('../../app/staging/domain/case-summary')
+const CasesSummary = require('../../app/staging/domain/cases-summary')
 const CourtReport = require('../../app/staging/domain/court-report')
 const InstReport = require('../../app/staging/domain/institutional-report')
 const OmWorkload = require('../../app/staging/domain/om-workload')
@@ -34,7 +34,7 @@ module.exports.getTestCaseSummary = function (omKey, timestamp) {
   const licenseTiers = module.exports.getMultipleTestTiers(locations.LICENSE, 1)
   const custodyTiers = module.exports.getMultipleTestTiers(locations.CUSTODY, 1)
 
-  return new CaseSummary(
+  return new CasesSummary(
     'Trust',
     'Region description',
     getRandomRegionCode(),

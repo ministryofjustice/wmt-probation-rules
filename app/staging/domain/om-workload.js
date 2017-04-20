@@ -1,6 +1,6 @@
 class OmWorkload {
-  constructor (caseSummary, courtReports, instReports, caseDetails) {
-    this.caseSummary = caseSummary
+  constructor (casesSummary, courtReports, instReports, caseDetails) {
+    this.casesSummary = casesSummary
     this.courtReports = courtReports
     this.instReports = instReports
     this.caseDetails = caseDetails

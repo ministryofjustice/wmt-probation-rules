@@ -1,6 +1,6 @@
 const expect = require('chai').expect
 const stagingHelper = require('../../../helpers/staging-helper')
-const CaseSummary = require('../../../../app/staging/domain/case-summary')
+const CasesSummary = require('../../../../app/staging/domain/cases-summary')
 const CaseDetails = require('../../../../app/staging/domain/case-details')
 const CourtReport = require('../../../../app/staging/domain/court-report')
 const InstReport = require('../../../../app/staging/domain/institutional-report')
@@ -12,7 +12,7 @@ describe('points/domain/staging/om-workload', function () {
     var caseRefNo = stagingHelper.getGeneratedCaseRefNo()
     var timestamp = moment.toString()
     var omWorkload = stagingHelper.getTestOmWorkload(omKey, caseRefNo, timestamp)
-    expect(omWorkload.caseSummary).to.be.instanceOf(CaseSummary)
+    expect(omWorkload.casesSummary).to.be.instanceOf(CasesSummary)
     expect(omWorkload.caseDetails).to.satisfy(function (cases) {
       return checkValidChildren(cases, CaseDetails)
     })
