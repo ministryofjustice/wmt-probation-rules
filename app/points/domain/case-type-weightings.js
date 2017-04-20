@@ -1,18 +1,18 @@
 const assertNumber = require('./validation/assert-number')
 
 class CaseTypeWeightings {
-    constructor (warrantsWeighting, unpaidWorkWeighting, overdueWeighting) {
-        this.warrantsWeighting = warrantsWeighting
-        this.unpaidWorkWeighting = unpaidWorkWeighting
-        this.overdueWeighting = overdueWeighting
-        this.isValid()
-    }
+  constructor (warrants, unpaidWork, overdueTermination) {
+    this.warrants = warrants
+    this.unpaidWork = unpaidWork
+    this.overdueTermination = overdueTermination
+    this.isValid()
+  }
 
-    isValid () {
-        assertNumber(this.warrantsWeighting)
-        assertNumber(this.unpaidWorkWeighting)
-        assertNumber(this.overdueWeighting)
-    }
+  isValid () {
+    assertNumber(this.warrants)
+    assertNumber(this.unpaidWork)
+    assertNumber(this.overdueTermination)
+  }
 }
 
 module.exports = CaseTypeWeightings
