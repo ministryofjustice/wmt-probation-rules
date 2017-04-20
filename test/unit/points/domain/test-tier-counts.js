@@ -20,7 +20,7 @@ describe('points/domain/TierCounts', function () {
   it('doesn\'t throw an error when the combined case types are the same as the total', function () {
     expect(function () { new TierCounts(3, 1, 1, 1) }).not.to.throw(Error)
   })
-  it('doesn\'t throw an error when the combined case types are greater than the total', function () {
+  it('doesn\'t throw an error when the combined case types are less than the total', function () {
     expect(function () { new TierCounts(5, 1, 1, 1) }).not.to.throw(Error)
   })
   it('all fields can be retrieved', function () {
