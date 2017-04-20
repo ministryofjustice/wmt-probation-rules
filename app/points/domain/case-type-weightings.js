@@ -9,9 +9,9 @@ class CaseTypeWeightings {
   }
 
   isValid () {
-    assertNumber(this.warrants, "warrants")
-    assertNumber(this.unpaidWork, "unpaidWork")
-    assertNumber(this.overdueTermination, "overdueTermination")
+    assertNumber(this.warrants, 'warrants')
+    assertNumber(this.unpaidWork, 'unpaidWork')
+    assertNumber(this.overdueTermination, 'overdueTermination')
   }
 }
 
