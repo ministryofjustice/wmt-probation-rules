@@ -1,6 +1,6 @@
 const expect = require('chai').expect
-const locations = require('../../../../../app/points/constants/staging/locations')
-const stagingHelper = require('../../../../helpers/staging-helper')
+const locations = require('../../../../app/staging/constants/locations')
+const stagingHelper = require('../../../helpers/staging-helper')
 
 describe('points/domain/staging/case-details', function () {
   it('should allow all fields to be retrieved', function () {

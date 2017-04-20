@@ -1,10 +1,10 @@
-const CaseDetails = require('../../app/points/domain/staging/case-details')
-const CaseSummary = require('../../app/points/domain/staging/case-summary')
-const CourtReport = require('../../app/points/domain/staging/court-report')
-const InstReport = require('../../app/points/domain/staging/institutional-report')
-const OmWorkload = require('../../app/points/domain/staging/om-workload')
-const Tiers = require('../../app/points/domain/staging/tiers')
-const locations = require('../../app/points/constants/staging/locations')
+const CaseDetails = require('../../app/staging/domain/case-details')
+const CaseSummary = require('../../app/staging/domain/case-summary')
+const CourtReport = require('../../app/staging/domain/court-report')
+const InstReport = require('../../app/staging/domain/institutional-report')
+const OmWorkload = require('../../app/staging/domain/om-workload')
+const Tiers = require('../../app/staging/domain/tiers')
+const locations = require('../../app/staging/constants/locations')
 const _ = require('lodash')
 
 module.exports.getTestOmWorkload = function (omKey, caseRefNo, timestamp) {

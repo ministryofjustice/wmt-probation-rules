@@ -1,9 +1,9 @@
 const expect = require('chai').expect
-const stagingHelper = require('../../../../helpers/staging-helper')
-const CaseSummary = require('../../../../../app/points/domain/staging/case-summary')
-const CaseDetails = require('../../../../../app/points/domain/staging/case-details')
-const CourtReport = require('../../../../../app/points/domain/staging/court-report')
-const InstReport = require('../../../../../app/points/domain/staging/institutional-report')
+const stagingHelper = require('../../../helpers/staging-helper')
+const CaseSummary = require('../../../../app/staging/domain/case-summary')
+const CaseDetails = require('../../../../app/staging/domain/case-details')
+const CourtReport = require('../../../../app/staging/domain/court-report')
+const InstReport = require('../../../../app/staging/domain/institutional-report')
 const moment = require('moment')
 
 describe('points/domain/staging/om-workload', function () {

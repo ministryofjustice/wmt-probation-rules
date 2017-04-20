@@ -1,6 +1,6 @@
 const expect = require('chai').expect
-const Tiers = require('../../../../../app/points/domain/staging/tiers')
-const stagingHelper = require('../../../../helpers/staging-helper')
+const Tiers = require('../../../../app/staging/domain/tiers')
+const stagingHelper = require('../../../helpers/staging-helper')
 const moment = require('moment')
 
 describe('points/domain/staging/case-summary', function () {
