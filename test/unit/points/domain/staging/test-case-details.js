@@ -1,10 +1,11 @@
 const expect = require('chai').expect
-const CaseDetails = require('../../../../../app/points/domain/staging/case-details')
 const locations = require('../../../../../app/points/constants/staging/locations')
+const stagingHelper = require('../../../../helpers/staging-helper')
 
 describe('points/domain/staging/case-details', function () {
   it('should allow all fields to be retrieved', function () {
-    var caseDetails = new CaseDetails('U', 'REF-1234', '1', 'KNS', 'Q', '1234', locations.COMMUNITY)
+    var caseRefNo = 'REF-1234'
+    var caseDetails = stagingHelper.getTestCaseDetails(caseRefNo, locations.COMMUNITY)
     expect(caseDetails.rowType).to.equal('U')
     expect(caseDetails.caseRefNo).to.equal('REF-1234')
     expect(caseDetails.tierCode).to.equal('1')

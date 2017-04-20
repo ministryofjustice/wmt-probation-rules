@@ -29,7 +29,9 @@
     "gulp": "3.9.x",
     "gulp-mocha": "4.2.x",
     "knex": "0.12.x",
+    "lodash": "^4.17.4",
     "mocha": "3.2.x",
+    "moment": "^2.18.1",
     "pg": "6.1.x",
     "sinon": "2.1.x",
     "supertest": "3.0.x"
