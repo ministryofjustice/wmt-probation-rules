@@ -16,9 +16,9 @@ describe('points/domain/case-type-weightings', function() {
     expect(function() { new CaseTypeWeightings(1, 1, 1) }).to.not.throw(Error)
   })
   it('retrieves all values', function() {
-      var caseTypeWeightings = new CaseTypeWeightings(1, 2, 3)
-      expect(caseTypeWeightings.warrantsWeighting).to.equal(1)
-      expect(caseTypeWeightings.unpaidWorkWeighting).to.equal(2)
-      expect(caseTypeWeightings.overdueWeighting).to.equal(3)
+    var caseTypeWeightings = new CaseTypeWeightings(1, 2, 3)
+    expect(caseTypeWeightings.warrantsWeighting).to.equal(1)
+    expect(caseTypeWeightings.unpaidWorkWeighting).to.equal(2)
+    expect(caseTypeWeightings.overdueWeighting).to.equal(3)
   })
 })
