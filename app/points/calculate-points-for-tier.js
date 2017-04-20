@@ -6,7 +6,7 @@ module.exports = function (tierCounts, tierPoints, caseTypeWeightings) {
   var pointsForTier = calculatedWeightedPoints(tierCounts.total, tierPoints)
   pointsForTier -= calculatedWeightedPoints(tierCounts.warrants, tierPoints, caseTypeWeightings.warrants)
   pointsForTier -= calculatedWeightedPoints(tierCounts.unpaidWork, tierPoints, caseTypeWeightings.unpaidWork)
-  pointsForTier -= calculatedWeightedPoints(tierCounts.overdue, tierPoints, caseTypeWeightings.overdue)
+  pointsForTier -= calculatedWeightedPoints(tierCounts.overdueTermination, tierPoints, caseTypeWeightings.overdueTermination)
 
   return pointsForTier
 }

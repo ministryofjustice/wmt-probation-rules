@@ -1,11 +1,11 @@
-module.exports = function (inverseWeightingPercentage) {
+module.exports = function (weightingPercentage) {
   var weighting
-  if (inverseWeightingPercentage >= 100) {
+  if (weightingPercentage >= 100) {
     weighting = 0
-  } else if (inverseWeightingPercentage <= 0) {
+  } else if (weightingPercentage <= 0) {
     weighting = 1
   } else {
-    weighting = (100 - inverseWeightingPercentage) / 100
+    weighting = (100 - weightingPercentage) / 100
   }
   return weighting
 }

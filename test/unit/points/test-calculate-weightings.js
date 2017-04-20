@@ -1,5 +1,5 @@
 const expect = require('chai').expect
-const calculateWeighting = require('../../../app/points/calculate-weighting.js')
+const calculateWeighting = require('../../../app/points/calculate-weighting')
 
 describe('points/calculate-weighting', function () {
   it('returns 1 - 0 for the inputs 0 - 100 at 0.01 increments', function () {
@@ -21,6 +21,6 @@ describe('points/calculate-weighting', function () {
   })
 
   it('return NaN for text input', function () {
-    expect(calculateWeighting('input')).to.be.NaN()
+    expect(calculateWeighting('input')).to.be.NaN
   })
 })
