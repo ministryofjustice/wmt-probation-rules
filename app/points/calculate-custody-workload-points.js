@@ -4,6 +4,5 @@ const CaseTypeWeightings = require('../../../app/points/domain/case-type-weighti
 module.exports = function (custodyTiers) {
   var custodyWorkloadPoints = calculatePointsForTier(custodyTiers.tierCounts, custodyTiers.points, new CaseTypeWeightings(0, 0, 0))
 
-  // TODO: Add special calculations
   return custodyWorkloadPoints
 }

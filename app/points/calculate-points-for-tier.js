@@ -1,5 +1,5 @@
 var calculatedWeightedPoints = function (count, points, weighting = 1) {
-  return count * points * weighting
+  return count * (points * weighting)
 }
 
 module.exports = function (tierCounts, tierPoints, caseTypeWeightings) {
