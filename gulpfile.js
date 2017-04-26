@@ -4,8 +4,7 @@ var standard = require('gulp-standard')
 
 gulp.task('standard', function () {
   return gulp.src([
-    'app/**/*.js',
-    'test/**/*.js'
+    'app/**/*.js'
   ])
     .pipe(standard())
     .pipe(standard.reporter('default', {
