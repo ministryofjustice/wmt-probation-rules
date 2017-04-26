@@ -4,6 +4,5 @@ const CaseTypeWeightings = require('../../../app/points/domain/case-type-weighti
 module.exports = function (licenseTiers) {
   var licenseWorkloadPoints = calculatePointsForTier(licenseTiers.tierCounts, licenseTiers.points, new CaseTypeWeightings(0, 0, 0))
 
-  // TODO: Add special calculations
   return licenseWorkloadPoints
 }
