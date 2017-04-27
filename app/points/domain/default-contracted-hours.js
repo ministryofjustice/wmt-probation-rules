@@ -1,14 +1,14 @@
 const assertNumber = require('./validation/assert-number')
 
 class DefaultContractedHours {
-  constructor (psoHours, otherHours) {
+  constructor (psoHours, poHours) {
     this.pso = psoHours
-    this.other = otherHours
+    this.po = poHours
     this.isValid()
   }
   isValid () {
     assertNumber(this.pso, 'PSO')
-    assertNumber(this.other, 'other')
+    assertNumber(this.po, 'other')
   }
 }
 
