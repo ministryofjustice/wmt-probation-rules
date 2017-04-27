@@ -1,27 +1,16 @@
 const calculatePointsForTier = require('../../../app/points/calculate-points-for-tier')
 
-module.exports = function (communityTiers, caseTypeWeightings) {
-  var communityWorkloadPoints = calculatePointsForTier(communityTiers.tierCounts, communityTiers.points, caseTypeWeightings)
-  // TODO: Add config value check for CP calculations
-  var setting = true
-  if (setting) {
-    communityWorkloadPoints += calculateCommunityTierCP(0, 1, 1)
+module.exports = function (communityTiers, caseTypeWeightings, commTierCPEnabled, commTier3AEnabled) {
+  var communityWorkloadPoints = 0
+  communityTiers.getAsList().forEach(function (tierCount) {
+    communityWorkloadPoints += calculatePointsForTier(tierCount, communityTiers.points, caseTypeWeightings)
+  }, this)
+  if (commTierCPEnabled) {
+    communityWorkloadPoints += calculatePointsForTier(communityTiers.a1, communityTiers.points, caseTypeWeightings.commTierCPWeighting)
   }
-  // TODO: Add config value check for 3D calculations
-  var comtier3D = true
-  if (comtier3D) {
-    communityWorkloadPoints += calculateCommunityTier3D(0, 1, 1, comtier3D)
+  if (commTier3AEnabled) {
+    communityWorkloadPoints += calculatePointsForTier(communityTiers.a3, communityTiers.points, caseTypeWeightings)
   }
   // TODO: Add special calculations
   return communityWorkloadPoints
-}
-
-var calculateCommunityTierCP = function (count, points, weighting) {
-  return count * (points * weighting)
-}
-
-var calculateCommunityTier3D = function (count, points, comtier3D) {
-  var weighting = 0
-
-  return count * (points * weighting)
 }
