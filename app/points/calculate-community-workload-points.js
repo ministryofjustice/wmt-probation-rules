@@ -1,8 +1,7 @@
 const calculatePointsForTier = require('../../../app/points/calculate-points-for-tier')
-const CaseTypeWeightings = require('../../../app/points/domain/case-type-weightings')
 
-module.exports = function (communityTiers) {
-  var communityWorkloadPoints = calculatePointsForTier(communityTiers.tierCounts, communityTiers.points, new CaseTypeWeightings(0, 0, 0))
+module.exports = function (communityTiers, caseTypeWeightings) {
+  var communityWorkloadPoints = calculatePointsForTier(communityTiers.tierCounts, communityTiers.points, caseTypeWeightings)
   // TODO: Add config value check for CP calculations
   var setting = true
   if (setting) {

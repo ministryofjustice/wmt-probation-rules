@@ -1,8 +1,9 @@
 const expect = require('chai').expect
-const calculateCommunityWorkloadPoints = require('')
+const calculateCustodyWorkloadPoints = require('../../../../app/points/calculate-custody-workload-points')
 
-describe('', function () {
-  it('', function () {
-
+describe('points/calculate-custody-workload-points', function () {
+  it('should calculate the value without error', function () {
+    var result = calculateCustodyWorkloadPoints()
+    expect(result).to.equal(1)
   })
 })

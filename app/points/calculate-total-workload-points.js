@@ -1,11 +1,10 @@
-const calculateCommunityTierPoints = require()
-const calculateCustodyTierPoints = require()
-const calculateLicenseTierPoints = require()
+const calculateCommunityTierPoints = require('../../../app/points/calculate-community-workload-points')
+const calculateCustodyTierPoints = require('../../../app/points/calculate-custody-workload-points')
+const calculateLicenseTierPoints = require('../../../app/points/calculate-license-workload-points')
 
-module.exports = function (workload) {
-  var totalWorkloadPoints = calculateCommunityTierPoints(workload.communityTiers) + calculateCustodyTierPoints(workload.custodyTiers) + calculateLicenseTierPoints(workload.licenseTiers)
+module.exports = function (workload, caseTypeWeightings) {
+  var totalWorkloadPoints = calculateCommunityTierPoints(workload.communityTiers, caseTypeWeightings) +
+                            calculateCustodyTierPoints(workload.custodyTiers, caseTypeWeightings) +
+                            calculateLicenseTierPoints(workload.licenseTiers, caseTypeWeightings)
   return totalWorkloadPoints
 }
-
-
-// TODO: Calculate mappa values, questions around this.
