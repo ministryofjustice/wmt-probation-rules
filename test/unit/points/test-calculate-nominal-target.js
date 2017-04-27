@@ -19,10 +19,10 @@ describe('points/calculate-nominal-target', function () {
   })
 
   it('throws an error when the default targets object is not an instance of DefaultNominalTargets', function () {
-    expect(function(){calculateNominalTarget(0, {})}).to.throw(Error)
+    expect(function () { calculateNominalTarget(0, {}) }).to.throw(Error)
   })
 
   it('throws an error when the default targets object undefined', function () {
-    expect(function(){calculateNominalTarget(0, undefined)}).to.throw(Error)
+    expect(function () { calculateNominalTarget(0, undefined) }).to.throw(Error)
   })
 })
