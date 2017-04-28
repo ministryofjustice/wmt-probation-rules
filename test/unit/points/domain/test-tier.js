@@ -1,8 +1,9 @@
 const expect = require('chai').expect
-const calculateCommunityWorkloadPoints = require('../../../../app/points/calculate-community-workload-points')
+const Tier = require('../../../../app/points/domain/Tier')
 
 describe('', function () {
   it('', function () {
-
+    var tier = new Tier()
+    expect(tier).to.not.be.NaN
   })
 })
