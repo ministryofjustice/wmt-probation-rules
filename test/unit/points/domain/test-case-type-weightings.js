@@ -1,3 +1,4 @@
+/* eslint-disable no-new */
 const expect = require('chai').expect
 const CaseTypeWeightings = require('../../../../app/points/domain/case-type-weightings')
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-new */
 const expect = require('chai').expect
 const DefaultContractedHours = require('../../../../app/points/domain/default-contracted-hours')
 

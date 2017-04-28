@@ -1,3 +1,4 @@
+/* eslint-disable no-new */
 const expect = require('chai').expect
 const DefaultNominalTargets = require('../../../../app/points/domain/default-nominal-targets')
 
