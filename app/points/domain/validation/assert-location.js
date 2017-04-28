@@ -1,4 +1,4 @@
-const Locations = require('./staging/constants/locations.js')
+const Locations = require('../../../staging/constants/locations.js')
 
 module.exports = function (value, label) {
   if (value === undefined || Locations.indexOf(value) < 0) {

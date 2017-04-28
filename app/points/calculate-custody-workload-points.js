@@ -1,4 +1,4 @@
-const calculatePointsForTier = require('../../../app/points/calculate-points-for-tier')
+const calculatePointsForTier = require('../../app/points/calculate-points-for-tier')
 
 module.exports = function (custodyTiers, caseTypeWeightings) {
   var custodyWorkloadPoints = 0

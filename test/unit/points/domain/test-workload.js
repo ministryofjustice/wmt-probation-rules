@@ -1,6 +1,6 @@
 const expect = require('chai').expect
-const Workload = require('../../app/points/domain/Workload')
-const Tiers = require('../../app/points/domain/Tiers')
+const Workload = require('../../../../app/points/domain/workload')
+const Tiers = require('../../../../app/points/domain/tiers')
 
 describe('points/domain/Workload', function () {
   it('throws an error when any property is undefined', function () {

@@ -16,10 +16,15 @@ describe('points/domain/case-type-weightings', function () {
   it('doesn\'t throw an error when all the parameters are numbers', function () {
     expect(function () { new CaseTypeWeightings(1, 1, 1) }).to.not.throw(Error)
   })
+  it('can retrieve the correct value for the CP weighting when it is set', function () {
+    var caseTypeWeightings = new CaseTypeWeightings(1, 1, 1, 1)
+    expect(caseTypeWeightings.commTierCPWeighting).to.equal(1)
+  })
   it('retrieves all values', function () {
     var caseTypeWeightings = new CaseTypeWeightings(1, 2, 3)
     expect(caseTypeWeightings.warrants).to.equal(1)
     expect(caseTypeWeightings.unpaidWork).to.equal(2)
     expect(caseTypeWeightings.overdueTermination).to.equal(3)
+    expect(caseTypeWeightings.commTierCPWeighting).to.equal(0)
   })
 })
