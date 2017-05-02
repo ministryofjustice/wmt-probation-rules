@@ -1,9 +1,9 @@
 const assertLocation = require('./validation/assert-location')
 const assertObjectType = require('./validation/assert-object-type')
-const Tier = require('./tier.js')
+const Tier = require('../../../app/points/domain/tier')
 
 class Tiers {
-  constructor (location, tierCount, untiered, d2, d1, c2, c1, b2, b1, a, a1, a3) {
+  constructor (location, untiered, d2, d1, c2, c1, b2, b1, a, a1, a3) {
     this.location = location
     this.untiered = untiered
     this.d2 = d2
@@ -19,19 +19,17 @@ class Tiers {
   }
 
   isValid () {
-    assertObjectType(this.a, Tier, 'Tier')
-    assertObjectType(this.b1, Tier, 'Tier')
-    assertObjectType(this.b2, Tier, 'Tier')
-    assertObjectType(this.c1, Tier, 'Tier')
-    assertObjectType(this.c2, Tier, 'Tier')
-    assertObjectType(this.d1, Tier, 'Tier')
-    assertObjectType(this.d2, Tier, 'Tier')
-    assertObjectType(this.a1, Tier, 'a1')
-    assertObjectType(this.a3, Tier, 'a3')
-    assertObjectType(this.untiered, Tier, 'Tier')
+    assertObjectType(this.a, Tier, 'Tier a')
+    assertObjectType(this.b1, Tier, 'Tier b1')
+    assertObjectType(this.b2, Tier, 'Tier b2')
+    assertObjectType(this.c1, Tier, 'Tier c1')
+    assertObjectType(this.c2, Tier, 'Tier c2')
+    assertObjectType(this.d1, Tier, 'Tier d1')
+    assertObjectType(this.d2, Tier, 'Tier d2')
+    assertObjectType(this.a1, Tier, 'Tier a1')
+    assertObjectType(this.a3, Tier, 'Tier a3')
+    assertObjectType(this.untiered, Tier, 'Tier untiered')
     assertLocation(this.location, 'location')
-
-    // TODO: Add in further validation for other fields
   }
 
   getTierCountsAsList () {

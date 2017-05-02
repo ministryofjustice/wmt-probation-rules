@@ -1,15 +1,30 @@
 const expect = require('chai').expect
 const Workload = require('../../../../app/points/domain/workload')
-const Tiers = require('../../../../app/points/domain/tiers')
+const pointsHelper = require('../../../helpers/points-helper')
+const Locations = require('../../../../app/staging/constants/locations')
 
 describe('points/domain/Workload', function () {
   it('throws an error when any property is undefined', function () {
-    expect(function () { new Workload(undefined, new Tiers(), new Tiers()) }).to.throw(Error)
-    expect(function () { new Workload(new Tiers(), undefined, new Tiers()) }).to.throw(Error)
-    expect(function () { new Workload(new Tiers(), new Tiers(), undefined) }).to.throw(Error)
+    expect(function () {
+      new Workload(undefined,
+      pointsHelper.getTestTiersObject(Locations.COMMUNTIY),
+      pointsHelper.getTestTiersObject(Locations.LICENSE))
+    }).to.throw(Error)
+    expect(function () {
+      new Workload(pointsHelper.getTestTiersObject(Locations.CUSTODY),
+      undefined,
+      pointsHelper.getTestTiersObject(Locations.LICENSE))
+    }).to.throw(Error)
+    expect(function () {
+      new Workload(pointsHelper.getTestTiersObject(Locations.CUSTODY),
+      pointsHelper.getTestTiersObject(Locations.COMMUNITY),
+      undefined)
+    }).to.throw(Error)
   })
   it('all fields can be retrieved', function () {
-    var result = true
-    expect(result).to.equal(true)
+    var workload = pointsHelper.getTestWorkloadObject()
+    expect(workload.custodyTiers).to.be.an('object')
+    expect(workload.communityTiers).to.be.an('object')
+    expect(workload.licenseTiers).to.be.an('object')
   })
 })

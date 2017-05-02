@@ -1,9 +1,14 @@
 const expect = require('chai').expect
 const calculateLienseWorkloadPoints = require('../../../app/points/calculate-license-workload-points')
+const pointsHelper = require('../../helpers/points-helper')
+const Locations = require('../../../app/staging/constants/locations')
 
 describe('points/calculate-license-workload-points', function () {
   it('should calculate the value without error', function () {
-    var result = calculateLienseWorkloadPoints()
-    expect(result).to.equal(1)
+    var tiersObject = pointsHelper.getTestTiersObject(Locations.LICENSE)
+    var weightings = pointsHelper.getWeightings()
+
+    var result = calculateLienseWorkloadPoints(tiersObject, weightings)
+    expect(result).to.equal(0)
   })
 })

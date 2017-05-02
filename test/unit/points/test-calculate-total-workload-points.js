@@ -1,9 +1,14 @@
 const expect = require('chai').expect
 const calculateTotalWorkloadPoints = require('../../../app/points/calculate-total-workload-points')
+const pointsHelper = require('../../helpers/points-helper')
 
 describe('points/calculate-total-workload-points', function () {
-  it('succesfully calculates the total points', function () {
-    var result = calculateTotalWorkloadPoints()
-    expect(result).to.be(1)
+  it('succesfully calculates the total points with weightings and flags set', function () {
+    var workloadObject = pointsHelper.getTestWorkloadObject()
+    var weightings = pointsHelper.getWeightings()
+
+    var result = calculateTotalWorkloadPoints(workloadObject, weightings, true, true)
+
+    expect(result).to.equal(-2481)
   })
 })
