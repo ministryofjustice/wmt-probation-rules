@@ -2,8 +2,8 @@ const calculatePointsForTier = require('../../app/points/calculate-points-for-ti
 
 module.exports = function (custodyTiers, caseTypeWeightings) {
   var custodyWorkloadPoints = 0
-  custodyTiers.getAsList().forEach(function (tierCount) {
-    custodyWorkloadPoints += calculatePointsForTier(tierCount, custodyTiers.points, caseTypeWeightings)
+  custodyTiers.getTierCountsAsList().forEach(function (tier) {
+    custodyWorkloadPoints += calculatePointsForTier(tier.tierCount, tier.points, caseTypeWeightings)
   }, this)
 
   return custodyWorkloadPoints

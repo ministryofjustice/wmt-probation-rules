@@ -2,15 +2,18 @@ const calculatePointsForTier = require('../../app/points/calculate-points-for-ti
 
 module.exports = function (communityTiers, caseTypeWeightings, commTierCPEnabled, commTier3AEnabled) {
   var communityWorkloadPoints = 0
-  communityTiers.getAsList().forEach(function (tierCount) {
-    communityWorkloadPoints += calculatePointsForTier(tierCount, communityTiers.points, caseTypeWeightings)
+  communityTiers.getTierCountsAsList().forEach(function (tier) {
+    communityWorkloadPoints += calculatePointsForTier(tier.tierCount, tier.points, caseTypeWeightings)
   }, this)
+  console.log(communityWorkloadPoints)
   if (commTierCPEnabled) {
-    communityWorkloadPoints += calculatePointsForTier(communityTiers.a1, communityTiers.points, caseTypeWeightings.commTierCPWeighting)
+    communityWorkloadPoints += calculatePointsForTier(communityTiers.a1.tierCount, communityTiers.a1.points, caseTypeWeightings.commTierCPWeighting)
   }
+  console.log(communityWorkloadPoints)
   if (commTier3AEnabled) {
-    communityWorkloadPoints += calculatePointsForTier(communityTiers.a3, communityTiers.points, caseTypeWeightings)
+    communityWorkloadPoints += calculatePointsForTier(communityTiers.a3.tierCount, communityTiers.a3.points, caseTypeWeightings)
   }
+  console.log(communityWorkloadPoints)
   // TODO: Add special calculations
   return communityWorkloadPoints
 }

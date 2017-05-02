@@ -2,8 +2,8 @@ const calculatePointsForTier = require('../../app/points/calculate-points-for-ti
 
 module.exports = function (licenseTiers, caseTypeWeightings) {
   var licenseWorkloadPoints = 0
-  licenseTiers.getAsList().forEach(function (tierCount) {
-    licenseTiers += calculatePointsForTier(tierCount, licenseTiers.points, caseTypeWeightings)
+  licenseTiers.getTierCountsAsList().forEach(function (tier) {
+    licenseTiers += calculatePointsForTier(tier, tier.points, caseTypeWeightings)
   }, this)
 
   return licenseWorkloadPoints
