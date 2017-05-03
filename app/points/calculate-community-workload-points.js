@@ -14,6 +14,5 @@ module.exports = function (communityTiers, caseTypeWeightings, commTierCPEnabled
     communityWorkloadPoints += calculatePointsForTier(communityTiers.a3.tierCount, communityTiers.a3.points, caseTypeWeightings)
   }
   console.log(communityWorkloadPoints)
-  // TODO: Add special calculations
   return communityWorkloadPoints
 }

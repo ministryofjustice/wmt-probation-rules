@@ -5,8 +5,6 @@ const TierCounts = require('../../app/points/domain/tier-counts')
 const Locations = require('../../app/staging/constants/locations')
 const CaseTypeWeightings = require('../../app/points/domain/case-type-weightings')
 
-// TODO: Finish filling in these methods
-
 module.exports.getTestWorkloadObject = function () {
   var workload = new Workload(module.exports.getTestTiersObject(Locations.CUSTODY),
                               module.exports.getTestTiersObject(Locations.COMMUNITY),
