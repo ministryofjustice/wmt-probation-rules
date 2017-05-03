@@ -9,6 +9,6 @@ describe('points/calculate-total-workload-points', function () {
 
     var result = calculateTotalWorkloadPoints(workloadObject, weightings, true, true)
 
-    expect(result).to.equal(-2481)
+    expect(result).to.equal(18)
   })
 })
