@@ -9,6 +9,6 @@ describe('points/calculate-custody-workload-points', function () {
     var weightings = pointsHelper.getWeightings()
 
     var result = calculateCustodyWorkloadPoints(tiersObject, weightings)
-    expect(result).to.equal(-1168)
+    expect(result).to.equal(8)
   })
 })

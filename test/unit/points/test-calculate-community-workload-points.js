@@ -9,6 +9,6 @@ describe('points/calculate-community-workload-points', function () {
     var caseTypeWeightings = pointsHelper.getWeightings()
 
     var result = calculateCommunityWorkloadPoints(tiersObject, caseTypeWeightings, true, true)
-    expect(result).to.equal(-1313)
+    expect(result).to.equal(10)
   })
 })
