@@ -1,9 +1,9 @@
 const expect = require('chai').expect
-const calculateCommunityWorkloadPoints = require('../../../app/points/calculate-community-workload-points')
+const calculateCommunityWorkloadPoints = require('../../../app/points/calculate-community-tier-workload-points')
 const pointsHelper = require('../../helpers/points-helper')
 const Locations = require('../../../app/staging/constants/locations')
 
-describe('points/calculate-community-workload-points', function () {
+describe('points/calculate-community-tier-workload-points', function () {
   it('should calculate the value without error', function () {
     var tiersObject = pointsHelper.getTestTiersObject(Locations.COMMUNITY)
     var caseTypeWeightings = pointsHelper.getWeightings()
