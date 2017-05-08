@@ -32,9 +32,16 @@ class Tiers {
     assertLocation(this.location, 'location')
   }
 
-  getTierCountsAsList () {
+  getTiersAsList () {
     var list = [
-      this.a, this.b1, this.b2, this.c1, this.c2, this.d1, this.d2, this.untiered
+      this.a,
+      this.b1,
+      this.b2,
+      this.c1,
+      this.c2,
+      this.d1,
+      this.d2,
+      this.untiered
     ]
     return list
   }

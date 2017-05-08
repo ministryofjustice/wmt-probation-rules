@@ -9,6 +9,6 @@ describe('points/calculate-license-tier-workload-points', function () {
     var weightings = pointsHelper.getWeightings()
 
     var result = calculateLienseWorkloadPoints(tiersObject, weightings)
-    expect(result).to.equal(0)
+    expect(result).to.equal(8)
   })
 })

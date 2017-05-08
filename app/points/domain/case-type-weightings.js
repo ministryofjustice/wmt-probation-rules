@@ -1,11 +1,10 @@
 const assertNumber = require('./validation/assert-number')
 
 class CaseTypeWeightings {
-  constructor (warrants, unpaidWork, overdueTermination, commTierCPWeighting = 0) {
+  constructor (warrants, unpaidWork, overdueTermination) {
     this.warrants = warrants
     this.unpaidWork = unpaidWork
     this.overdueTermination = overdueTermination
-    this.commTierCPWeighting = commTierCPWeighting
     this.isValid()
   }
 
