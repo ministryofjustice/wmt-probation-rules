@@ -29,7 +29,5 @@ describe('points/domain/Tiers', function () {
     expect(tiers.b2).to.be.an('object')
     expect(tiers.b1).to.be.an('object')
     expect(tiers.a).to.be.an('object')
-    expect(tiers.a1).to.be.an('object')
-    expect(tiers.a3).to.be.an('object')
   })
 })

@@ -8,23 +8,7 @@ describe('points/calculate-community-tier-workload-points', function () {
     var tiersObject = pointsHelper.getTestTiersObject(Locations.COMMUNITY)
     var caseTypeWeightings = pointsHelper.getWeightings()
 
-    var result = calculateCommunityWorkloadPoints(tiersObject, caseTypeWeightings, false, false)
-    expect(result).to.equal(8)
-  })
-
-  it('should calculate the correct value when commTierCpEnabled is true', function () {
-    var tiersObject = pointsHelper.getTestTiersObject(Locations.COMMUNITY)
-    var caseTypeWeightings = pointsHelper.getWeightings()
-
-    var result = calculateCommunityWorkloadPoints(tiersObject, caseTypeWeightings, true, false)
-    expect(result).to.equal(12)
-  })
-
-  it('should calculate correct value when commTier3aEnabled is true', function () {
-    var tiersObject = pointsHelper.getTestTiersObject(Locations.COMMUNITY)
-    var caseTypeWeightings = pointsHelper.getWeightings()
-
-    var result = calculateCommunityWorkloadPoints(tiersObject, caseTypeWeightings, false, true)
+    var result = calculateCommunityWorkloadPoints(tiersObject, caseTypeWeightings)
     expect(result).to.equal(8)
   })
 })
