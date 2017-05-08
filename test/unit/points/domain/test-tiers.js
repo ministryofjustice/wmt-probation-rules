@@ -21,7 +21,7 @@ describe('points/domain/Tiers', function () {
   })
   it('all fields can be retrieved', function () {
     var tiers = pointsHelper.getTestTiersObject(Locations.COMMUNITY)
-    expect(tiers.location).to.be.an('string')
+    expect(tiers.location).to.be.a('string')
     expect(tiers.d2).to.be.an('object')
     expect(tiers.d1).to.be.an('object')
     expect(tiers.c2).to.be.an('object')
