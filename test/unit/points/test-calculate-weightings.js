@@ -21,6 +21,8 @@ describe('points/calculate-weighting', function () {
   })
 
   it('return NaN for text input', function () {
+    /* eslint-disable no-unused-expressions */
     expect(calculateWeighting('input')).to.be.NaN
+    /* eslint-disable no-unused-expressions */
   })
 })
