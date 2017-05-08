@@ -1,10 +1,8 @@
-const calculateCommunityTierPoints = require('../../app/points/calculate-community-tier-workload-points')
-const calculateCustodyTierPoints = require('../../app/points/calculate-custody-tier-workload-points')
-const calculateLicenseTierPoints = require('../../app/points/calculate-license-tier-workload-points')
+const calculateTierWorkloadPoints = require('../../app/points/calculate-tier-workload-points')
 
-module.exports = function (workload, caseTypeWeightings, commTierCPEnabled, commTier3AEnabled) {
-  var totalWorkloadPoints = calculateCommunityTierPoints(workload.communityTiers, caseTypeWeightings) +
-                            calculateCustodyTierPoints(workload.custodyTiers, caseTypeWeightings) +
-                            calculateLicenseTierPoints(workload.licenseTiers, caseTypeWeightings)
+module.exports = function (workload, caseTypeWeightings) {
+  var totalWorkloadPoints = calculateTierWorkloadPoints(workload.communityTiers, caseTypeWeightings) +
+                            calculateTierWorkloadPoints(workload.custodyTiers, caseTypeWeightings) +
+                            calculateTierWorkloadPoints(workload.licenseTiers, caseTypeWeightings)
   return totalWorkloadPoints
 }

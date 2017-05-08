@@ -1,4 +1,6 @@
-const calculateWeightedPoints = require('../../app/points/calculate-weighted-points')
+var calculateWeightedPoints = function (count, points, weighting = 1) {
+  return count * (points * weighting)
+}
 
 module.exports = function (tierCounts, tierPoints, caseTypeWeightings) {
   var pointsForTier = calculateWeightedPoints(tierCounts.total, tierPoints)
