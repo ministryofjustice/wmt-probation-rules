@@ -1,3 +1,4 @@
+ /* eslint-disable no-new */
 const expect = require('chai').expect
 const Tier = require('../../../../app/points/domain/tier')
 const TierCount = require('../../../../app/points/domain/tier-counts')
