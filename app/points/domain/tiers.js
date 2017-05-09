@@ -13,8 +13,6 @@ class Tiers {
     this.b2 = b2
     this.b1 = b1
     this.a = a
-    this.a1 = a1
-    this.a3 = a3
     this.isValid()
   }
 
@@ -26,8 +24,6 @@ class Tiers {
     assertObjectType(this.c2, Tier, 'Tier c2')
     assertObjectType(this.d1, Tier, 'Tier d1')
     assertObjectType(this.d2, Tier, 'Tier d2')
-    assertObjectType(this.a1, Tier, 'Tier a1')
-    assertObjectType(this.a3, Tier, 'Tier a3')
     assertObjectType(this.untiered, Tier, 'Tier untiered')
     assertLocation(this.location, 'location')
   }
