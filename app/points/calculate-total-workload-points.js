@@ -1,8 +1,8 @@
-const calculateTierWorkloadPoints = require('../../app/points/calculate-tier-workload-points')
+const calculatePointsForWorkload = require('../../app/points/calculate-points-for-workload')
 
 module.exports = function (workload, caseTypeWeightings) {
-  var totalWorkloadPoints = calculateTierWorkloadPoints(workload.communityTiers, caseTypeWeightings) +
-                            calculateTierWorkloadPoints(workload.custodyTiers, caseTypeWeightings) +
-                            calculateTierWorkloadPoints(workload.licenseTiers, caseTypeWeightings)
+  var totalWorkloadPoints = calculatePointsForWorkload(workload.communityTiers, caseTypeWeightings) +
+                            calculatePointsForWorkload(workload.custodyTiers, caseTypeWeightings) +
+                            calculatePointsForWorkload(workload.licenseTiers, caseTypeWeightings)
   return totalWorkloadPoints
 }

@@ -1,5 +1,5 @@
 const expect = require('chai').expect
-const calculateTierWorkloadPoints = require('../../../app/points/calculate-tier-workload-points')
+const calculateTierWorkloadPoints = require('../../../app/points/calculate-points-for-workload')
 const pointsHelper = require('../../helpers/points-helper')
 const Locations = require('../../../app/staging/constants/locations')
 

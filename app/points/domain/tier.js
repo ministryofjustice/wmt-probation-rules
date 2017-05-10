@@ -3,14 +3,14 @@ const assertObjectType = require('./validation/assert-object-type')
 const TierCounts = require('../../../app/points/domain/tier-counts')
 
 class Tier {
-  constructor (tierCount, points) {
-    this.tierCount = tierCount
+  constructor (tierCounts, points) {
+    this.tierCounts = tierCounts
     this.points = points
     this.isValid()
   }
 
   isValid () {
-    assertObjectType(this.tierCount, TierCounts, 'TierCount')
+    assertObjectType(this.tierCounts, TierCounts, 'TierCount')
     assertNumber(this.points, 'points')
   }
 }
