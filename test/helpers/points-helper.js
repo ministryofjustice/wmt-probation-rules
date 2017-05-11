@@ -38,6 +38,6 @@ module.exports.getTierCountsObject = function () {
 }
 
 module.exports.getWeightings = function () {
-  var weightings = new CaseTypeWeightings(1, 1, 1)
+  var weightings = new CaseTypeWeightings(1, 1, 1, [10, 10, 10, 10, 10, 10, 10, 10])
   return weightings
 }

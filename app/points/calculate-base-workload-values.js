@@ -51,5 +51,5 @@ var getTierCounts = function (tierDetails) {
 
   var totalCaseCount = unpaidWorkCount + warrantCount + overDueTermination
 
-  return mapToTier(totalCaseCount, unpaidWorkCount, warrantCount, overDueTermination, totalCaseCount)
+  return mapToTier(totalCaseCount, unpaidWorkCount, warrantCount, overDueTermination, undefined)
 }
