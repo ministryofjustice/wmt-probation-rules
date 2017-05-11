@@ -7,42 +7,11 @@ module.exports = function (omWorkload) {
   var custodyCaseDetails = omWorkload.caseDetails.filter(getByLocation(Locations.CUSTODY))
   var licenseCaseDetails = omWorkload.caseDetails.filter(getByLocation(Locations.LICENSE))
 
-  var communityUntiered = getTierCounts(communityCaseDetails.filter(getByTierCode('0')))
-  var communityTierOne = getTierCounts(communityCaseDetails.filter(getByTierCode('1')))
-  var communityTierTwo = getTierCounts(communityCaseDetails.filter(getByTierCode('2')))
-  var communityTierThree = getTierCounts(communityCaseDetails.filter(getByTierCode('3')))
-  var communityTierFour = getTierCounts(communityCaseDetails.filter(getByTierCode('4')))
-  var communityTierFive = getTierCounts(communityCaseDetails.filter(getByTierCode('5')))
-  var communityTierSix = getTierCounts(communityCaseDetails.filter(getByTierCode('6')))
-  var communityTierSeven = getTierCounts(communityCaseDetails.filter(getByTierCode('7')))
+  var communityTiers = getIndividualTiers(communityCaseDetails)
+  var custodyTiers = getIndividualTiers(custodyCaseDetails)
+  var licenseTiers = getIndividualTiers(licenseCaseDetails)
 
-  var custodyUntiered = getTierCounts(custodyCaseDetails.filter(getByTierCode('0')))
-  var custodyTierOne = getTierCounts(custodyCaseDetails.filter(getByTierCode('1')))
-  var custodyTierTwo = getTierCounts(custodyCaseDetails.filter(getByTierCode('2')))
-  var custodyTierThree = getTierCounts(custodyCaseDetails.filter(getByTierCode('3')))
-  var custodyTierFour = getTierCounts(custodyCaseDetails.filter(getByTierCode('4')))
-  var custodyTierFive = getTierCounts(custodyCaseDetails.filter(getByTierCode('5')))
-  var custodyTierSix = getTierCounts(custodyCaseDetails.filter(getByTierCode('6')))
-  var custodyTierSeven = getTierCounts(custodyCaseDetails.filter(getByTierCode('7')))
-
-  var licenseUntiered = getTierCounts(licenseCaseDetails.filter(getByTierCode('0')))
-  var licenseTierOne = getTierCounts(licenseCaseDetails.filter(getByTierCode('1')))
-  var licenseTierTwo = getTierCounts(licenseCaseDetails.filter(getByTierCode('2')))
-  var licenseTierThree = getTierCounts(licenseCaseDetails.filter(getByTierCode('3')))
-  var licenseTierFour = getTierCounts(licenseCaseDetails.filter(getByTierCode('4')))
-  var licenseTierFive = getTierCounts(licenseCaseDetails.filter(getByTierCode('5')))
-  var licenseTierSix = getTierCounts(licenseCaseDetails.filter(getByTierCode('6')))
-  var licenseTierSeven = getTierCounts(licenseCaseDetails.filter(getByTierCode('7')))
-
-  var workload = mapToWorkload(communityUntiered, communityTierOne, communityTierTwo,
-                               communityTierThree, communityTierFour, communityTierFive,
-                               communityTierSix, communityTierSeven,
-                               custodyUntiered, custodyTierOne, custodyTierTwo,
-                               custodyTierThree, custodyTierFour, custodyTierFive,
-                               custodyTierSix, custodyTierSeven,
-                               licenseUntiered, licenseTierOne, licenseTierTwo,
-                               licenseTierThree, licenseTierFour, licenseTierFive,
-                               licenseTierSix, licenseTierSeven)
+  var workload = mapToWorkload(communityTiers, custodyTiers, licenseTiers)
   return workload
 }
 
@@ -62,6 +31,14 @@ var getByRowType = function (rowType) {
   return function (element) {
     return element.rowType === rowType
   }
+}
+
+var getIndividualTiers = function (caseDetails) {
+  var tiers = []
+  for (var i = 0; i < 8; i++) {
+    tiers.push(getTierCounts(caseDetails.filter(getByTierCode(i))))
+  }
+  return tiers
 }
 
 var getTierCounts = function (tierDetails) {
