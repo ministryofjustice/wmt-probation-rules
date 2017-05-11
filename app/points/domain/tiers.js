@@ -3,7 +3,7 @@ const assertObjectType = require('./validation/assert-object-type')
 const Tier = require('../../../app/points/domain/tier')
 
 class Tiers {
-  constructor (location, untiered, d2, d1, c2, c1, b2, b1, a, a1, a3) {
+  constructor (location, untiered, d2, d1, c2, c1, b2, b1, a) {
     this.location = location
     this.untiered = untiered
     this.d2 = d2

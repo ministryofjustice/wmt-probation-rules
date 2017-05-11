@@ -1,3 +1,4 @@
+/* eslint-disable no-new */
 const expect = require('chai').expect
 const Tiers = require('../../../../app/points/domain/tiers')
 const pointsHelper = require('../../../helpers/points-helper')
@@ -29,7 +30,10 @@ describe('points/domain/Tiers', function () {
     expect(tiers.b2).to.be.an('object')
     expect(tiers.b1).to.be.an('object')
     expect(tiers.a).to.be.an('object')
+<<<<<<< HEAD
     expect(tiers.a1).to.be.an('object')
     expect(tiers.a3).to.be.an('object')
+=======
+>>>>>>> feature/wmt-332/calculate-total-workload-points
   })
 })
