@@ -41,3 +41,11 @@ module.exports.getWeightings = function () {
   var weightings = new CaseTypeWeightings(1, 1, 1, [10, 10, 10, 10, 10, 10, 10, 10])
   return weightings
 }
+
+module.exports.getTierCountsList = function (numberOfTierCounts) {
+  var tierCountsList = []
+  for (var i = 0; i < numberOfTierCounts; i++) {
+    tierCountsList.push(module.exports.getTestTierObject())
+  }
+  return tierCountsList
+}
