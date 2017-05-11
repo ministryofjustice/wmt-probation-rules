@@ -1,8 +1,11 @@
 const calculatePointsForTier = require('../../app/points/calculate-points-for-tier')
+const CaseTypeWeightings = require('../../app/points/domain/case-type-weightings')
+const assertObjectType = require('../../app/points/domain/validation/assert-object-type')
 
-module.exports = function (tiers, caseTypeWeightings) {
+module.exports = function (tiersList, caseTypeWeightings) {
+  assertObjectType(caseTypeWeightings, CaseTypeWeightings, 'CaseTypeWeightings')
   var tierTotalCount = 0
-  tiers.forEach(function (tier) {
+  tiersList.forEach(function (tier) {
     tierTotalCount += calculatePointsForTier(tier.tierCounts, tier.points, caseTypeWeightings)
   })
   return tierTotalCount
