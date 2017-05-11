@@ -65,11 +65,14 @@ var getByRowType = function (rowType) {
 }
 
 var getTierCounts = function (tierDetails) {
+  if (tierDetails === undefined || tierDetails.length === 0) {
+    return mapToTier(0, 0, 0, 0, 0)
+  }
   var unpaidWorkCount = tierDetails.filter(getByRowType('U')).length
   var warrantCount = tierDetails.filter(getByRowType('W')).length
   var overDueTermination = tierDetails.filter(getByRowType('O')).length
 
   var totalCaseCount = unpaidWorkCount + warrantCount + overDueTermination
 
-  return mapToTier(totalCaseCount, unpaidWorkCount, warrantCount, overDueTermination)
+  return mapToTier(totalCaseCount, unpaidWorkCount, warrantCount, overDueTermination, totalCaseCount)
 }
