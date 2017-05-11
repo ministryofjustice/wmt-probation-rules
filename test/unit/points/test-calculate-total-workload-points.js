@@ -11,4 +11,12 @@ describe('points/calculate-total-workload-points', function () {
 
     expect(result).to.equal(24)
   })
+  it('should throw an error when the workload object is undefined', function () {
+    var weightings = pointsHelper.getWeightings()
+    expect(function () { calculateTotalWorkloadPoints(undefined, weightings) }).to.throw(Error)
+  })
+  it('should throw an error when the workload object is undefined', function () {
+    var workloadObject = pointsHelper.getTestWorkloadObject()
+    expect(function () { calculateTotalWorkloadPoints(workloadObject, undefined) }).to.throw(Error)
+  })
 })

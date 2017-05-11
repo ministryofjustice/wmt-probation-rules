@@ -27,4 +27,9 @@ describe('points/calculate-community-tier-workload-points', function () {
     var result = calculateTierWorkloadPoints(tiersObject, caseTypeWeightings)
     expect(result).to.equal(8)
   })
+
+  it('should throw an error when Tiers is undefined', function () {
+    var caseTypeWeightings = pointsHelper.getWeightings()
+    expect(function () { calculateTierWorkloadPoints(undefined, caseTypeWeightings) }).to.throw(Error)
+  })
 })
