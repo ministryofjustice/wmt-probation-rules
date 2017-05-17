@@ -1,12 +1,18 @@
-var calculatedWeightedPoints = function (count, points, weighting = 1) {
-  return count * points * weighting
+const TierCounts = require('../../app/points/domain/tier-counts')
+const assertObjectType = require('../../app/points/domain/validation/assert-object-type')
+const assertNumber = require('../../app/points/domain/validation/assert-number')
+
+var calculateWeightedPoints = function (count, points, weighting = 1) {
+  return count * (points * weighting)
 }
 
 module.exports = function (tierCounts, tierPoints, caseTypeWeightings) {
-  var pointsForTier = calculatedWeightedPoints(tierCounts.total, tierPoints)
-  pointsForTier -= calculatedWeightedPoints(tierCounts.warrants, tierPoints, caseTypeWeightings.warrants)
-  pointsForTier -= calculatedWeightedPoints(tierCounts.unpaidWork, tierPoints, caseTypeWeightings.unpaidWork)
-  pointsForTier -= calculatedWeightedPoints(tierCounts.overdueTermination, tierPoints, caseTypeWeightings.overdueTermination)
+  assertObjectType(tierCounts, TierCounts, 'Tier-counts')
+  assertNumber(tierPoints, 'Tier Points')
+  var pointsForTier = calculateWeightedPoints(tierCounts.total, tierPoints)
+  pointsForTier -= calculateWeightedPoints(tierCounts.warrants, tierPoints, caseTypeWeightings.warrants)
+  pointsForTier -= calculateWeightedPoints(tierCounts.unpaidWork, tierPoints, caseTypeWeightings.unpaidWork)
+  pointsForTier -= calculateWeightedPoints(tierCounts.overdueTermination, tierPoints, caseTypeWeightings.overdueTermination)
 
   return pointsForTier
 }

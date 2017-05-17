@@ -62,4 +62,15 @@ describe('points/calculate-points-for-tier', function () {
     var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings)
     expect(tierPoints).to.equal(8.75)
   })
+  it('should throw an error when tierCounts is undefined', function () {
+    expect(function () { calculatePointsForTier(undefined, points, caseTypeWeightings) }).to.throw(Error)
+  })
+  it('should throw an error when tierPoints is undefined', function () {
+    tierCounts = new TierCounts(10, 1, 1, 1)
+    expect(function () { calculatePointsForTier(tierCounts, undefined, caseTypeWeightings) }).to.throw(Error)
+  })
+  it('should throw an error when caseTypeWeightings is undefined', function () {
+    tierCounts = new TierCounts(10, 1, 1, 1)
+    expect(function () { calculatePointsForTier(tierCounts, points, undefined) }).to.throw(Error)
+  })
 })
