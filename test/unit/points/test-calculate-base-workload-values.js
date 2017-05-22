@@ -1,6 +1,5 @@
 const expect = require('chai').expect
 const calculateBaseWorkloadValues = require('../../../app/points/calculate-base-workload-values')
-// const pointsHelper = require('../../../helpers/points-helper')
 const stagingHelper = require('../../helpers/staging-helper')
 const locations = require('../../../app/staging/constants/locations')
 
@@ -12,5 +11,8 @@ describe('points/calculate-base-workload', function () {
 
     var resolvedCases = calculateBaseWorkloadValues(omWorkload)
     expect(resolvedCases).to.be.an('object')
+    expect(resolvedCases.communityTiers).to.be.an('object')
+    expect(resolvedCases.licenseTiers).to.be.an('object')
+    expect(resolvedCases.custodyTiers).to.be.an('object')
   })
 })

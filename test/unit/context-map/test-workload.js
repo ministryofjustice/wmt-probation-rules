@@ -9,5 +9,8 @@ describe('context-map/workload', function () {
                         pointsHelper.getTierCountsList(8),
                         pointsHelper.getTierCountsList(8))
     expect(output).to.be.an.instanceof(Workload)
+    expect(output.communityTiers.a).to.be.an('object')
+    expect(output.custodyTiers.d1).to.be.an('object')
+    expect(output.licenseTiers.d2).to.be.an('object')
   })
 })
