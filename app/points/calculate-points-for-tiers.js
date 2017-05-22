@@ -5,8 +5,10 @@ const assertObjectType = require('../../app/points/domain/validation/assert-obje
 module.exports = function (tiersList, caseTypeWeightings) {
   assertObjectType(caseTypeWeightings, CaseTypeWeightings, 'CaseTypeWeightings')
   var tierTotalCount = 0
+  var tierNumber = 0
   tiersList.forEach(function (tier) {
-    tierTotalCount += calculatePointsForTier(tier.tierCounts, tier.points, caseTypeWeightings)
+    tierTotalCount += calculatePointsForTier(tier.tierCounts, caseTypeWeightings.pointsConfiguration[tierNumber], caseTypeWeightings)
+    tierNumber++
   })
   return tierTotalCount
 }
