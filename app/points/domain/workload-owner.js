@@ -12,7 +12,6 @@ class WorkloadOwner {
   isValid () {
     assertNumber(this.id, 'id')
     assertNumber(this.offenderManagerId, 'offenderManagerId')
-    assertNumber(this.workingHoursId, 'workingHoursId')
     assertNumber(this.teamId, 'teamId')
   }
 }

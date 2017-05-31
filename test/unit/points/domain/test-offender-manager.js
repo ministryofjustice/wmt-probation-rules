@@ -30,6 +30,5 @@ describe('services/domain/offender-manager', function () {
 
   it('throws an error when any numeric property is not a number', function () {
     expect(function () { new OffenderManager('String', 1, 1, 1, 1, 1) }).to.throw(Error)
-    expect(function () { new OffenderManager(1, 'String', 1, 1, 1, 1) }).to.throw(Error)
   })
 })
