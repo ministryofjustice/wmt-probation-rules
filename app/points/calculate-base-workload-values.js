@@ -11,7 +11,7 @@ module.exports = function (omWorkload) {
   var custodyTiers = getIndividualTiers(custodyCaseDetails)
   var licenseTiers = getIndividualTiers(licenseCaseDetails)
 
-  var workload = mapToWorkload(communityTiers, custodyTiers, licenseTiers)
+  var workload = mapToWorkload(communityTiers, custodyTiers, licenseTiers, omWorkload.workloadId)
   return workload
 }
 
