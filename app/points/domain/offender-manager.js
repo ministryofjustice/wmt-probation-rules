@@ -2,19 +2,19 @@ const assertNumber = require('./validation/assert-number')
 const assertExists = require('./validation/assert-exists')
 
 class OffenderManager {
-  constructor (id, omKey, omForename, omSurname, omTypeId, omGradeCode) {
+  constructor (id, key, forename, surname, typeId, gradeCode) {
     this.id = id
-    this.omKey = omKey
-    this.omForename = omForename
-    this.omSurname = omSurname
-    this.omTypeId = omTypeId
-    this.omGradeCode = omGradeCode
+    this.key = key
+    this.forename = forename
+    this.surname = surname
+    this.typeId = typeId
+    this.gradeCode = gradeCode
     this.isValid()
   }
 
   isValid () {
     assertNumber(this.id, 'id')
-    assertExists(this.omKey, 'omKey')
+    assertExists(this.key, 'key')
   }
 }
 

@@ -6,20 +6,20 @@ const OffenderManager = require('../../../../app/points/domain/offender-manager'
 describe('services/domain/offender-manager', function () {
   it('should construct an offender manager domain object', function (done) {
     var id = 1231
-    var omKey = 2311
-    var omForename = 'Tony'
-    var omSurname = 'Tester'
-    var omTypeId = 'U'
-    var omGradeCode = 'L'
+    var key = 2311
+    var forename = 'Tony'
+    var surname = 'Tester'
+    var typeId = 'U'
+    var gradeCode = 'L'
 
-    var offenderManager = new OffenderManager(id, omKey, omForename, omSurname, omTypeId, omGradeCode)
+    var offenderManager = new OffenderManager(id, key, forename, surname, typeId, gradeCode)
 
     expect(offenderManager.id).to.equal(id)
-    expect(offenderManager.omKey).to.equal(omKey)
-    expect(offenderManager.omForename).to.equal(omForename)
-    expect(offenderManager.omSurname).to.equal(omSurname)
-    expect(offenderManager.omTypeId).to.equal(omTypeId)
-    expect(offenderManager.omGradeCode).to.equal(omGradeCode)
+    expect(offenderManager.key).to.equal(key)
+    expect(offenderManager.forename).to.equal(forename)
+    expect(offenderManager.surname).to.equal(surname)
+    expect(offenderManager.typeId).to.equal(typeId)
+    expect(offenderManager.gradeCode).to.equal(gradeCode)
     done()
   })
 
