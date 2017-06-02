@@ -3,8 +3,9 @@ const assertEffectiveDate = require('./validation/assert-effective-date')
 const assertExists = require('./validation/assert-exists')
 
 class Ldu {
-  constructor (id, code, description, effectiveFrom, effectiveTo) {
+  constructor (id, regionId, code, description, effectiveFrom, effectiveTo) {
     this.id = id
+    this.regionId = regionId
     this.code = code
     this.description = description
     this.effectiveFrom = effectiveFrom
@@ -14,6 +15,7 @@ class Ldu {
 
   isValid () {
     assertNumber(this.id, 'id')
+    assertNumber(this.regionId, 'regionId')
     assertExists(this.code, 'code')
     assertEffectiveDate(this.effectiveFrom, 'effectiveFrom')
     assertEffectiveDate(this.effectiveTo, 'effectiveTo')
