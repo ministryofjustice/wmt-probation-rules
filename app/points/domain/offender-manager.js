@@ -1,4 +1,3 @@
-const assertNumber = require('./validation/assert-number')
 const assertExists = require('./validation/assert-exists')
 
 class OffenderManager {
@@ -13,8 +12,8 @@ class OffenderManager {
   }
 
   isValid () {
-    assertNumber(this.id, 'id')
     assertExists(this.key, 'key')
+    assertExists(this.typeId, 'typeId')
   }
 }
 

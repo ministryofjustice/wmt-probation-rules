@@ -1,6 +1,6 @@
 {
   "name": "wmt-probation-rules",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "The business logic required to process probation cases in the Workload Management Tool",
   "main": "probation-rules.js",
   "scripts": {

@@ -12,8 +12,7 @@ describe('services/domain/ldu', function () {
   var effectiveFrom = moment([2012, 4, 22])
   var effectiveTo = moment([2015, 4, 22])
 
-  it('should construct a ldu domain object', function (done) {
-
+  it('should construct a ldu domain object', function () {
     var ldu = new Ldu(id, regionId, code, description, effectiveFrom, effectiveTo)
 
     expect(ldu.id).to.equal(id)
@@ -22,26 +21,23 @@ describe('services/domain/ldu', function () {
     expect(ldu.description).to.equal(description)
     expect(ldu.effectiveFrom).to.equal(effectiveFrom)
     expect(ldu.effectiveTo).to.equal(effectiveTo)
-    done()
   })
 
   it('throws an error when any required property is undefined', function () {
-    expect(function () { new Ldu(undefined, regionId, code) }).to.throw(Error)
-    expect(function () { new Ldu(id, undefined, code) }).to.throw(Error)
-    expect(function () { new Ldu(id, regionId, undefined) }).to.throw(Error)
+    expect(function () { new Ldu(id, undefined, code, effectiveFrom, effectiveTo) }).to.throw(Error)
+    expect(function () { new Ldu(id, regionId, undefined, effectiveFrom, effectiveTo) }).to.throw(Error)
   })
 
-  it('throws an error when any numeric property is not a number', function () {
-    expect(function () { new Ldu('String', lduId) }).to.throw(Error)
-    expect(function () { new Ldu(id, 'String') }).to.throw(Error)
+  it('thows an error when any property is not a number', function () {
+    expect(function () { new Ldu(id, 'String', code, effectiveFrom, effectiveTo) }).to.throw(Error)
   })
 
   it('throws an error when any effective date is any object other than an instance of moment', function () {
-    expect(function () { new Ldu(id, regionCode, code, description, {}, effectiveTo ) }).to.throw(Error)
-    expect(function () { new Ldu(id, regionCode, code, description, effectiveFrom, {}) }).to.throw(Error)
-    expect(function () { new Ldu(id, regionCode, code, description, new Date(2012,4,22), effectiveTo ) }).to.throw(Error)
-    expect(function () { new Ldu(id, regionCode, code, description, effectiveFrom, new Date(2015,4,22)) }).to.throw(Error)
-    expect(function () { new Ldu(id, regionCode, code, description, 'String', effectiveTo ) }).to.throw(Error)
-    expect(function () { new Ldu(id, regionCode, code, description, effectiveFrom, 'String') }).to.throw(Error)
+    expect(function () { new Ldu(id, regionId, code, description, {}, effectiveTo) }).to.throw(Error)
+    expect(function () { new Ldu(id, regionId, code, description, effectiveFrom, {}) }).to.throw(Error)
+    expect(function () { new Ldu(id, regionId, code, description, new Date(2012, 4, 22), effectiveTo) }).to.throw(Error)
+    expect(function () { new Ldu(id, regionId, code, description, effectiveFrom, new Date(2015, 4, 22)) }).to.throw(Error)
+    expect(function () { new Ldu(id, regionId, code, description, 'String', effectiveTo) }).to.throw(Error)
+    expect(function () { new Ldu(id, regionId, code, description, effectiveFrom, 'String') }).to.throw(Error)
   })
 })

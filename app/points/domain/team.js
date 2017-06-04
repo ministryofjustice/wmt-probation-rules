@@ -3,10 +3,10 @@ const assertEffectiveDate = require('./validation/assert-effective-date')
 const assertExists = require('./validation/assert-exists')
 
 class Team {
-  constructor (id, lduId, teamCode, description, effectiveFrom, effectiveTo) {
+  constructor (id, lduId, code, description, effectiveFrom, effectiveTo) {
     this.id = id
     this.lduId = lduId
-    this.teamCode = teamCode
+    this.code = code
     this.description = description
     this.effectiveFrom = effectiveFrom
     this.effectiveTo = effectiveTo
@@ -14,9 +14,8 @@ class Team {
   }
 
   isValid () {
-    assertNumber(this.id, 'id')
     assertNumber(this.lduId, 'lduId')
-    assertExists(this.teamCode, 'teamCode')
+    assertExists(this.code, 'code')
     assertEffectiveDate(this.effectiveFrom, 'effectiveFrom')
     assertEffectiveDate(this.effectiveTo, 'effectiveTo')
   }

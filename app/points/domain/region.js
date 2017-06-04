@@ -1,4 +1,3 @@
-const assertNumber = require('./validation/assert-number')
 const assertExists = require('./validation/assert-exists')
 
 class Region {
@@ -10,7 +9,6 @@ class Region {
   }
 
   isValid () {
-    assertNumber(this.id, 'id')
     assertExists(this.code, 'code')
   }
 }

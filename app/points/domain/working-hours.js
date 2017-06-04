@@ -10,7 +10,6 @@ class WorkingHours {
   }
 
   isVailid () {
-    assertNumber(this.id, 'id')
     assertNumber(this.contractedHours, 'contractedHours')
     assertNumber(this.reduction, 'reduction')
   }

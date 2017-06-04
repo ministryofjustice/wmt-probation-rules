@@ -14,7 +14,6 @@ class Ldu {
   }
 
   isValid () {
-    assertNumber(this.id, 'id')
     assertNumber(this.regionId, 'regionId')
     assertExists(this.code, 'code')
     assertEffectiveDate(this.effectiveFrom, 'effectiveFrom')
