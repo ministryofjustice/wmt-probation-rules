@@ -7,7 +7,6 @@ class CaseDetails {
     this.omGradeCode = omGradeCode
     this.omKey = omKey
     this.location = location
-    this.workloadId = workloadId
   }
 }
 

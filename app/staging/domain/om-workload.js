@@ -4,7 +4,6 @@ class OmWorkload {
     this.courtReports = courtReports
     this.instReports = instReports
     this.caseDetails = caseDetails
-    this.workloadId = workloadId
   }
 }
 
