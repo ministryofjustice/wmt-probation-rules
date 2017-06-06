@@ -81,6 +81,6 @@ function getRandomPoints () {
 }
 
 function getRandomRowType () {
-  const tierCodes = ['U', 'W', 'O']
+  const tierCodes = ['U', 'W', 'O', '']
   return tierCodes[Math.floor(Math.random() * tierCodes.length)]
 }

@@ -6,7 +6,8 @@ const Locations = require('../../app/staging/constants/locations')
 const CaseTypeWeightings = require('../../app/points/domain/case-type-weightings')
 
 module.exports.getTestWorkloadObject = function () {
-  var workload = new Workload(module.exports.getTestTiersObject(Locations.CUSTODY),
+  var workload = new Workload(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                              module.exports.getTestTiersObject(Locations.CUSTODY),
                               module.exports.getTestTiersObject(Locations.COMMUNITY),
                               module.exports.getTestTiersObject(Locations.LICENSE))
   return workload

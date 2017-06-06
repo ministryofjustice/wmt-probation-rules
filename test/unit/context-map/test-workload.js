@@ -1,16 +1,21 @@
 const expect = require('chai').expect
-const Workload = require('../../../app/points/domain/workload')
 const mapper = require('../../../app/context-map/workload')
-const pointsHelper = require('../../../test/helpers/points-helper')
+const stagingHelper = require('../../helpers/staging-helper')
+const Locations = require('../../../app/staging/constants/locations')
 
 describe('context-map/workload', function () {
-  it('should map to workload', function () {
-    var output = mapper(pointsHelper.getTierCountsList(8),
-                        pointsHelper.getTierCountsList(8),
-                        pointsHelper.getTierCountsList(8))
-    expect(output).to.be.an.instanceof(Workload)
-    expect(output.communityTiers.a).to.be.an('object')
-    expect(output.custodyTiers.d1).to.be.an('object')
-    expect(output.licenseTiers.d2).to.be.an('object')
+  var caseRefNo = stagingHelper.getGeneratedCaseRefNo()
+  var omKey = '1234'
+  var omWorkload = stagingHelper.getTestOmWorkload(caseRefNo, omKey, Locations.COMMUNITY)
+
+  it('should validate the parameters are as expected', function () {
+    expect(() => mapper({}, 1)).to.throw(Error)
+    expect(() => mapper(omWorkload, undefined)).to.throw(Error)
+    expect(() => mapper(omWorkload, 1)).not.to.throw(Error)
+  })
+
+  it('should calculate the base values correctly', function () {
+      // TODO construct an appropriate staging workload object and workout the
+      // expected values
   })
 })
