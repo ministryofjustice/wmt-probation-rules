@@ -14,7 +14,6 @@ describe('context-map/tier', function () {
       expect(output.tierCounts.warrants).to.equal(1)
       expect(output.tierCounts.unpaidWork).to.equal(2)
       expect(output.tierCounts.overdueTermination).to.equal(3)
-      expect(output.points).to.equal(4)
     })
   })
   describe('invalid states', function () {

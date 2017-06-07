@@ -7,7 +7,7 @@ module.exports = function (tiersList, caseTypeWeightings) {
   var tierTotalCount = 0
   var tierNumber = 0
   tiersList.forEach(function (tier) {
-    tierTotalCount += calculatePointsForTier(tier.tierCounts, caseTypeWeightings.pointsConfiguration[tierNumber], caseTypeWeightings)
+    tierTotalCount += calculatePointsForTier(tier, caseTypeWeightings.pointsConfiguration[tierNumber], caseTypeWeightings)
     tierNumber++
   })
   return tierTotalCount

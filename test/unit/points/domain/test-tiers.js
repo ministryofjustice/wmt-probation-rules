@@ -10,7 +10,7 @@ describe('points/domain/Tiers', function () {
   var validArgumentList = [Locations.COMMUNITY]
 
   for (var i = 0; i < NUMBER_OF_TIERS_IN_WORKLOAD; i++) {
-    validArgumentList.push(pointsHelper.getTestTierObject())
+    validArgumentList.push(pointsHelper.getTierCountsObject())
   }
 
   it('throws an error when any argument undefined', function () {

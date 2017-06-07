@@ -15,16 +15,16 @@ module.exports.getTestWorkloadObject = function () {
 
 module.exports.getTestTiersObject = function (location) {
   var tiers = new Tiers(location,
-                        module.exports.getTestTierObject(),
-                        module.exports.getTestTierObject(),
-                        module.exports.getTestTierObject(),
-                        module.exports.getTestTierObject(),
-                        module.exports.getTestTierObject(),
-                        module.exports.getTestTierObject(),
-                        module.exports.getTestTierObject(),
-                        module.exports.getTestTierObject(),
-                        module.exports.getTestTierObject(),
-                        module.exports.getTestTierObject())
+                        module.exports.getTierCountsObject(),
+                        module.exports.getTierCountsObject(),
+                        module.exports.getTierCountsObject(),
+                        module.exports.getTierCountsObject(),
+                        module.exports.getTierCountsObject(),
+                        module.exports.getTierCountsObject(),
+                        module.exports.getTierCountsObject(),
+                        module.exports.getTierCountsObject(),
+                        module.exports.getTierCountsObject(),
+                        module.exports.getTierCountsObject())
   return tiers
 }
 
@@ -46,7 +46,7 @@ module.exports.getWeightings = function () {
 module.exports.getTierCountsList = function (numberOfTierCounts) {
   var tierCountsList = []
   for (var i = 0; i < numberOfTierCounts; i++) {
-    tierCountsList.push(module.exports.getTestTierObject())
+    tierCountsList.push(module.exports.getTierCountsObject())
   }
   return tierCountsList
 }
