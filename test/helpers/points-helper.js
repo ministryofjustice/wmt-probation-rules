@@ -6,7 +6,8 @@ const Locations = require('../../app/staging/constants/locations')
 const CaseTypeWeightings = require('../../app/points/domain/case-type-weightings')
 
 module.exports.getTestWorkloadObject = function () {
-  var workload = new Workload(module.exports.getTestTiersObject(Locations.CUSTODY),
+  var workload = new Workload(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                              module.exports.getTestTiersObject(Locations.CUSTODY),
                               module.exports.getTestTiersObject(Locations.COMMUNITY),
                               module.exports.getTestTiersObject(Locations.LICENSE))
   return workload
@@ -14,16 +15,16 @@ module.exports.getTestWorkloadObject = function () {
 
 module.exports.getTestTiersObject = function (location) {
   var tiers = new Tiers(location,
-                        module.exports.getTestTierObject(),
-                        module.exports.getTestTierObject(),
-                        module.exports.getTestTierObject(),
-                        module.exports.getTestTierObject(),
-                        module.exports.getTestTierObject(),
-                        module.exports.getTestTierObject(),
-                        module.exports.getTestTierObject(),
-                        module.exports.getTestTierObject(),
-                        module.exports.getTestTierObject(),
-                        module.exports.getTestTierObject())
+                        module.exports.getTierCountsObject(),
+                        module.exports.getTierCountsObject(),
+                        module.exports.getTierCountsObject(),
+                        module.exports.getTierCountsObject(),
+                        module.exports.getTierCountsObject(),
+                        module.exports.getTierCountsObject(),
+                        module.exports.getTierCountsObject(),
+                        module.exports.getTierCountsObject(),
+                        module.exports.getTierCountsObject(),
+                        module.exports.getTierCountsObject())
   return tiers
 }
 
@@ -45,7 +46,7 @@ module.exports.getWeightings = function () {
 module.exports.getTierCountsList = function (numberOfTierCounts) {
   var tierCountsList = []
   for (var i = 0; i < numberOfTierCounts; i++) {
-    tierCountsList.push(module.exports.getTestTierObject())
+    tierCountsList.push(module.exports.getTierCountsObject())
   }
   return tierCountsList
 }

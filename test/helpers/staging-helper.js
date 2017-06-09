@@ -5,7 +5,6 @@ const InstReport = require('../../app/staging/domain/institutional-report')
 const OmWorkload = require('../../app/staging/domain/om-workload')
 const Tiers = require('../../app/staging/domain/tiers')
 const locations = require('../../app/staging/constants/locations')
-const _ = require('lodash')
 
 module.exports.getTestOmWorkload = function (omKey, caseRefNo, timestamp) {
   var omWorkload = new OmWorkload(
@@ -25,14 +24,22 @@ module.exports.getTestCourtReport = function () {
   return new CourtReport('KNSQ', getRandomPoints(), getRandomPoints(), getRandomPoints())
 }
 
-module.exports.getTestCaseDetails = function (caseRefNo, omKey, location) {
-  return new CaseDetails(getRandomRowType(), caseRefNo, '1', 'KNS', 'Q', omKey, location)
+module.exports.getMultipleTestCaseDetails = function (caseRefNo, omKey, location, rowType = getRandomRowType(), tierCode = 1, count) {
+  var caseDetails = []
+  for (var i = 0; i < count; i++) {
+    caseDetails.push(new CaseDetails(rowType, caseRefNo, tierCode, 'KNS', 'Q', omKey, location))
+  }
+  return caseDetails
+}
+
+module.exports.getTestCaseDetails = function (caseRefNo, omKey, location, rowType = getRandomRowType(), tierCode = '1') {
+  return new CaseDetails(rowType, caseRefNo, tierCode, 'KNS', 'Q', omKey, location)
 }
 
 module.exports.getTestCaseSummary = function (omKey, timestamp) {
-  const communityTiers = module.exports.getMultipleTestTiers(locations.COMMUNITY, 1)
-  const licenseTiers = module.exports.getMultipleTestTiers(locations.LICENSE, 1)
-  const custodyTiers = module.exports.getMultipleTestTiers(locations.CUSTODY, 1)
+  const communityTiers = module.exports.getMultipleTestTiers(locations.COMMUNITY)
+  const licenseTiers = module.exports.getMultipleTestTiers(locations.LICENSE)
+  const custodyTiers = module.exports.getMultipleTestTiers(locations.CUSTODY)
 
   return new CasesSummary(
     'Trust',
@@ -60,15 +67,15 @@ module.exports.getGeneratedCaseRefNo = function () {
 }
 
 module.exports.getMultipleTestTiers = function (location, count) {
-  var tiers = []
-  _.times(count, function () {
-    tiers.push(module.exports.getTestTiers(location))
-  })
-  return tiers
+  return module.exports.getTestTiers(location)
 }
 
 module.exports.getTestTiers = function (location) {
-  return new Tiers(location, '0', getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints())
+  return new Tiers(location, getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints())
+}
+
+module.exports.getCountableTestTiers = function (location) {
+  return new Tiers(location, 1, 1, 1, 1, 1, 1, 1, 1)
 }
 
 function getRandomRegionCode () {
@@ -77,10 +84,10 @@ function getRandomRegionCode () {
 }
 
 function getRandomPoints () {
-  return (Math.floor(Math.random() * 30) + 1).toString()
+  return ((Math.floor(Math.random() * 30) + 10000)).toString()
 }
 
 function getRandomRowType () {
-  const tierCodes = ['U', 'W', 'O']
+  const tierCodes = ['U', 'W', 'O', '']
   return tierCodes[Math.floor(Math.random() * tierCodes.length)]
 }
