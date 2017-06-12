@@ -30,16 +30,10 @@ module.exports = function (stagingWorkload, workloadOwnerId) {
   var licenseTiers = mapTiers(licenseSummary, licenseCaseDetails, Locations.LICENSE)
 
   var totalCases = communityTiers.total + custodyTiers.total + licenseTiers.total
-  var totalCasesCustody = custodyTiers.total
-  var totalCasesCommunity = communityTiers.total
-  var totalCasesLicense = licenseTiers.total
 
   return new Workload(
     workloadOwnerId,
     totalCases,
-    totalCasesCustody,
-    totalCasesCommunity,
-    totalCasesLicense,
     monthlySdrs,
     sdrsDueNext30Days,
     paromsCompletedLast30Days,

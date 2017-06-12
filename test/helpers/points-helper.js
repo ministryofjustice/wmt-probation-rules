@@ -9,7 +9,7 @@ const DefaultContractedHours = require('../../app/points/domain/default-contract
 const DefaultNominalTargets = require('../../app/points/domain/default-nominal-targets')
 
 module.exports.getTestWorkloadObject = function () {
-  var workload = new Workload(1, 1, 1, 1, 1, 1, 1, 1, 1,
+  var workload = new Workload(1, 1, 1, 1, 1, 1,
                               module.exports.getTestTiersObject(Locations.CUSTODY),
                               module.exports.getTestTiersObject(Locations.COMMUNITY),
                               module.exports.getTestTiersObject(Locations.LICENSE))

@@ -7,9 +7,6 @@ const Locations = require('../../../../app/staging/constants/locations')
 describe('points/domain/Workload', function () {
   var workloadOwnerId = 1
   var totalCases = 1
-  var totalCasesCustody = 1
-  var totalCasesCommunity = 1
-  var totalCasesLicense = 1
   var monthlySdrs = 1
   var sdrsDueNext30Days = 1
   var paromsCompletedLast30Days = 1
@@ -21,9 +18,6 @@ describe('points/domain/Workload', function () {
   var validArgumentList = [
     workloadOwnerId,
     totalCases,
-    totalCasesCustody,
-    totalCasesCommunity,
-    totalCasesLicense,
     monthlySdrs,
     sdrsDueNext30Days,
     paromsCompletedLast30Days,
