@@ -12,15 +12,12 @@ describe('points/domain/staging/om-workload', function () {
     var caseRefNo = stagingHelper.getGeneratedCaseRefNo()
     var timestamp = moment.toString()
     var omWorkload = stagingHelper.getTestOmWorkload(omKey, caseRefNo, timestamp)
+
     expect(omWorkload.casesSummary).to.be.instanceOf(CasesSummary)
+    expect(omWorkload.courtReports).to.be.instanceOf(CourtReport)
+    expect(omWorkload.instReports).to.be.instanceOf(InstReport)
     expect(omWorkload.caseDetails).to.satisfy(function (cases) {
       return checkValidChildren(cases, CaseDetails)
-    })
-    expect(omWorkload.courtReports).to.satisfy(function (reports) {
-      return checkValidChildren(reports, CourtReport)
-    })
-    expect(omWorkload.instReports).to.satisfy(function (reports) {
-      return checkValidChildren(reports, InstReport)
     })
   })
 })

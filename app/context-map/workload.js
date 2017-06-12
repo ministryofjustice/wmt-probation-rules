@@ -11,11 +11,11 @@ module.exports = function (stagingWorkload, workloadOwnerId) {
   assertNumber(workloadOwnerId, 'Workload Owner Id')
 
   // TODO will there ever be multiple court and inst reports per workload?
-  var monthlySdrs = zeroIfUndefined(stagingWorkload.courtReports[0].sdrLast30)
-  var sdrsDueNext30Days = zeroIfUndefined(stagingWorkload.courtReports[0].sdrDueNext30)
+  var monthlySdrs = zeroIfUndefined(stagingWorkload.courtReports.sdrLast30)
+  var sdrsDueNext30Days = zeroIfUndefined(stagingWorkload.courtReports.sdrDueNext30)
 
-  var paromsCompletedLast30Days = zeroIfUndefined(stagingWorkload.instReports[0].paromCompLast30)
-  var paromsDueNext30Days = zeroIfUndefined(stagingWorkload.instReports[0].paromDueNext30)
+  var paromsCompletedLast30Days = zeroIfUndefined(stagingWorkload.instReports.paromCompLast30)
+  var paromsDueNext30Days = zeroIfUndefined(stagingWorkload.instReports.paromDueNext30)
 
   var communityCaseDetails = stagingWorkload.caseDetails.filter(locationFilter(Locations.COMMUNITY))
   var custodyCaseDetails = stagingWorkload.caseDetails.filter(locationFilter(Locations.CUSTODY))

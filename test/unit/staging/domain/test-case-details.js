@@ -6,7 +6,7 @@ describe('points/domain/staging/case-details', function () {
   it('should allow all fields to be retrieved', function () {
     var caseRefNo = stagingHelper.getGeneratedCaseRefNo()
     var omKey = '1234'
-    var caseDetails = stagingHelper.getTestCaseDetails(caseRefNo, omKey, locations.COMMUNITY)
+    var caseDetails = stagingHelper.getTestCaseDetails(omKey)
     expect(caseDetails.rowType).to.be.a('string')
     expect(caseDetails.caseRefNo).to.be.a('string')
     expect(caseDetails.tierCode).to.be.a('string')

@@ -94,17 +94,17 @@ describe('context-map/workload', function () {
       var tierCode = i
       var tierSeed = i + 1
 
-      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(caseRefNo, omKey, Locations.CUSTODY, 'W', tierCode.toString(), tierSeed + activeWarrantsSeed + custodyMultiplier))
-      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(caseRefNo, omKey, Locations.CUSTODY, 'U', tierCode.toString(), tierSeed + unpaidWorkSeed + custodyMultiplier))
-      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(caseRefNo, omKey, Locations.CUSTODY, 'O', tierCode.toString(), tierSeed + overdueTerminationsSeed + custodyMultiplier))
+      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'W', undefined, tierCode.toString(), undefined, undefined, Locations.CUSTODY, tierSeed + activeWarrantsSeed + custodyMultiplier))
+      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'U', undefined, tierCode.toString(), undefined, undefined, Locations.CUSTODY, tierSeed + unpaidWorkSeed + custodyMultiplier))
+      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'O', undefined, tierCode.toString(), undefined, undefined, Locations.CUSTODY, tierSeed + overdueTerminationsSeed + custodyMultiplier))
 
-      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(caseRefNo, omKey, Locations.LICENSE, 'W', tierCode.toString(), tierSeed + activeWarrantsSeed + licenseMultiplier))
-      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(caseRefNo, omKey, Locations.LICENSE, 'U', tierCode.toString(), tierSeed + unpaidWorkSeed + licenseMultiplier))
-      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(caseRefNo, omKey, Locations.LICENSE, 'O', tierCode.toString(), tierSeed + overdueTerminationsSeed + licenseMultiplier))
+      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'W', undefined, tierCode.toString(), undefined, undefined, Locations.LICENSE, tierSeed + activeWarrantsSeed + licenseMultiplier))
+      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'U', undefined, tierCode.toString(), undefined, undefined, Locations.LICENSE, tierSeed + unpaidWorkSeed + licenseMultiplier))
+      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'O', undefined, tierCode.toString(), undefined, undefined, Locations.LICENSE, tierSeed + overdueTerminationsSeed + licenseMultiplier))
 
-      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(caseRefNo, omKey, Locations.COMMUNITY, 'W', tierCode.toString(), tierSeed + activeWarrantsSeed + communityMultiplier))
-      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(caseRefNo, omKey, Locations.COMMUNITY, 'U', tierCode.toString(), tierSeed + unpaidWorkSeed + communityMultiplier))
-      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(caseRefNo, omKey, Locations.COMMUNITY, 'O', tierCode.toString(), tierSeed + overdueTerminationsSeed + communityMultiplier))
+      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'W', undefined, tierCode.toString(), undefined, undefined, Locations.COMMUNITY, tierSeed + activeWarrantsSeed + communityMultiplier))
+      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'U', undefined, tierCode.toString(), undefined, undefined, Locations.COMMUNITY, tierSeed + unpaidWorkSeed + communityMultiplier))
+      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'O', undefined, tierCode.toString(), undefined, undefined, Locations.COMMUNITY, tierSeed + overdueTerminationsSeed + communityMultiplier))
     }
 
     stagingWorkload.caseDetails = caseDetails
@@ -205,11 +205,11 @@ describe('context-map/workload', function () {
     var mappedWorkload = mapper(stagingWorkload, ownerId)
 
     it('correctly maps monthly SDRs', function () {
-      expect(mappedWorkload.monthlySdrs).to.eq(parseInt(stagingWorkload.courtReports[0].sdrLast30))
+      expect(mappedWorkload.monthlySdrs).to.eq(parseInt(stagingWorkload.courtReports.sdrLast30))
     })
 
     it('correctly maps SDRs due next 30 days', function () {
-      expect(mappedWorkload.sdrsDueNext30Days).to.eq(parseInt(stagingWorkload.courtReports[0].sdrDueNext30))
+      expect(mappedWorkload.sdrsDueNext30Days).to.eq(parseInt(stagingWorkload.courtReports.sdrDueNext30))
     })
   })
 
@@ -217,11 +217,11 @@ describe('context-map/workload', function () {
     var mappedWorkload = mapper(stagingWorkload, ownerId)
 
     it('correctly maps paroms completed last 30 days', function () {
-      expect(mappedWorkload.paromsCompletedLast30Days).to.eq(parseInt(stagingWorkload.instReports[0].paromCompLast30))
+      expect(mappedWorkload.paromsCompletedLast30Days).to.eq(parseInt(stagingWorkload.instReports.paromCompLast30))
     })
 
     it('correctly maps paroms due next 30 days', function () {
-      expect(mappedWorkload.paromsDueNext30Days).to.eq(parseInt(stagingWorkload.instReports[0].paromDueNext30))
+      expect(mappedWorkload.paromsDueNext30Days).to.eq(parseInt(stagingWorkload.instReports.paromDueNext30))
     })
   })
 })

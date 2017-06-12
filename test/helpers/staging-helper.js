@@ -6,34 +6,34 @@ const OmWorkload = require('../../app/staging/domain/om-workload')
 const Tiers = require('../../app/staging/domain/tiers')
 const locations = require('../../app/staging/constants/locations')
 
-module.exports.getTestOmWorkload = function (omKey, caseRefNo, timestamp) {
+module.exports.getTestOmWorkload = function (omKey, caseRefNo) {
   var omWorkload = new OmWorkload(
-    this.getTestCaseSummary(omKey, timestamp),
-    [this.getTestCourtReport()],
-    [this.getTestInstitutionalReport()],
+    this.getTestCaseSummary(omKey),
+    this.getTestCourtReport(omKey),
+    this.getTestInstitutionalReport(omKey),
     [this.getTestCaseDetails(caseRefNo, omKey, locations.COMMUNITY), this.getTestCaseDetails(caseRefNo, omKey, locations.LICENSE), this.getTestCaseDetails(caseRefNo, omKey, locations.CUSTODY)]
   )
   return omWorkload
 }
 
-module.exports.getTestInstitutionalReport = function () {
-  return new InstReport('KNSQ', getRandomPoints(), getRandomPoints())
+module.exports.getTestInstitutionalReport = function (omKey, omTeamStaffGrade = 'B', paromDueNext30 = getRandomPoints(), paromCompLast30 = getRandomPoints()) {
+  return new InstReport(omKey, omTeamStaffGrade, paromDueNext30, paromCompLast30)
 }
 
-module.exports.getTestCourtReport = function () {
-  return new CourtReport('KNSQ', getRandomPoints(), getRandomPoints(), getRandomPoints())
+module.exports.getTestCourtReport = function (omKey, omTeamStaffGrade = 'B', sdrLast30 = getRandomPoints(), sdrDueNext30 = getRandomPoints(), sdrConvLast30 = getRandomPoints()) {
+  return new CourtReport(omKey, omTeamStaffGrade, sdrLast30, sdrDueNext30, sdrConvLast30)
 }
 
-module.exports.getMultipleTestCaseDetails = function (caseRefNo, omKey, location, rowType = getRandomRowType(), tierCode = 1, count) {
+module.exports.getTestCaseDetails = function (omKey, rowType = getRandomRowType(), caseRefNo = this.getGeneratedCaseRefNo(), tierCode = 'A', teamCode = 'W', omGradeCode = 'P', location = locations.COMMUNITY) {
+  return new CaseDetails(rowType, caseRefNo, tierCode, teamCode, omGradeCode, omKey, location)
+}
+
+module.exports.getMultipleTestCaseDetails = function (omKey, rowType, caseRefNo, tierCode, teamCode, omGradeCode, location, count) {
   var caseDetails = []
   for (var i = 0; i < count; i++) {
-    caseDetails.push(new CaseDetails(rowType, caseRefNo, tierCode, 'KNS', 'Q', omKey, location))
+    caseDetails.push(this.getTestCaseDetails(omKey, rowType, caseRefNo, tierCode, teamCode, omGradeCode, location))
   }
   return caseDetails
-}
-
-module.exports.getTestCaseDetails = function (caseRefNo, omKey, location, rowType = getRandomRowType(), tierCode = '1') {
-  return new CaseDetails(rowType, caseRefNo, tierCode, 'KNS', 'Q', omKey, location)
 }
 
 module.exports.getTestCaseSummary = function (omKey, timestamp) {
