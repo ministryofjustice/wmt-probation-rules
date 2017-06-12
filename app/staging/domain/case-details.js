@@ -1,5 +1,5 @@
 class CaseDetails {
-  constructor (rowType, caseRefNo, tierCode, teamCode, omGradeCode, omKey, location) {
+  constructor (rowType, caseRefNo, tierCode, teamCode, omGradeCode, omKey, location, workloadId) {
     this.rowType = rowType
     this.caseRefNo = caseRefNo
     this.tierCode = tierCode
