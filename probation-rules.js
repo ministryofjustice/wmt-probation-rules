@@ -31,7 +31,7 @@ module.exports = {
   OffenderManager: OffenderManager,
   Team: Team,
   WorkloadOwner: WorkloadOwner,
-  WorkingHours: WorkingHours
+  WorkingHours: WorkingHours,
   TierCounts: TierCounts,
   Tiers: Tiers,
   Workload: Workload,
