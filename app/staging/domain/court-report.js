@@ -1,5 +1,6 @@
 class CourtReport {
-  constructor (omTeamStaffGrade, sdrLast30, sdrDueNext30, sdrConvLast30) {
+  constructor (omKey, omTeamStaffGrade, sdrLast30, sdrDueNext30, sdrConvLast30) {
+    this.omKey = omKey
     this.omTeamStaffGrade = omTeamStaffGrade
     this.sdrLast30 = sdrLast30
     this.sdrDueNext30 = sdrDueNext30
