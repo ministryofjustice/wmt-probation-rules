@@ -2,6 +2,7 @@ const OmWorkload = require('./app/staging/domain/om-workload')
 const CasesSummary = require('./app/staging/domain/cases-summary')
 const CaseDetails = require('./app/staging/domain/case-details')
 const CaseTypeWeightings = require('./app/staging/domain/case-type-weightings')
+const Locations = require('./app/staging/constants/locations')
 
 const TierCounts = require('./app/points/domain/tier-counts')
 const Workload = require('./app/points/domain/workload')
@@ -32,5 +33,6 @@ module.exports = {
   WorkingHours: WorkingHours
   TierCounts: TierCounts,
   Workload: Workload,
+  Locations: Locations,
   stagingTestHelper: stagingHelper
 }
