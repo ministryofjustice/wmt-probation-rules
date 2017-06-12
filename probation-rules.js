@@ -1,9 +1,9 @@
 const OmWorkload = require('./app/staging/domain/om-workload')
 const CasesSummary = require('./app/staging/domain/cases-summary')
 const CaseDetails = require('./app/staging/domain/case-details')
-const CaseTypeWeightings = require('./app/staging/domain/case-type-weightings')
 const Locations = require('./app/staging/constants/locations')
 
+const CaseTypeWeightings = require('./app/points/domain/case-type-weightings')
 const Tiers = require('./app/points/domain/tiers')
 const TierCounts = require('./app/points/domain/tier-counts')
 const Workload = require('./app/points/domain/workload')
