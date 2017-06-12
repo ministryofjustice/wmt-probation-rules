@@ -1,6 +1,7 @@
 const OmWorkload = require('./app/staging/domain/om-workload')
 const CasesSummary = require('./app/staging/domain/cases-summary')
 const CaseDetails = require('./app/staging/domain/case-details')
+const CaseTypeWeightings = require('./app/staging/domain/case-type-weightings')
 const stagingHelper = require('./test/helpers/staging-helper')
 const OffenderManager = require('./app/points/domain/offender-manager')
 const PointsConfiguration = require('./app/points/domain/points-configuration')
@@ -15,6 +16,7 @@ module.exports = {
   OmWorkload: OmWorkload,
   CasesSummary: CasesSummary,
   CaseDetails: CaseDetails,
+  CaseTypeWeightings: CaseTypeWeightings,
   DefaultContractedHours: DefaultContractedHours,
   DefaultNominalTargets: DefaultNominalTargets,
   LocationPointsConfiguration: LocationPointsConfiguration,
