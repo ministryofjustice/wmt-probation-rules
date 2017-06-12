@@ -7,15 +7,13 @@ const Locations = require('../../../../app/staging/constants/locations')
 describe('points/domain/Workload', function () {
   var workloadOwnerId = 1
   var totalCases = 1
-  var totalCasesInactive = 1
+  var totalCasesCustody = 1
+  var totalCasesCommunity = 1
+  var totalCasesLicense = 1
   var monthlySdrs = 1
   var sdrsDueNext30Days = 1
-  var activeWarrants = 1
-  var overdueTerminations = 1
-  var unpaidWork = 1
   var paromsCompletedLast30Days = 1
   var paromsDueNext30Days = 1
-  var license16WeekCount = 1
   var custodyTiers = pointsHelper.getTestTiersObject(Locations.CUSTODY)
   var communityTiers = pointsHelper.getTestTiersObject(Locations.COMMUNITY)
   var licenseTiers = pointsHelper.getTestTiersObject(Locations.LICENSE)
@@ -23,15 +21,13 @@ describe('points/domain/Workload', function () {
   var validArgumentList = [
     workloadOwnerId,
     totalCases,
-    totalCasesInactive,
+    totalCasesCustody,
+    totalCasesCommunity,
+    totalCasesLicense,
     monthlySdrs,
     sdrsDueNext30Days,
-    activeWarrants,
-    overdueTerminations,
-    unpaidWork,
     paromsCompletedLast30Days,
     paromsDueNext30Days,
-    license16WeekCount,
     custodyTiers,
     communityTiers,
     licenseTiers

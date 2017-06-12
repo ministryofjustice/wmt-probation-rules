@@ -42,10 +42,6 @@ describe('context-map/workload', function () {
       expect(mappedWorkloadWith24Cases.totalCases).to.equal(24)
     })
 
-    it('should correct map the license first 16 week count', function () {
-      expect(mappedWorkload.license16WeekCount).to.equal(parseInt(stagingWorkload.casesSummary.licIn1st16Weeks))
-    })
-
     it('should correctly map the custody tiers', function () {
       expect(mappedWorkload.custodyTiers).to.be.instanceof(Tiers)
       expect(mappedWorkload.custodyTiers.location).to.eq(Locations.CUSTODY)
@@ -228,5 +224,4 @@ describe('context-map/workload', function () {
       expect(mappedWorkload.paromsDueNext30Days).to.eq(parseInt(stagingWorkload.instReports[0].paromDueNext30))
     })
   })
-
 })
