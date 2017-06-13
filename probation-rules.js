@@ -52,5 +52,5 @@ module.exports = {
   Tiers: Tiers,
   WorkloadOwner: WorkloadOwner,
   WorkingHours: WorkingHours,
-  Workload: Workload,
+  Workload: Workload
 }

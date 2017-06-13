@@ -4,7 +4,6 @@ const stagingHelper = require('../../../helpers/staging-helper')
 
 describe('points/domain/staging/case-details', function () {
   it('should allow all fields to be retrieved', function () {
-    var caseRefNo = stagingHelper.getGeneratedCaseRefNo()
     var omKey = '1234'
     var caseDetails = stagingHelper.getTestCaseDetails(omKey)
     expect(caseDetails.rowType).to.be.a('string')

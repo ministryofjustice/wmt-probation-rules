@@ -10,9 +10,9 @@ module.exports = function (stagingWorkload, workloadOwnerId) {
   assertObjectType(stagingWorkload, StagingWorkload, 'StagingWorkload')
   assertNumber(workloadOwnerId, 'Workload Owner Id')
 
-  // TODO will there ever be multiple court and inst reports per workload?
   var monthlySdrs = zeroIfUndefined(stagingWorkload.courtReports.sdrLast30)
   var sdrsDueNext30Days = zeroIfUndefined(stagingWorkload.courtReports.sdrDueNext30)
+  var sdrsConversionsLast30Days = zeroIfUndefined(stagingWorkload.courtReports.sdrConvLast30)
 
   var paromsCompletedLast30Days = zeroIfUndefined(stagingWorkload.instReports.paromCompLast30)
   var paromsDueNext30Days = zeroIfUndefined(stagingWorkload.instReports.paromDueNext30)
@@ -36,6 +36,7 @@ module.exports = function (stagingWorkload, workloadOwnerId) {
     totalCases,
     monthlySdrs,
     sdrsDueNext30Days,
+    sdrsConversionsLast30Days,
     paromsCompletedLast30Days,
     paromsDueNext30Days,
     custodyTiers,
