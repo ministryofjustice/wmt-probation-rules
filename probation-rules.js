@@ -30,6 +30,7 @@ const TierCounts = require('./app/points/domain/tier-counts')
 
 // Helpers
 const stagingHelper = require('./test/helpers/staging-helper')
+const pointsHelper = require('./test/helpers/points-helper')
 
 // Calcuation Methods
 const calculateAvailablePoints = require('./app/points/calculate-available-points')
@@ -54,6 +55,7 @@ module.exports = {
   PointsConfiguration: PointsConfiguration,
   Region: Region,
   stagingTestHelper: stagingHelper,
+  pointsHelper: pointsHelper,
   Team: Team,
   TierCounts: TierCounts,
   Tiers: Tiers,
