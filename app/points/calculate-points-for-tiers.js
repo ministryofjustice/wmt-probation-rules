@@ -14,10 +14,9 @@ module.exports = function (locationTiers, locationPointsConfiguration, caseTypeW
 
   var tiers = locationTiers.getTiersAsList()
 
-  // first handle the unallocated tiers
-  points += calculatePointsForTier(tiers[0], 0, caseTypeWeightings)
-  for (var i = 1; i < tiers.length; i++) {
-    points += calculatePointsForTier(tiers[i], tiersPointConfigurationAsList[i - 1], caseTypeWeightings)
+  // purposely leave out the untiered cases
+  for (var i = 0; i < tiers.length - 1; i++) {
+    points += calculatePointsForTier(tiers[i], tiersPointConfigurationAsList[i], caseTypeWeightings)
   }
   return points
 }

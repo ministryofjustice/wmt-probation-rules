@@ -9,11 +9,17 @@ describe('points/calculate-points-for-workload', function () {
     var caseTypeWeightings = pointsHelper.getCaseTypeWeightings()
 
     var result = calculateWorkloadPoints(workload, caseTypeWeightings)
-    expect(result).to.equal(336)
+    var expectedPoints = 0
+    for(var i = 1; i < 8; i++) {
+      expectedPoints += ((8 * i) - (1 * i) - (2 * i * 2) - (3 * i * 3)) // all the tiers
+    }
+    expectedPoints = expectedPoints * 3 // in each location
+
+    expect(result).to.equal(expectedPoints)
   })
 
   it('should throw an error when Tiers is undefined', function () {
-    var caseTypeWeightings = pointsHelper.getWeightings()
+    var caseTypeWeightings = pointsHelper.getCaseTypeWeightings()
     expect(function () { calculateWorkloadPoints(undefined, caseTypeWeightings) }).to.throw(Error)
   })
 

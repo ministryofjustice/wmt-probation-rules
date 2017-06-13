@@ -26,25 +26,13 @@ module.exports.getTestTiersObject = function (location) {
                         module.exports.getTierCountsObject(),
                         module.exports.getTierCountsObject(),
                         module.exports.getTierCountsObject(),
-                        module.exports.getTierCountsObject(),
-                        module.exports.getTierCountsObject(),
                         module.exports.getTierCountsObject())
   return tiers
 }
 
-module.exports.getTestTierObject = function () {
-  var tier = new Tier(module.exports.getTierCountsObject(), 1)
-  return tier
-}
-
 module.exports.getTierCountsObject = function () {
-  var tierCounts = new TierCounts(4, 1, 1, 1)
+  var tierCounts = new TierCounts(8, 1, 2, 3) // total, warrants, unpaid, overdue
   return tierCounts
-}
-
-module.exports.getWeightings = function () {
-  var weightings = new CaseTypeWeightings(1, 1, 1, [10, 10, 10, 10, 10, 10, 10, 10])
-  return weightings
 }
 
 module.exports.getTierCountsList = function (numberOfTierCounts) {
@@ -72,7 +60,7 @@ module.exports.getCaseTypeWeightings = function () {
             true, // paroms enabled
             8 // paroms
    )
-  return new CaseTypeWeightings(0, 0, 0, pointsConfig)
+  return new CaseTypeWeightings(1, 2, 3, pointsConfig) // warrants, unpaid, overdue
 }
 
 module.exports.getDefaultNominalTargets = function () {
