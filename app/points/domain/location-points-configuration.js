@@ -21,6 +21,18 @@ class TierPointsConfiguration {
     assertNumber(this.tierSix, 'Tier Six')
     assertNumber(this.tierSeven, 'Tier Seven')
   }
+
+  asTierList () {
+    return [
+      this.tierOne,
+      this.tierTwo,
+      this.tierThree,
+      this.tierFour,
+      this.tierFive,
+      this.tierSix,
+      this.tierSeven
+    ]
+  }
 }
 
 module.exports = TierPointsConfiguration

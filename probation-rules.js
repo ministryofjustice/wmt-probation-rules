@@ -36,7 +36,7 @@ const calculateAvailablePoints = require('./app/points/calculate-available-point
 const calculateNominalTarget = require('./app/points/calculate-nominal-target')
 const calculateParomPoints = require('./app/points/calculate-parom-points')
 const calculateSdrConversionPoints = require('./app/points/calculate-sdr-conversion-points')
-const calculateTotalWorkloadPoints = require('./app/points/calculate-total-workload-points')
+const calculateTotalWorkloadPoints = require('./app/points/calculate-points-for-workload')
 
 module.exports = {
   CasesSummary: CasesSummary,
