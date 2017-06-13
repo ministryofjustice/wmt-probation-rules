@@ -31,6 +31,13 @@ const TierCounts = require('./app/points/domain/tier-counts')
 // Helpers
 const stagingHelper = require('./test/helpers/staging-helper')
 
+// Calcuation Methods
+const calculateAvailablePoints = require('./app/points/calculate-available-points')
+const calculateNominalTarget = require('./app/points/calculate-nominal-target')
+const calculateParomPoints = require('./app/points/calculate-parom-points')
+const calculateSdrConversionPoints = require('./app/points/calculate-sdr-conversion-points')
+const calculateTotalWorkloadPoints = require('./app/points/calculate-total-workload-points')
+
 module.exports = {
   CasesSummary: CasesSummary,
   CaseDetails: CaseDetails,
@@ -52,5 +59,10 @@ module.exports = {
   Tiers: Tiers,
   WorkloadOwner: WorkloadOwner,
   WorkingHours: WorkingHours,
-  Workload: Workload
+  Workload: Workload,
+  calculateAvailablePoints: calculateAvailablePoints,
+  calculateNominalTarget: calculateNominalTarget,
+  calculateParomPoints: calculateParomPoints,
+  calculateSdrConversionPoints: calculateSdrConversionPoints,
+  calculateTotalWorkloadPoints: calculateTotalWorkloadPoints
 }
