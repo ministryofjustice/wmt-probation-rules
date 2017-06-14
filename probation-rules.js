@@ -26,6 +26,7 @@ const OffenderManager = require('./app/points/domain/offender-manager')
 const WorkloadOwner = require('./app/points/domain/workload-owner')
 const WorkingHours = require('./app/points/domain/working-hours')
 const Tiers = require('./app/staging/domain/tiers')
+const AppTiers = require('./app/points/domain/tiers')
 const TierCounts = require('./app/points/domain/tier-counts')
 
 // Helpers
@@ -59,6 +60,7 @@ module.exports = {
   Team: Team,
   TierCounts: TierCounts,
   Tiers: Tiers,
+  AppTiers: AppTiers, 
   WorkloadOwner: WorkloadOwner,
   WorkingHours: WorkingHours,
   Workload: Workload,
