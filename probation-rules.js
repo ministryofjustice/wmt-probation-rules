@@ -25,7 +25,7 @@ const CaseDetails = require('./app/staging/domain/case-details')
 const OffenderManager = require('./app/points/domain/offender-manager')
 const WorkloadOwner = require('./app/points/domain/workload-owner')
 const WorkingHours = require('./app/points/domain/working-hours')
-const Tiers = require('./app/points/domain/tiers')
+const Tiers = require('./app/staging/domain/tiers')
 const TierCounts = require('./app/points/domain/tier-counts')
 
 // Helpers

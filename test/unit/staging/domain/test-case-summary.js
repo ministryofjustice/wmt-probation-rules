@@ -9,7 +9,6 @@ describe('points/domain/staging/case-summary', function () {
     var datestamp = moment.toString()
     var caseSummary = stagingHelper.getTestCaseSummary(omKey, datestamp)
     expect(caseSummary.omKey).to.equal(omKey)
-    expect(caseSummary.datestamp).to.equal(datestamp)
     expect(caseSummary.trust).to.be.a('string')
     expect(caseSummary.regionCode).to.be.a('string')
     expect(caseSummary.regionDesc).to.be.a('string')

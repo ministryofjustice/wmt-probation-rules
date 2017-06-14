@@ -36,7 +36,7 @@ module.exports.getMultipleTestCaseDetails = function (omKey, rowType, caseRefNo,
   return caseDetails
 }
 
-module.exports.getTestCaseSummary = function (omKey, timestamp) {
+module.exports.getTestCaseSummary = function (omKey) {
   const communityTiers = module.exports.getMultipleTestTiers(locations.COMMUNITY)
   const licenseTiers = module.exports.getMultipleTestTiers(locations.LICENSE)
   const custodyTiers = module.exports.getMultipleTestTiers(locations.CUSTODY)
@@ -57,8 +57,7 @@ module.exports.getTestCaseSummary = function (omKey, timestamp) {
     licenseTiers,
     custodyTiers,
     '15',
-    '11',
-    timestamp)
+    '11')
 }
 
 module.exports.getGeneratedCaseRefNo = function () {
