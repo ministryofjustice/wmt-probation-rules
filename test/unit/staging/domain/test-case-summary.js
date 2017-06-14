@@ -9,7 +9,6 @@ describe('points/domain/staging/case-summary', function () {
     var datestamp = moment.toString()
     var caseSummary = stagingHelper.getTestCaseSummary(omKey, datestamp)
     expect(caseSummary.omKey).to.equal(omKey)
-    expect(caseSummary.datestamp).to.equal(datestamp)
     expect(caseSummary.trust).to.be.a('string')
     expect(caseSummary.regionCode).to.be.a('string')
     expect(caseSummary.regionDesc).to.be.a('string')
@@ -20,22 +19,10 @@ describe('points/domain/staging/case-summary', function () {
     expect(caseSummary.omForename).to.be.a('string')
     expect(caseSummary.omSurname).to.be.a('string')
     expect(caseSummary.omGradeCode).to.be.a('string')
-    expect(caseSummary.communityTiers).to.satisfy(function (cases) {
-      return checkValidCaseTiers(cases)
-    })
-    expect(caseSummary.licenseTiers).to.satisfy(function (cases) {
-      return checkValidCaseTiers(cases)
-    })
-    expect(caseSummary.custodyTiers).to.satisfy(function (cases) {
-      return checkValidCaseTiers(cases)
-    })
+    expect(caseSummary.communityTiers).to.be.an.instanceof(Tiers)
+    expect(caseSummary.licenseTiers).to.be.an.instanceof(Tiers)
+    expect(caseSummary.custodyTiers).to.be.an.instanceof(Tiers)
     expect(caseSummary.comIn1st16Weeks).to.be.a('string')
     expect(caseSummary.licIn1st16Weeks).to.be.a('string')
   })
 })
-
-function checkValidCaseTiers (cases) {
-  return cases.every(function (tier) {
-    return tier instanceof Tiers
-  })
-}

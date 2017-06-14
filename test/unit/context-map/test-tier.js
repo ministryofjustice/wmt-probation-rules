@@ -10,12 +10,10 @@ describe('context-map/tier', function () {
     })
     it('populates the points/tier object with the correct values', function () {
       var output = mapper(6, 1, 2, 3, 4)
-      console.log(output)
       expect(output.tierCounts.total).to.equal(6)
       expect(output.tierCounts.warrants).to.equal(1)
       expect(output.tierCounts.unpaidWork).to.equal(2)
       expect(output.tierCounts.overdueTermination).to.equal(3)
-      expect(output.points).to.equal(4)
     })
   })
   describe('invalid states', function () {

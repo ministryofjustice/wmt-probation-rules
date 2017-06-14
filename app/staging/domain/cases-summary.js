@@ -15,8 +15,7 @@ class CaseSummary {
     licenseTiers,
     custodyTiers,
     comIn1st16Weeks,
-    licIn1st16Weeks,
-    datestamp
+    licIn1st16Weeks
   ) {
     this.trust = trust
     this.regionDesc = regionDesc
@@ -34,7 +33,6 @@ class CaseSummary {
     this.custodyTiers = custodyTiers
     this.comIn1st16Weeks = comIn1st16Weeks
     this.licIn1st16Weeks = licIn1st16Weeks
-    this.datestamp = datestamp
   }
 }
 

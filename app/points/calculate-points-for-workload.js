@@ -1,12 +1,13 @@
 const calculatePointsForTiers = require('../../app/points/calculate-points-for-tiers')
-const Tiers = require('../../app/points/domain/tiers')
+const Workload = require('../../app/points/domain/workload')
 const CaseTypeWeightings = require('../../app/points/domain/case-type-weightings')
 const assertObjectType = require('../../app/points/domain/validation/assert-object-type')
 
-module.exports = function (tiers, caseTypeWeightings) {
-  assertObjectType(tiers, Tiers, 'Tiers')
+module.exports = function (workload, caseTypeWeightings) {
+  assertObjectType(workload, Workload, 'workload')
   assertObjectType(caseTypeWeightings, CaseTypeWeightings, 'CaseTypeWeightings')
-  var tierList = tiers.getTiersAsList()
-  var tiersWorkloadPoints = calculatePointsForTiers(tierList, caseTypeWeightings)
-  return tiersWorkloadPoints
+  var totalWorkloadPoints = calculatePointsForTiers(workload.communityTiers, caseTypeWeightings.pointsConfiguration.communityTierPointsConfig, caseTypeWeightings) +
+                            calculatePointsForTiers(workload.custodyTiers, caseTypeWeightings.pointsConfiguration.custodyTierPointsConfig, caseTypeWeightings) +
+                            calculatePointsForTiers(workload.licenseTiers, caseTypeWeightings.pointsConfiguration.licenseTierPointsConfig, caseTypeWeightings)
+  return totalWorkloadPoints
 }
