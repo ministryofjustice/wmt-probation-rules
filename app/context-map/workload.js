@@ -29,6 +29,9 @@ module.exports = function (stagingWorkload, workloadOwnerId) {
   var custodyTiers = mapTiers(custodySummary, custodyCaseDetails, Locations.CUSTODY)
   var licenseTiers = mapTiers(licenseSummary, licenseCaseDetails, Locations.LICENSE)
 
+  var licenseCasesLast16Weeks = zeroIfUndefined(stagingWorkload.casesSummary.comIn1st16Weeks)
+  var communityCasesLast16Weeks = zeroIfUndefined(stagingWorkload.casesSummary.licIn1st16Weeks)
+
   var totalCases = communityTiers.total + custodyTiers.total + licenseTiers.total
 
   return new Workload(
@@ -41,7 +44,9 @@ module.exports = function (stagingWorkload, workloadOwnerId) {
     paromsDueNext30Days,
     custodyTiers,
     communityTiers,
-    licenseTiers
+    licenseTiers,
+    licenseCasesLast16Weeks,
+    communityCasesLast16Weeks
   )
 }
 

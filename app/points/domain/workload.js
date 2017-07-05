@@ -6,7 +6,8 @@ class Workload {
   constructor (workloadOwnerId, totalCases, monthlySdrs,
           sdrsDueNext30Days, sdrConversionsLast30Days,
           paromsCompletedLast30Days, paromsDueNext30Days, custodyTiers,
-          communityTiers, licenseTiers) {
+          communityTiers, licenseTiers, licenseCasesLast16Weeks,
+          communityCasesLast16Weeks) {
     this.workloadOwnerId = workloadOwnerId
     this.totalCases = totalCases
     this.monthlySdrs = monthlySdrs
@@ -17,6 +18,8 @@ class Workload {
     this.custodyTiers = custodyTiers
     this.communityTiers = communityTiers
     this.licenseTiers = licenseTiers
+    this.licenseCasesLast16Weeks = licenseCasesLast16Weeks
+    this.communityCasesLast16Weeks = communityCasesLast16Weeks
     this.isValid()
   }
 
@@ -31,6 +34,8 @@ class Workload {
     assertObjectType(this.custodyTiers, Tiers, 'Custody Tiers')
     assertObjectType(this.communityTiers, Tiers, 'Community Tiers')
     assertObjectType(this.licenseTiers, Tiers, 'License Tiers')
+    assertNumber(this.licenseCasesLast16Weeks, 'License Cases Last 16 Weeks')
+    assertNumber(this.communityCasesLast16Weeks, 'Community Cases Last 16 Weeks')
   }
 }
 
