@@ -32,7 +32,7 @@ module.exports = function (stagingWorkload, workloadOwnerId) {
   var licenseCasesLast16Weeks = zeroIfUndefined(stagingWorkload.casesSummary.comIn1st16Weeks)
   var communityCasesLast16Weeks = zeroIfUndefined(stagingWorkload.casesSummary.licIn1st16Weeks)
 
-  var totalCases = communityTiers.total + custodyTiers.total + licenseTiers.total
+  var totalCases = zeroIfUndefined(communityTiers.total + custodyTiers.total + licenseTiers.total)
 
   return new Workload(
     workloadOwnerId,
@@ -56,6 +56,9 @@ var locationFilter = function (location) {
   }
 }
 
-var zeroIfUndefined = function (value = 0) {
+var zeroIfUndefined = function (value) {
+  if (!value) {
+    value = 0
+  }
   return parseInt(value, 10)
 }
