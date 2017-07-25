@@ -42,6 +42,7 @@ const calculateTotalWorkloadPoints = require('./app/points/calculate-points-for-
 
 // Context Map
 const mapWorkload = require('./app/context-map/workload')
+const filterOmGradeCode = require('./app/context-map/om-grade-code')
 
 module.exports = {
   CasesSummary: CasesSummary,
@@ -63,7 +64,7 @@ module.exports = {
   Team: Team,
   TierCounts: TierCounts,
   Tiers: Tiers,
-  AppTiers: AppTiers, 
+  AppTiers: AppTiers,
   WorkloadOwner: WorkloadOwner,
   WorkingHours: WorkingHours,
   Workload: Workload,
@@ -72,5 +73,6 @@ module.exports = {
   calculateParomPoints: calculateParomPoints,
   calculateSdrConversionPoints: calculateSdrConversionPoints,
   calculateTotalWorkloadPoints: calculateTotalWorkloadPoints,
-  mapWorkload: mapWorkload
+  mapWorkload: mapWorkload,
+  filterOmGradeCode: filterOmGradeCode
 }
