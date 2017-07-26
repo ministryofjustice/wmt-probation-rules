@@ -38,7 +38,7 @@ const calculateAvailablePoints = require('./app/points/calculate-available-point
 const calculateNominalTarget = require('./app/points/calculate-nominal-target')
 const calculateParomPoints = require('./app/points/calculate-parom-points')
 const calculateSdrConversionPoints = require('./app/points/calculate-sdr-conversion-points')
-const calculateTotalWorkloadPoints = require('./app/points/calculate-points-for-workload')
+const calculateWorkloadPoints = require('./app/points/calculate-points-for-workload')
 
 // Context Map
 const mapWorkload = require('./app/context-map/workload')
@@ -71,6 +71,6 @@ module.exports = {
   calculateNominalTarget: calculateNominalTarget,
   calculateParomPoints: calculateParomPoints,
   calculateSdrConversionPoints: calculateSdrConversionPoints,
-  calculateTotalWorkloadPoints: calculateTotalWorkloadPoints,
+  calculateWorkloadPoints: calculateWorkloadPoints,
   mapWorkload: mapWorkload
 }
