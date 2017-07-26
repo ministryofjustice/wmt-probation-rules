@@ -72,7 +72,7 @@ module.exports = {
   calculateNominalTarget: calculateNominalTarget,
   calculateParomPoints: calculateParomPoints,
   calculateSdrConversionPoints: calculateSdrConversionPoints,
-  calculateTotalWorkloadPoints: calculateTotalWorkloadPoints,
+  calculateWorkloadPoints: calculateWorkloadPoints,
   mapWorkload: mapWorkload,
   filterOmGradeCode: filterOmGradeCode
 }
