@@ -12,7 +12,9 @@ describe('context-map/om-grade-code', () => {
   })
   describe('invalid codes', () => {
     it('return an empty string', () => {
-
+      expect(filterOmGradeCode('ABCD')).to.equal('')
+      expect(filterOmGradeCode('')).to.equal('')
+      expect(filterOmGradeCode('1234*')).to.equal('')
     })
   })
 })
