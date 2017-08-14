@@ -7,8 +7,9 @@ var calculateAvailablePoints = function (nominalTarget, baseHours, hoursReductio
 module.exports = function (nominalTarget, offenderManagerTypeId, contractedHoursPerWeek,
   hoursReduction, defaultContractedHours) {
   var availablePoints = 0
-  var resultHours = getHours(contractedHoursPerWeek)
-  availablePoints = calculateAvailablePoints(nominalTarget, resultHours.baseHours, hoursReduction, resultHours.defaultContractedHoursForBand)
-
+  var resultHours = getHours(contractedHoursPerWeek, defaultContractedHours, offenderManagerTypeId)
+  if (resultHours !== null) {
+    availablePoints = calculateAvailablePoints(nominalTarget, resultHours.baseHours, hoursReduction, resultHours.defaultContractedHoursForBand)
+  }
   return parseInt(availablePoints, 10)
 }

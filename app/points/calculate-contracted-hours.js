@@ -3,6 +3,7 @@ const OM_TYPE_IDS = require('./constants/offender-manager-type-ids')
 const ResultHours = require('./domain/result-hours')
 
 module.exports = function (contractedHoursPerWeek, defaultContractedHours, offenderManagerTypeId) {
+  var baseHours = 0
   if (!(defaultContractedHours instanceof DefaultContractedHours)) {
     throw new Error('defaultContractedHours should be an instance of DefaultContractedHours')
   }
@@ -19,11 +20,10 @@ module.exports = function (contractedHoursPerWeek, defaultContractedHours, offen
       defaultContractedHoursForBand = defaultContractedHours.po
     }
 
-    var baseHours = typeof contractedHoursPerWeek !== 'number'
+    baseHours = typeof contractedHoursPerWeek !== 'number'
       ? defaultContractedHoursForBand : contractedHoursPerWeek
-  } else {
-    defaultContractedHoursForBand = 37.5
-  }
 
-  return new ResultHours(baseHours, defaultContractedHoursForBand)
+    return new ResultHours(baseHours, defaultContractedHoursForBand)
+  }
+  return null
 }
