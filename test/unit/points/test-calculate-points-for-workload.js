@@ -10,7 +10,7 @@ describe('points/calculate-points-for-workload', function () {
 
     var result = calculateWorkloadPoints(workload, caseTypeWeightings)
     var expectedPoints = 0
-    for(var i = 1; i < 8; i++) {
+    for (var i = 1; i < 8; i++) {
       expectedPoints += ((8 * i) - (1 * i) - (2 * i * 2) - (3 * i * 3)) // all the tiers
     }
     expectedPoints = expectedPoints * 3 // in each location

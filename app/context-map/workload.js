@@ -57,7 +57,7 @@ var locationFilter = function (location) {
 }
 
 var zeroIfUndefined = function (value = 0) {
-  if(value === null){
+  if (value === null) {
     value = 0
   }
   return parseInt(value, 10)
