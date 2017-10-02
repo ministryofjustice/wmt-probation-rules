@@ -10,12 +10,12 @@ module.exports = function (stagingWorkload, workloadOwnerId) {
   assertObjectType(stagingWorkload, StagingWorkload, 'StagingWorkload')
   assertNumber(workloadOwnerId, 'Workload Owner Id')
 
-  var monthlySdrs = zeroIfUndefined(stagingWorkload.courtReports.sdrLast30)
-  var sdrsDueNext30Days = zeroIfUndefined(stagingWorkload.courtReports.sdrDueNext30)
-  var sdrsConversionsLast30Days = zeroIfUndefined(stagingWorkload.courtReports.sdrConvLast30)
+  var monthlySdrs = zeroIfNull(stagingWorkload.courtReports.sdrLast30)
+  var sdrsDueNext30Days = zeroIfNull(stagingWorkload.courtReports.sdrDueNext30)
+  var sdrsConversionsLast30Days = zeroIfNull(stagingWorkload.courtReports.sdrConvLast30)
 
-  var paromsCompletedLast30Days = zeroIfUndefined(stagingWorkload.instReports.paromCompLast30)
-  var paromsDueNext30Days = zeroIfUndefined(stagingWorkload.instReports.paromDueNext30)
+  var paromsCompletedLast30Days = zeroIfNull(stagingWorkload.instReports.paromCompLast30)
+  var paromsDueNext30Days = zeroIfNull(stagingWorkload.instReports.paromDueNext30)
 
   var communityCaseDetails = stagingWorkload.caseDetails.filter(locationFilter(Locations.COMMUNITY))
   var custodyCaseDetails = stagingWorkload.caseDetails.filter(locationFilter(Locations.CUSTODY))
@@ -29,8 +29,8 @@ module.exports = function (stagingWorkload, workloadOwnerId) {
   var custodyTiers = mapTiers(custodySummary, custodyCaseDetails, Locations.CUSTODY)
   var licenseTiers = mapTiers(licenseSummary, licenseCaseDetails, Locations.LICENSE)
 
-  var licenseCasesLast16Weeks = zeroIfUndefined(stagingWorkload.casesSummary.comIn1st16Weeks)
-  var communityCasesLast16Weeks = zeroIfUndefined(stagingWorkload.casesSummary.licIn1st16Weeks)
+  var licenseCasesLast16Weeks = zeroIfNull(stagingWorkload.casesSummary.comIn1st16Weeks)
+  var communityCasesLast16Weeks = zeroIfNull(stagingWorkload.casesSummary.licIn1st16Weeks)
 
   var totalCases = communityTiers.total + custodyTiers.total + licenseTiers.total
 
@@ -56,6 +56,9 @@ var locationFilter = function (location) {
   }
 }
 
-var zeroIfUndefined = function (value = 0) {
+var zeroIfNull = function (value = 0) {
+  if (value === null) {
+    value = 0
+  }
   return parseInt(value, 10)
 }

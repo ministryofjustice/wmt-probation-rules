@@ -70,7 +70,8 @@ module.exports.getMultipleTestTiers = function (location, count) {
 }
 
 module.exports.getTestTiers = function (location) {
-  return new Tiers(location, getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints())
+  var tierACount = null
+  return new Tiers(location, getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), tierACount)
 }
 
 module.exports.getCountableTestTiers = function (location) {

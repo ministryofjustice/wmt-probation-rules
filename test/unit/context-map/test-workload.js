@@ -33,6 +33,7 @@ describe('context-map/workload', function () {
 
     it('should correctly calculate the total number of cases', function () {
       var workloadWith24Cases = stagingHelper.getTestOmWorkload(caseRefNo, omKey, undefined)
+
       workloadWith24Cases.casesSummary.communityTiers = stagingHelper.getCountableTestTiers(Locations.COMMUNITY)
       workloadWith24Cases.casesSummary.custodyTiers = stagingHelper.getCountableTestTiers(Locations.CUSTODY)
       workloadWith24Cases.casesSummary.licenseTiers = stagingHelper.getCountableTestTiers(Locations.LICENSE)
@@ -52,6 +53,7 @@ describe('context-map/workload', function () {
       expect(mappedWorkload.custodyTiers.c1.total).to.eq(parseInt(custodyTiers.c1))
       expect(mappedWorkload.custodyTiers.b2.total).to.eq(parseInt(custodyTiers.b2))
       expect(mappedWorkload.custodyTiers.b1.total).to.eq(parseInt(custodyTiers.b1))
+      expect(mappedWorkload.custodyTiers.a.total).to.eq(0)
     })
 
     it('should correctly map the community tiers', function () {
@@ -64,6 +66,7 @@ describe('context-map/workload', function () {
       expect(mappedWorkload.communityTiers.c1.total).to.eq(parseInt(communityTiers.c1))
       expect(mappedWorkload.communityTiers.b2.total).to.eq(parseInt(communityTiers.b2))
       expect(mappedWorkload.communityTiers.b1.total).to.eq(parseInt(communityTiers.b1))
+      expect(mappedWorkload.communityTiers.a.total).to.eq(0)
     })
 
     it('should correctly map the license tiers', function () {
@@ -76,6 +79,7 @@ describe('context-map/workload', function () {
       expect(mappedWorkload.licenseTiers.c1.total).to.eq(parseInt(licenseTiers.c1))
       expect(mappedWorkload.licenseTiers.b2.total).to.eq(parseInt(licenseTiers.b2))
       expect(mappedWorkload.licenseTiers.b1.total).to.eq(parseInt(licenseTiers.b1))
+      expect(mappedWorkload.licenseTiers.a.total).to.eq(0)      
     })
   })
 
@@ -94,17 +98,31 @@ describe('context-map/workload', function () {
       var tierCode = i
       var tierSeed = i + 1
 
-      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'W', undefined, tierCode.toString(), undefined, undefined, Locations.CUSTODY, tierSeed + activeWarrantsSeed + custodyMultiplier))
-      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'U', undefined, tierCode.toString(), undefined, undefined, Locations.CUSTODY, tierSeed + unpaidWorkSeed + custodyMultiplier))
-      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'O', undefined, tierCode.toString(), undefined, undefined, Locations.CUSTODY, tierSeed + overdueTerminationsSeed + custodyMultiplier))
+      if(i === 7) {
+        caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'W', undefined, tierCode.toString(), undefined, undefined, Locations.CUSTODY, 0))
+        caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'U', undefined, tierCode.toString(), undefined, undefined, Locations.CUSTODY, 0))
+        caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'O', undefined, tierCode.toString(), undefined, undefined, Locations.CUSTODY, 0))
+  
+        caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'W', undefined, tierCode.toString(), undefined, undefined, Locations.LICENSE, 0))
+        caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'U', undefined, tierCode.toString(), undefined, undefined, Locations.LICENSE, 0))
+        caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'O', undefined, tierCode.toString(), undefined, undefined, Locations.LICENSE, 0))
+  
+        caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'W', undefined, tierCode.toString(), undefined, undefined, Locations.COMMUNITY, 0))
+        caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'U', undefined, tierCode.toString(), undefined, undefined, Locations.COMMUNITY, 0))
+        caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'O', undefined, tierCode.toString(), undefined, undefined, Locations.COMMUNITY, 0))
+      } else {
+        caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'W', undefined, tierCode.toString(), undefined, undefined, Locations.CUSTODY, tierSeed + activeWarrantsSeed + custodyMultiplier))
+        caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'U', undefined, tierCode.toString(), undefined, undefined, Locations.CUSTODY, tierSeed + unpaidWorkSeed + custodyMultiplier))
+        caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'O', undefined, tierCode.toString(), undefined, undefined, Locations.CUSTODY, tierSeed + overdueTerminationsSeed + custodyMultiplier))
 
-      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'W', undefined, tierCode.toString(), undefined, undefined, Locations.LICENSE, tierSeed + activeWarrantsSeed + licenseMultiplier))
-      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'U', undefined, tierCode.toString(), undefined, undefined, Locations.LICENSE, tierSeed + unpaidWorkSeed + licenseMultiplier))
-      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'O', undefined, tierCode.toString(), undefined, undefined, Locations.LICENSE, tierSeed + overdueTerminationsSeed + licenseMultiplier))
+        caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'W', undefined, tierCode.toString(), undefined, undefined, Locations.LICENSE, tierSeed + activeWarrantsSeed + licenseMultiplier))
+        caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'U', undefined, tierCode.toString(), undefined, undefined, Locations.LICENSE, tierSeed + unpaidWorkSeed + licenseMultiplier))
+        caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'O', undefined, tierCode.toString(), undefined, undefined, Locations.LICENSE, tierSeed + overdueTerminationsSeed + licenseMultiplier))
 
-      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'W', undefined, tierCode.toString(), undefined, undefined, Locations.COMMUNITY, tierSeed + activeWarrantsSeed + communityMultiplier))
-      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'U', undefined, tierCode.toString(), undefined, undefined, Locations.COMMUNITY, tierSeed + unpaidWorkSeed + communityMultiplier))
-      caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'O', undefined, tierCode.toString(), undefined, undefined, Locations.COMMUNITY, tierSeed + overdueTerminationsSeed + communityMultiplier))
+        caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'W', undefined, tierCode.toString(), undefined, undefined, Locations.COMMUNITY, tierSeed + activeWarrantsSeed + communityMultiplier))
+        caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'U', undefined, tierCode.toString(), undefined, undefined, Locations.COMMUNITY, tierSeed + unpaidWorkSeed + communityMultiplier))
+        caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'O', undefined, tierCode.toString(), undefined, undefined, Locations.COMMUNITY, tierSeed + overdueTerminationsSeed + communityMultiplier))
+      }
     }
 
     stagingWorkload.caseDetails = caseDetails
@@ -118,6 +136,7 @@ describe('context-map/workload', function () {
       expect(mappedWorkload.custodyTiers.c1.overdueTermination).to.eq(5 + overdueTerminationsSeed + custodyMultiplier)
       expect(mappedWorkload.custodyTiers.b2.overdueTermination).to.eq(6 + overdueTerminationsSeed + custodyMultiplier)
       expect(mappedWorkload.custodyTiers.b1.overdueTermination).to.eq(7 + overdueTerminationsSeed + custodyMultiplier)
+      expect(mappedWorkload.custodyTiers.a.overdueTermination).to.eq(0)
     })
 
     it('should correctly map the custody active warrants', function () {
@@ -128,6 +147,8 @@ describe('context-map/workload', function () {
       expect(mappedWorkload.custodyTiers.c1.warrants).to.eq(5 + activeWarrantsSeed + custodyMultiplier)
       expect(mappedWorkload.custodyTiers.b2.warrants).to.eq(6 + activeWarrantsSeed + custodyMultiplier)
       expect(mappedWorkload.custodyTiers.b1.warrants).to.eq(7 + activeWarrantsSeed + custodyMultiplier)
+      expect(mappedWorkload.custodyTiers.a.warrants).to.eq(0)
+      
     })
 
     it('should correctly map the custody unpaid work', function () {
@@ -138,6 +159,7 @@ describe('context-map/workload', function () {
       expect(mappedWorkload.custodyTiers.c1.unpaidWork).to.eq(5 + unpaidWorkSeed + custodyMultiplier)
       expect(mappedWorkload.custodyTiers.b2.unpaidWork).to.eq(6 + unpaidWorkSeed + custodyMultiplier)
       expect(mappedWorkload.custodyTiers.b1.unpaidWork).to.eq(7 + unpaidWorkSeed + custodyMultiplier)
+      expect(mappedWorkload.custodyTiers.a.unpaidWork).to.eq(0)      
     })
 
     it('should correctly map the community overdue terminations', function () {
@@ -148,6 +170,7 @@ describe('context-map/workload', function () {
       expect(mappedWorkload.communityTiers.c1.overdueTermination).to.eq(5 + overdueTerminationsSeed + communityMultiplier)
       expect(mappedWorkload.communityTiers.b2.overdueTermination).to.eq(6 + overdueTerminationsSeed + communityMultiplier)
       expect(mappedWorkload.communityTiers.b1.overdueTermination).to.eq(7 + overdueTerminationsSeed + communityMultiplier)
+      expect(mappedWorkload.communityTiers.a.overdueTermination).to.eq(0)      
     })
 
     it('should correctly map the community active warrants', function () {
@@ -158,6 +181,7 @@ describe('context-map/workload', function () {
       expect(mappedWorkload.communityTiers.c1.warrants).to.eq(5 + activeWarrantsSeed + communityMultiplier)
       expect(mappedWorkload.communityTiers.b2.warrants).to.eq(6 + activeWarrantsSeed + communityMultiplier)
       expect(mappedWorkload.communityTiers.b1.warrants).to.eq(7 + activeWarrantsSeed + communityMultiplier)
+      expect(mappedWorkload.communityTiers.a.warrants).to.eq(0)            
     })
 
     it('should correctly map the community unpaid work', function () {
@@ -168,6 +192,7 @@ describe('context-map/workload', function () {
       expect(mappedWorkload.communityTiers.c1.unpaidWork).to.eq(5 + unpaidWorkSeed + communityMultiplier)
       expect(mappedWorkload.communityTiers.b2.unpaidWork).to.eq(6 + unpaidWorkSeed + communityMultiplier)
       expect(mappedWorkload.communityTiers.b1.unpaidWork).to.eq(7 + unpaidWorkSeed + communityMultiplier)
+      expect(mappedWorkload.communityTiers.a.unpaidWork).to.eq(0)            
     })
 
     it('should correctly map the license overdue terminations', function () {
@@ -178,6 +203,7 @@ describe('context-map/workload', function () {
       expect(mappedWorkload.licenseTiers.c1.overdueTermination).to.eq(5 + overdueTerminationsSeed + licenseMultiplier)
       expect(mappedWorkload.licenseTiers.b2.overdueTermination).to.eq(6 + overdueTerminationsSeed + licenseMultiplier)
       expect(mappedWorkload.licenseTiers.b1.overdueTermination).to.eq(7 + overdueTerminationsSeed + licenseMultiplier)
+      expect(mappedWorkload.licenseTiers.a.overdueTermination).to.eq(0)      
     })
 
     it('should correctly map the license active warrants', function () {
@@ -188,6 +214,7 @@ describe('context-map/workload', function () {
       expect(mappedWorkload.licenseTiers.c1.warrants).to.eq(5 + activeWarrantsSeed + licenseMultiplier)
       expect(mappedWorkload.licenseTiers.b2.warrants).to.eq(6 + activeWarrantsSeed + licenseMultiplier)
       expect(mappedWorkload.licenseTiers.b1.warrants).to.eq(7 + activeWarrantsSeed + licenseMultiplier)
+      expect(mappedWorkload.licenseTiers.a.warrants).to.eq(0)            
     })
 
     it('should correctly map the license unpaid work', function () {
@@ -198,6 +225,7 @@ describe('context-map/workload', function () {
       expect(mappedWorkload.licenseTiers.c1.unpaidWork).to.eq(5 + unpaidWorkSeed + licenseMultiplier)
       expect(mappedWorkload.licenseTiers.b2.unpaidWork).to.eq(6 + unpaidWorkSeed + licenseMultiplier)
       expect(mappedWorkload.licenseTiers.b1.unpaidWork).to.eq(7 + unpaidWorkSeed + licenseMultiplier)
+      expect(mappedWorkload.licenseTiers.a.unpaidWork).to.eq(0)            
     })
   })
 
