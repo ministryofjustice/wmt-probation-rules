@@ -7,7 +7,7 @@ describe('points/domain/staging/test-tiers', function () {
     var location = locations.COMMUNITY
     var tiers = stagingHelper.getTestTiers(location)
     expect(tiers.location).to.equal(locations.COMMUNITY)
-    expect(tiers.a).to.be.a('string')
+    expect(tiers.a).to.be.eql(null)
     expect(tiers.b1).to.be.a('string')
     expect(tiers.b2).to.be.a('string')
     expect(tiers.c1).to.be.a('string')

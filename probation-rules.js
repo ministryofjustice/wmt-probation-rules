@@ -35,10 +35,12 @@ const pointsHelper = require('./test/helpers/points-helper')
 
 // Calcuation Methods
 const calculateAvailablePoints = require('./app/points/calculate-available-points')
+const calculateContractedHours = require('./app/points/calculate-contracted-hours')
 const calculateNominalTarget = require('./app/points/calculate-nominal-target')
 const calculateParomPoints = require('./app/points/calculate-parom-points')
 const calculateSdrConversionPoints = require('./app/points/calculate-sdr-conversion-points')
 const calculateWorkloadPoints = require('./app/points/calculate-points-for-workload')
+const calculateWeighting = require('./app/points/calculate-weighting')
 
 // Context Map
 const mapWorkload = require('./app/context-map/workload')
@@ -73,6 +75,8 @@ module.exports = {
   calculateParomPoints: calculateParomPoints,
   calculateSdrConversionPoints: calculateSdrConversionPoints,
   calculateWorkloadPoints: calculateWorkloadPoints,
+  calculateWeighting: calculateWeighting,
   mapWorkload: mapWorkload,
-  filterOmGradeCode: filterOmGradeCode
+  filterOmGradeCode: filterOmGradeCode,
+  calculateContractedHours: calculateContractedHours
 }

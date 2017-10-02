@@ -6,27 +6,27 @@ const CASE_TYPE_OVERDUE_TERMINATION = 'O'
 const CASE_TYPE_WARRANT = 'W'
 
 module.exports = function (summary, details) {
-  var total = parseInt(summary.untiered) +
-      parseInt(summary.d2) +
-      parseInt(summary.d1) +
-      parseInt(summary.c2) +
-      parseInt(summary.c1) +
-      parseInt(summary.b2) +
-      parseInt(summary.b1) +
-      parseInt(summary.a)
+  var total = zeroIfNull(summary.untiered) +
+    zeroIfNull(summary.d2) +
+    zeroIfNull(summary.d1) +
+    zeroIfNull(summary.c2) +
+    zeroIfNull(summary.c1) +
+    zeroIfNull(summary.b2) +
+    zeroIfNull(summary.b1) +
+    zeroIfNull(summary.a)
 
   // TODO this is pretty inefficent, we should replace multiple filters with
   // one sort method which categorises each entry into an appropriate array
   return new Tiers(
     summary.location,
-    getTierCounts(parseInt(summary.untiered, 10), details.filter(tierCodeFilter('0'))),
-    getTierCounts(parseInt(summary.d2, 10), details.filter(tierCodeFilter('1'))),
-    getTierCounts(parseInt(summary.d1, 10), details.filter(tierCodeFilter('2'))),
-    getTierCounts(parseInt(summary.c2, 10), details.filter(tierCodeFilter('3'))),
-    getTierCounts(parseInt(summary.c1, 10), details.filter(tierCodeFilter('4'))),
-    getTierCounts(parseInt(summary.b2, 10), details.filter(tierCodeFilter('5'))),
-    getTierCounts(parseInt(summary.b1, 10), details.filter(tierCodeFilter('6'))),
-    getTierCounts(parseInt(summary.a, 10), details.filter(tierCodeFilter('7'))),
+    getTierCounts(zeroIfNull(summary.untiered), details.filter(tierCodeFilter('0'))),
+    getTierCounts(zeroIfNull(summary.d2), details.filter(tierCodeFilter('1'))),
+    getTierCounts(zeroIfNull(summary.d1), details.filter(tierCodeFilter('2'))),
+    getTierCounts(zeroIfNull(summary.c2), details.filter(tierCodeFilter('3'))),
+    getTierCounts(zeroIfNull(summary.c1), details.filter(tierCodeFilter('4'))),
+    getTierCounts(zeroIfNull(summary.b2), details.filter(tierCodeFilter('5'))),
+    getTierCounts(zeroIfNull(summary.b1), details.filter(tierCodeFilter('6'))),
+    getTierCounts(zeroIfNull(summary.a), details.filter(tierCodeFilter('7'))),
     total
   )
 }
@@ -49,4 +49,11 @@ var rowTypeFilter = function (rowType) {
   return function (element) {
     return element.rowType === rowType
   }
+}
+
+var zeroIfNull = function (value = 0) {
+  if (value === null) {
+    value = 0
+  }
+  return parseInt(value, 10)
 }
