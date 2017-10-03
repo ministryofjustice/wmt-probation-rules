@@ -59,8 +59,9 @@ module.exports.getCaseTypeWeightings = function () {
             new DefaultContractedHours(1, 2),
             true, // paroms enabled
             8 // paroms
-   )
-  return new CaseTypeWeightings(1, 2, 3, pointsConfig) // warrants, unpaid, overdue
+  )
+  return new CaseTypeWeightings(1, 2, 3, 4, 5, pointsConfig)
+  // warrants, unpaid, overdue, armsComm, armsLicense
 }
 
 module.exports.getDefaultNominalTargets = function () {

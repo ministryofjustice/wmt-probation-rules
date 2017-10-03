@@ -15,6 +15,8 @@ class CaseTypeWeightings {
     assertNumber(this.warrants, 'warrants')
     assertNumber(this.unpaidWork, 'unpaidWork')
     assertNumber(this.overdueTermination, 'overdueTermination')
+    assertNumber(this.armsCommunity, 'armsCommunity')
+    assertNumber(this.armsLicense, 'armsLicense')
   }
 }
 
