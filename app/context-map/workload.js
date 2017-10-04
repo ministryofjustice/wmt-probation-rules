@@ -34,6 +34,8 @@ module.exports = function (stagingWorkload, workloadOwnerId) {
 
   var totalCases = communityTiers.total + custodyTiers.total + licenseTiers.total
 
+  var stagingId = stagingWorkload.id
+
   return new Workload(
     workloadOwnerId,
     totalCases,
@@ -46,7 +48,8 @@ module.exports = function (stagingWorkload, workloadOwnerId) {
     communityTiers,
     licenseTiers,
     licenseCasesLast16Weeks,
-    communityCasesLast16Weeks
+    communityCasesLast16Weeks,
+    stagingId
   )
 }
 

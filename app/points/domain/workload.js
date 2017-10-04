@@ -7,7 +7,7 @@ class Workload {
           sdrsDueNext30Days, sdrConversionsLast30Days,
           paromsCompletedLast30Days, paromsDueNext30Days, custodyTiers,
           communityTiers, licenseTiers, licenseCasesLast16Weeks,
-          communityCasesLast16Weeks) {
+          communityCasesLast16Weeks, stagingId) {
     this.workloadOwnerId = workloadOwnerId
     this.totalCases = totalCases
     this.monthlySdrs = monthlySdrs
@@ -20,6 +20,7 @@ class Workload {
     this.licenseTiers = licenseTiers
     this.licenseCasesLast16Weeks = licenseCasesLast16Weeks
     this.communityCasesLast16Weeks = communityCasesLast16Weeks
+    this.stagingId = stagingId
     this.isValid()
   }
 
@@ -36,6 +37,7 @@ class Workload {
     assertObjectType(this.licenseTiers, Tiers, 'License Tiers')
     assertNumber(this.licenseCasesLast16Weeks, 'License Cases Last 16 Weeks')
     assertNumber(this.communityCasesLast16Weeks, 'Community Cases Last 16 Weeks')
+    assertNumber(this.stagingId, 'Staging ID')
   }
 }
 
