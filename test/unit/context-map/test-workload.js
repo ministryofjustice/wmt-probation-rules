@@ -16,6 +16,10 @@ describe('context-map/workload', function () {
     expect(() => mapper(stagingWorkload, ownerId)).not.to.throw(Error)
   })
 
+  it('should correctly map the staging id field', function () {
+    expect(mapper(stagingWorkload, ownerId).stagingId).to.equal(stagingWorkload.stagingId)
+  })
+
   describe('case summary fields', function () {
     var communityTiers = stagingHelper.getTestTiers(Locations.COMMUNITY)
     var custodyTiers = stagingHelper.getTestTiers(Locations.CUSTODY)

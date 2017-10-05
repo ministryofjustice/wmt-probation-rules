@@ -6,6 +6,7 @@ const Locations = require('../../../../app/staging/constants/locations')
 
 describe('points/domain/Workload', function () {
   var workloadOwnerId = 1
+  var stagingId = 1
   var totalCases = 1
   var monthlySdrs = 1
   var sdrsDueNext30Days = 1
@@ -24,7 +25,8 @@ describe('points/domain/Workload', function () {
     paromsDueNext30Days,
     custodyTiers,
     communityTiers,
-    licenseTiers
+    licenseTiers,
+    stagingId
   ]
 
   it('throws an error when any property is undefined', function () {
@@ -41,5 +43,6 @@ describe('points/domain/Workload', function () {
     expect(workload.custodyTiers).to.be.an('object')
     expect(workload.communityTiers).to.be.an('object')
     expect(workload.licenseTiers).to.be.an('object')
+    expect(workload.stagingId).to.eql(stagingId)
   })
 })
