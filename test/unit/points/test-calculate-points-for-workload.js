@@ -7,6 +7,11 @@ describe('points/calculate-points-for-workload', function () {
   it('should calculate the value without error', function () {
     var workload = pointsHelper.getTestWorkloadObject()
     var caseTypeWeightings = pointsHelper.getCaseTypeWeightings()
+    var armsCommunityPoints = 2 * 4 * 4
+    var armsLicensePoints = 3 * 2 * 5
+    var expectedArmsPoints = armsCommunityPoints + armsLicensePoints
+    console.log('EXPECTED ARMS')
+    console.log(expectedArmsPoints)
 
     var result = calculateWorkloadPoints(workload, caseTypeWeightings)
     var expectedPoints = 0
@@ -14,6 +19,7 @@ describe('points/calculate-points-for-workload', function () {
       expectedPoints += ((8 * i) - (1 * i) - (2 * i * 2) - (3 * i * 3)) // all the tiers
     }
     expectedPoints = expectedPoints * 3 // in each location
+    expectedPoints += expectedArmsPoints
 
     expect(result).to.equal(expectedPoints)
   })
