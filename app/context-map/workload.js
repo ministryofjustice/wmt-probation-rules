@@ -34,7 +34,7 @@ module.exports = function (stagingWorkload, workloadOwnerId) {
 
   var totalCases = communityTiers.total + custodyTiers.total + licenseTiers.total
 
-  var stagingId = stagingWorkload.id
+  var stagingId = stagingWorkload.stagingId
 
   return new Workload(
     workloadOwnerId,
