@@ -15,7 +15,9 @@ class CaseSummary {
     licenseTiers,
     custodyTiers,
     comIn1st16Weeks,
-    licIn1st16Weeks
+    licIn1st16Weeks,
+    armsCommunityCases,
+    armsLicenseCases
   ) {
     this.trust = trust
     this.regionDesc = regionDesc
@@ -33,6 +35,8 @@ class CaseSummary {
     this.custodyTiers = custodyTiers
     this.comIn1st16Weeks = comIn1st16Weeks
     this.licIn1st16Weeks = licIn1st16Weeks
+    this.armsCommunityCases = armsCommunityCases
+    this.armsLicenseCases = armsLicenseCases
   }
 }
 
