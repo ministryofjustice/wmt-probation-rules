@@ -15,6 +15,7 @@ describe('points/domain/Workload', function () {
   var custodyTiers = pointsHelper.getTestTiersObject(Locations.CUSTODY)
   var communityTiers = pointsHelper.getTestTiersObject(Locations.COMMUNITY)
   var licenseTiers = pointsHelper.getTestTiersObject(Locations.LICENSE)
+  var workloadReportId = 1
 
   var validArgumentList = [
     workloadOwnerId,
@@ -26,7 +27,8 @@ describe('points/domain/Workload', function () {
     custodyTiers,
     communityTiers,
     licenseTiers,
-    stagingId
+    stagingId,
+    workloadReportId
   ]
 
   it('throws an error when any property is undefined', function () {

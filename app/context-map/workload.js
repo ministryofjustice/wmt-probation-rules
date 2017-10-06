@@ -6,9 +6,10 @@ const mapTiers = require('./tiers')
 const assertObjectType = require('../points/domain/validation/assert-object-type')
 const assertNumber = require('../points/domain/validation/assert-number')
 
-module.exports = function (stagingWorkload, workloadOwnerId) {
+module.exports = function (stagingWorkload, workloadOwnerId, workloadReportId) {
   assertObjectType(stagingWorkload, StagingWorkload, 'StagingWorkload')
   assertNumber(workloadOwnerId, 'Workload Owner Id')
+  assertNumber(workloadReportId, 'Workload Report Id')
 
   var monthlySdrs = zeroIfNull(stagingWorkload.courtReports.sdrLast30)
   var sdrsDueNext30Days = zeroIfNull(stagingWorkload.courtReports.sdrDueNext30)
@@ -49,7 +50,8 @@ module.exports = function (stagingWorkload, workloadOwnerId) {
     licenseTiers,
     licenseCasesLast16Weeks,
     communityCasesLast16Weeks,
-    stagingId
+    stagingId,
+    workloadReportId
   )
 }
 

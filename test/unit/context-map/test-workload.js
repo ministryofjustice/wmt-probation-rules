@@ -9,15 +9,20 @@ describe('context-map/workload', function () {
   var omKey = '1234'
   var stagingWorkload = stagingHelper.getTestOmWorkload(caseRefNo, omKey, Locations.COMMUNITY)
   var ownerId = 10
+  var workloadReportId = 5
 
   it('should validate the parameters are as expected', function () {
     expect(() => mapper({}, ownerId)).to.throw(Error)
     expect(() => mapper(stagingWorkload, undefined)).to.throw(Error)
-    expect(() => mapper(stagingWorkload, ownerId)).not.to.throw(Error)
+    expect(() => mapper(stagingWorkload, ownerId, workloadReportId)).not.to.throw(Error)
   })
 
   it('should correctly map the staging id field', function () {
-    expect(mapper(stagingWorkload, ownerId).stagingId).to.equal(stagingWorkload.stagingId)
+    expect(mapper(stagingWorkload, ownerId, workloadReportId).stagingId).to.equal(stagingWorkload.stagingId)
+  })
+
+  it('should correctly map the staging id field', function () {
+    expect(mapper(stagingWorkload, ownerId, workloadReportId).workloadReportId).to.equal(workloadReportId)
   })
 
   describe('case summary fields', function () {
@@ -29,7 +34,7 @@ describe('context-map/workload', function () {
     stagingWorkload.casesSummary.custodyTiers = custodyTiers
     stagingWorkload.casesSummary.licenseTiers = licenseTiers
 
-    var mappedWorkload = mapper(stagingWorkload, ownerId)
+    var mappedWorkload = mapper(stagingWorkload, ownerId, workloadReportId)
 
     it('should correctly map the workload owner id', function () {
       expect(mappedWorkload.workloadOwnerId).to.equal(ownerId)
@@ -42,7 +47,7 @@ describe('context-map/workload', function () {
       workloadWith24Cases.casesSummary.custodyTiers = stagingHelper.getCountableTestTiers(Locations.CUSTODY)
       workloadWith24Cases.casesSummary.licenseTiers = stagingHelper.getCountableTestTiers(Locations.LICENSE)
 
-      var mappedWorkloadWith24Cases = mapper(workloadWith24Cases, ownerId)
+      var mappedWorkloadWith24Cases = mapper(workloadWith24Cases, ownerId, workloadReportId)
 
       expect(mappedWorkloadWith24Cases.totalCases).to.equal(24)
     })
@@ -130,7 +135,7 @@ describe('context-map/workload', function () {
     }
 
     stagingWorkload.caseDetails = caseDetails
-    var mappedWorkload = mapper(stagingWorkload, ownerId)
+    var mappedWorkload = mapper(stagingWorkload, ownerId, workloadReportId)
 
     it('should correctly map the custody overdue terminations', function () {
       expect(mappedWorkload.custodyTiers.untiered.overdueTermination).to.eq(1 + overdueTerminationsSeed + custodyMultiplier)
@@ -234,7 +239,7 @@ describe('context-map/workload', function () {
   })
 
   describe('court report fields', function () {
-    var mappedWorkload = mapper(stagingWorkload, ownerId)
+    var mappedWorkload = mapper(stagingWorkload, ownerId, workloadReportId)
 
     it('correctly maps monthly SDRs', function () {
       expect(mappedWorkload.monthlySdrs).to.eq(parseInt(stagingWorkload.courtReports.sdrLast30))
@@ -246,7 +251,7 @@ describe('context-map/workload', function () {
   })
 
   describe('institutional report fields', function () {
-    var mappedWorkload = mapper(stagingWorkload, ownerId)
+    var mappedWorkload = mapper(stagingWorkload, ownerId, workloadReportId)
 
     it('correctly maps paroms completed last 30 days', function () {
       expect(mappedWorkload.paromsCompletedLast30Days).to.eq(parseInt(stagingWorkload.instReports.paromCompLast30))
