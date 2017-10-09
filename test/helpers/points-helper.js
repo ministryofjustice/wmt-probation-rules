@@ -13,7 +13,7 @@ module.exports.getTestWorkloadObject = function () {
   var workload = new Workload(1, 1, 1, 1, 1, 1, 1,
                               module.exports.getTestTiersObject(Locations.CUSTODY),
                               module.exports.getTestTiersObject(Locations.COMMUNITY),
-                              module.exports.getTestTiersObject(Locations.LICENSE), 1, 1)
+                              module.exports.getTestTiersObject(Locations.LICENSE), 1, 1, 1, 1)
   return workload
 }
 

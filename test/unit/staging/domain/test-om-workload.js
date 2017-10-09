@@ -13,6 +13,7 @@ describe('points/domain/staging/om-workload', function () {
     var timestamp = moment.toString()
     var omWorkload = stagingHelper.getTestOmWorkload(omKey, caseRefNo, timestamp)
 
+    expect(omWorkload.stagingId).to.be.a('number')
     expect(omWorkload.casesSummary).to.be.instanceOf(CasesSummary)
     expect(omWorkload.courtReports).to.be.instanceOf(CourtReport)
     expect(omWorkload.instReports).to.be.instanceOf(InstReport)

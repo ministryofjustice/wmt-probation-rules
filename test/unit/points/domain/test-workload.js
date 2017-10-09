@@ -6,6 +6,7 @@ const Locations = require('../../../../app/staging/constants/locations')
 
 describe('points/domain/Workload', function () {
   var workloadOwnerId = 1
+  var stagingId = 1
   var totalCases = 1
   var monthlySdrs = 1
   var sdrsDueNext30Days = 1
@@ -14,6 +15,7 @@ describe('points/domain/Workload', function () {
   var custodyTiers = pointsHelper.getTestTiersObject(Locations.CUSTODY)
   var communityTiers = pointsHelper.getTestTiersObject(Locations.COMMUNITY)
   var licenseTiers = pointsHelper.getTestTiersObject(Locations.LICENSE)
+  var workloadReportId = 1
 
   var validArgumentList = [
     workloadOwnerId,
@@ -24,7 +26,9 @@ describe('points/domain/Workload', function () {
     paromsDueNext30Days,
     custodyTiers,
     communityTiers,
-    licenseTiers
+    licenseTiers,
+    stagingId,
+    workloadReportId
   ]
 
   it('throws an error when any property is undefined', function () {
@@ -38,8 +42,15 @@ describe('points/domain/Workload', function () {
 
   it('all fields can be retrieved', function () {
     var workload = pointsHelper.getTestWorkloadObject()
+    expect(workload.workloadOwnerId).to.eql(workloadOwnerId)
+    expect(workload.monthlySdrs).to.eql(monthlySdrs)
+    expect(workload.sdrsDueNext30Days).to.eql(sdrsDueNext30Days)
+    expect(workload.paromsCompletedLast30Days).to.eql(paromsCompletedLast30Days)
+    expect(workload.paromsDueNext30Days).to.eql(paromsDueNext30Days)
     expect(workload.custodyTiers).to.be.an('object')
     expect(workload.communityTiers).to.be.an('object')
     expect(workload.licenseTiers).to.be.an('object')
+    expect(workload.stagingId).to.eql(stagingId)
+    expect(workload.workloadReportId).to.eql(workloadReportId)
   })
 })
