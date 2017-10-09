@@ -42,9 +42,15 @@ describe('points/domain/Workload', function () {
 
   it('all fields can be retrieved', function () {
     var workload = pointsHelper.getTestWorkloadObject()
+    expect(workload.workloadOwnerId).to.eql(workloadOwnerId)
+    expect(workload.monthlySdrs).to.eql(monthlySdrs)
+    expect(workload.sdrsDueNext30Days).to.eql(sdrsDueNext30Days)
+    expect(workload.paromsCompletedLast30Days).to.eql(paromsCompletedLast30Days)
+    expect(workload.paromsDueNext30Days).to.eql(paromsDueNext30Days)
     expect(workload.custodyTiers).to.be.an('object')
     expect(workload.communityTiers).to.be.an('object')
     expect(workload.licenseTiers).to.be.an('object')
     expect(workload.stagingId).to.eql(stagingId)
+    expect(workload.workloadReportId).to.eql(workloadReportId)
   })
 })
