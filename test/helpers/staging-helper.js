@@ -8,6 +8,7 @@ const locations = require('../../app/staging/constants/locations')
 
 module.exports.getTestOmWorkload = function (omKey, caseRefNo) {
   var omWorkload = new OmWorkload(
+    1,
     this.getTestCaseSummary(omKey),
     this.getTestCourtReport(omKey),
     this.getTestInstitutionalReport(omKey),

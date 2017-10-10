@@ -23,7 +23,9 @@ module.exports.getTestWorkloadObject = function () {
                               4, // license cases last 16 weeks
                               3, // community cases last 16 weeks
                               2, // arms community cases
-                              1) // arms license cases
+                              1, // arms license cases
+                              10, // staging id
+                              11) // workload report id
   return workload
 }
 

@@ -7,7 +7,8 @@ class Workload {
           sdrsDueNext30Days, sdrConversionsLast30Days,
           paromsCompletedLast30Days, paromsDueNext30Days, custodyTiers,
           communityTiers, licenseTiers, licenseCasesLast16Weeks,
-          communityCasesLast16Weeks, armsCommunityCases, armsLicenseCases) {
+          communityCasesLast16Weeks, armsCommunityCases, armsLicenseCases,
+          stagingId, workloadReportId) {
     this.workloadOwnerId = workloadOwnerId
     this.totalCases = totalCases
     this.monthlySdrs = monthlySdrs
@@ -22,6 +23,8 @@ class Workload {
     this.communityCasesLast16Weeks = communityCasesLast16Weeks
     this.armsCommunityCases = armsCommunityCases
     this.armsLicenseCases = armsLicenseCases
+    this.stagingId = stagingId
+    this.workloadReportId = workloadReportId
     this.isValid()
   }
 
@@ -40,6 +43,8 @@ class Workload {
     assertNumber(this.communityCasesLast16Weeks, 'Community Cases Last 16 Weeks')
     assertNumber(this.armsCommunityCases, 'ARMS Community Cases')
     assertNumber(this.armsLicenseCases, 'ARMS License Cases')
+    assertNumber(this.stagingId, 'Staging ID')
+    assertNumber(this.workloadReportId, 'Workload Report ID')
   }
 }
 
