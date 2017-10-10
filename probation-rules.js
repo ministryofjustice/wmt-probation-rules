@@ -38,7 +38,6 @@ const calculateAvailablePoints = require('./app/points/calculate-available-point
 const calculateContractedHours = require('./app/points/calculate-contracted-hours')
 const calculateNominalTarget = require('./app/points/calculate-nominal-target')
 const calculateWorkloadPoints = require('./app/points/calculate-points-for-workload')
-const calculateWeighting = require('./app/points/calculate-weighting')
 
 // Context Map
 const mapWorkload = require('./app/context-map/workload')
@@ -71,7 +70,6 @@ module.exports = {
   calculateAvailablePoints: calculateAvailablePoints,
   calculateNominalTarget: calculateNominalTarget,
   calculateWorkloadPoints: calculateWorkloadPoints,
-  calculateWeighting: calculateWeighting,
   mapWorkload: mapWorkload,
   filterOmGradeCode: filterOmGradeCode,
   calculateContractedHours: calculateContractedHours

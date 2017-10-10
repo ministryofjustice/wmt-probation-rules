@@ -12,7 +12,7 @@ describe('points/calculate-points-for-tier', function () {
   beforeEach(function () {
     tierCounts = new TierCounts(0, 0, 0, 0)
     points = 10
-    caseTypeWeightings = new CaseTypeWeightings(0, 0, 0, 0, 0)
+    caseTypeWeightings = new CaseTypeWeightings(100, 100, 100, 100, 100)
   })
 
   it('multiplies total case count for a tier with the points for that tier', function () {
@@ -23,7 +23,7 @@ describe('points/calculate-points-for-tier', function () {
 
   it('reduces the tierPoints by the warrants weighting multiplied by the warrants case count', function () {
     tierCounts = new TierCounts(10, 10, 0, 0)
-    caseTypeWeightings = new CaseTypeWeightings(1, 0, 0, 0, 0)
+    caseTypeWeightings = new CaseTypeWeightings(0, 100, 100, 100, 100)
 
     var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings)
     expect(tierPoints).to.equal(0)
@@ -31,7 +31,7 @@ describe('points/calculate-points-for-tier', function () {
 
   it('reduces the tierPoints by the unpaidWork weighting multiplied by the unpaidWork case count', function () {
     tierCounts = new TierCounts(10, 0, 10, 0)
-    caseTypeWeightings = new CaseTypeWeightings(0, 1, 0, 0, 0)
+    caseTypeWeightings = new CaseTypeWeightings(100, 0, 100, 100, 100)
 
     var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings)
     expect(tierPoints).to.equal(0)
@@ -39,7 +39,7 @@ describe('points/calculate-points-for-tier', function () {
 
   it('reduces the tierPoints by the overdueTermination weighting multiplied by the overdueTermination case count', function () {
     tierCounts = new TierCounts(10, 0, 0, 10)
-    caseTypeWeightings = new CaseTypeWeightings(0, 0, 1, 0, 0)
+    caseTypeWeightings = new CaseTypeWeightings(100, 100, 0, 100, 100)
 
     var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings)
     expect(tierPoints).to.equal(0)
@@ -47,7 +47,7 @@ describe('points/calculate-points-for-tier', function () {
 
   it('reduces the tierPoints by each case type', function () {
     tierCounts = new TierCounts(10, 1, 1, 1)
-    caseTypeWeightings = new CaseTypeWeightings(1, 1, 1, 0, 0)
+    caseTypeWeightings = new CaseTypeWeightings(0, 0, 0, 100, 100)
     points = 1
 
     var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings)
@@ -56,7 +56,7 @@ describe('points/calculate-points-for-tier', function () {
 
   it('reduces the tierPoints by each case type when decimal numbers are used', function () {
     tierCounts = new TierCounts(10, 1, 1, 1)
-    caseTypeWeightings = new CaseTypeWeightings(0.25, 0.5, 0.5, 0, 0)
+    caseTypeWeightings = new CaseTypeWeightings(75, 50, 50, 100, 100)
     points = 1
 
     var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings)

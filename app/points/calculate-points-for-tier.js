@@ -1,9 +1,10 @@
 const TierCounts = require('../../app/points/domain/tier-counts')
 const assertObjectType = require('../../app/points/domain/validation/assert-object-type')
 const assertNumber = require('../../app/points/domain/validation/assert-number')
+const calculateWeighting = require('./calculate-weighting')
 
-var calculateWeightedPoints = function (count, points, weighting = 1) {
-  return count * (points * weighting)
+var calculateWeightedPoints = function (count, points, weighting = 0) {
+  return count * (points * calculateWeighting(weighting))
 }
 
 module.exports = function (tierCounts, tierPoints, caseTypeWeightings) {
