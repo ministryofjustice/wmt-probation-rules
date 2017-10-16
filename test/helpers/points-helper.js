@@ -1,6 +1,5 @@
 const Tiers = require('../../app/points/domain/tiers')
 const Workload = require('../../app/points/domain/workload')
-const Tier = require('../../app/points/domain/tier')
 const TierCounts = require('../../app/points/domain/tier-counts')
 const Locations = require('../../app/staging/constants/locations')
 const CaseTypeWeightings = require('../../app/points/domain/case-type-weightings')
@@ -10,7 +9,7 @@ const DefaultContractedHours = require('../../app/points/domain/default-contract
 const DefaultNominalTargets = require('../../app/points/domain/default-nominal-targets')
 
 module.exports.getTestWorkloadObject = function () {
-  var workload = new Workload(1, 1, 1, 1, 1, 1, 1,
+  var workload = new Workload(1, 1, 1, 1, 1, 1, 1, 1,
                               module.exports.getTestTiersObject(Locations.CUSTODY),
                               module.exports.getTestTiersObject(Locations.COMMUNITY),
                               module.exports.getTestTiersObject(Locations.LICENSE), 1, 1, 1, 1)

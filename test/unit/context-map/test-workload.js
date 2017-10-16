@@ -30,9 +30,16 @@ describe('context-map/workload', function () {
     var custodyTiers = stagingHelper.getTestTiers(Locations.CUSTODY)
     var licenseTiers = stagingHelper.getTestTiers(Locations.LICENSE)
 
+    var t2aCommunityTiers = stagingHelper.getTestTiers(Locations.COMMUNITY)
+    var t2aCustodyTiers = stagingHelper.getTestTiers(Locations.CUSTODY)
+    var t2aLicenseTiers = stagingHelper.getTestTiers(Locations.LICENSE)
+
     stagingWorkload.casesSummary.communityTiers = communityTiers
     stagingWorkload.casesSummary.custodyTiers = custodyTiers
     stagingWorkload.casesSummary.licenseTiers = licenseTiers
+    stagingWorkload.casesSummary.t2aCommunityTiers = t2aCommunityTiers
+    stagingWorkload.casesSummary.t2aCustodyTiers = t2aCustodyTiers
+    stagingWorkload.casesSummary.t2aLicenseTiers = t2aLicenseTiers
 
     var mappedWorkload = mapper(stagingWorkload, ownerId, workloadReportId)
 
@@ -46,10 +53,12 @@ describe('context-map/workload', function () {
       workloadWith24Cases.casesSummary.communityTiers = stagingHelper.getCountableTestTiers(Locations.COMMUNITY)
       workloadWith24Cases.casesSummary.custodyTiers = stagingHelper.getCountableTestTiers(Locations.CUSTODY)
       workloadWith24Cases.casesSummary.licenseTiers = stagingHelper.getCountableTestTiers(Locations.LICENSE)
+      workloadWith24Cases.casesSummary.t2aCommunityTiers = stagingHelper.getCountableTestTiers(Locations.COMMUNITY)
+      workloadWith24Cases.casesSummary.t2aCustodyTiers = stagingHelper.getCountableTestTiers(Locations.CUSTODY)
+      workloadWith24Cases.casesSummary.t2aLicenseTiers = stagingHelper.getCountableTestTiers(Locations.LICENSE)
 
       var mappedWorkloadWith24Cases = mapper(workloadWith24Cases, ownerId, workloadReportId)
-
-      expect(mappedWorkloadWith24Cases.totalCases).to.equal(24)
+      expect(mappedWorkloadWith24Cases.totalCases).to.equal(48)
     })
 
     it('should correctly map the custody tiers', function () {
@@ -89,6 +98,20 @@ describe('context-map/workload', function () {
       expect(mappedWorkload.licenseTiers.b2.total).to.eq(parseInt(licenseTiers.b2))
       expect(mappedWorkload.licenseTiers.b1.total).to.eq(parseInt(licenseTiers.b1))
       expect(mappedWorkload.licenseTiers.a.total).to.eq(0)
+    })
+
+    it('should correctly calculate the total number of t2a cases', function () {
+      var workloadWith24Cases = stagingHelper.getTestOmWorkload(caseRefNo, omKey, undefined)
+
+      workloadWith24Cases.casesSummary.communityTiers = stagingHelper.getCountableTestTiers(Locations.COMMUNITY)
+      workloadWith24Cases.casesSummary.custodyTiers = stagingHelper.getCountableTestTiers(Locations.CUSTODY)
+      workloadWith24Cases.casesSummary.licenseTiers = stagingHelper.getCountableTestTiers(Locations.LICENSE)
+      workloadWith24Cases.casesSummary.t2aCommunityTiers = stagingHelper.getCountableTestTiers(Locations.COMMUNITY)
+      workloadWith24Cases.casesSummary.t2aCustodyTiers = stagingHelper.getCountableTestTiers(Locations.CUSTODY)
+      workloadWith24Cases.casesSummary.t2aLicenseTiers = stagingHelper.getCountableTestTiers(Locations.LICENSE)
+
+      var mappedWorkloadWith24Cases = mapper(workloadWith24Cases, ownerId, workloadReportId)
+      expect(mappedWorkloadWith24Cases.t2aCases).to.equal(24)
     })
   })
 
