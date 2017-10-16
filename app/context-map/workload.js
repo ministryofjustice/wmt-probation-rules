@@ -30,16 +30,26 @@ module.exports = function (stagingWorkload, workloadOwnerId, workloadReportId) {
   var custodyTiers = mapTiers(custodySummary, custodyCaseDetails, Locations.CUSTODY)
   var licenseTiers = mapTiers(licenseSummary, licenseCaseDetails, Locations.LICENSE)
 
+  var t2aCommunitySummary = stagingWorkload.casesSummary.t2aCommunityTiers
+  var t2aCustodySummary = stagingWorkload.casesSummary.t2aCustodyTiers
+  var t2aLicenseSummary = stagingWorkload.casesSummary.t2aLicenseTiers
+
+  var t2aCommunityTiers = mapTiers(t2aCommunitySummary, communityCaseDetails, Locations.COMMUNITY)
+  var t2aCustodyTiers = mapTiers(t2aCustodySummary, custodyCaseDetails, Locations.CUSTODY)
+  var t2aLicenseTiers = mapTiers(t2aLicenseSummary, licenseCaseDetails, Locations.LICENSE)
+
   var licenseCasesLast16Weeks = zeroIfNull(stagingWorkload.casesSummary.comIn1st16Weeks)
   var communityCasesLast16Weeks = zeroIfNull(stagingWorkload.casesSummary.licIn1st16Weeks)
 
-  var totalCases = communityTiers.total + custodyTiers.total + licenseTiers.total
+  var t2aCases = t2aCommunityTiers.total + t2aCustodyTiers.total + t2aLicenseTiers.total
+  var totalCases = communityTiers.total + custodyTiers.total + licenseTiers.total + t2aCases
 
   var stagingId = stagingWorkload.stagingId
 
   return new Workload(
     workloadOwnerId,
     totalCases,
+    t2aCases,
     monthlySdrs,
     sdrsDueNext30Days,
     sdrsConversionsLast30Days,

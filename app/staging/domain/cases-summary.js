@@ -14,6 +14,9 @@ class CaseSummary {
     communityTiers,
     licenseTiers,
     custodyTiers,
+    t2aCommunityTiers,
+    t2aLicenseTiers,
+    t2aCustodyTiers,
     comIn1st16Weeks,
     licIn1st16Weeks
   ) {
@@ -31,6 +34,9 @@ class CaseSummary {
     this.communityTiers = communityTiers
     this.licenseTiers = licenseTiers
     this.custodyTiers = custodyTiers
+    this.t2aCommunityTiers = t2aCommunityTiers
+    this.t2aLicenseTiers = t2aLicenseTiers
+    this.t2aCustodyTiers = t2aCustodyTiers
     this.comIn1st16Weeks = comIn1st16Weeks
     this.licIn1st16Weeks = licIn1st16Weeks
   }
