@@ -90,6 +90,22 @@ describe('context-map/workload', function () {
       expect(mappedWorkload.licenseTiers.b1.total).to.eq(parseInt(licenseTiers.b1))
       expect(mappedWorkload.licenseTiers.a.total).to.eq(0)
     })
+
+    it('should correctly map the licenseCasesLast16Weeks field', function () {
+      expect(mappedWorkload.licenseCasesLast16Weeks).to.eq(parseInt(stagingWorkload.casesSummary.licIn1st16Weeks))
+    })
+
+    it('should correctly map the communityCasesLast16Weeks field', function () {
+      expect(mappedWorkload.communityCasesLast16Weeks).to.eq(parseInt(stagingWorkload.casesSummary.comIn1st16Weeks))
+    })
+
+    it('should correctly map the armsCommunityCases field', function () {
+      expect(mappedWorkload.armsCommunityCases).to.eq(parseInt(stagingWorkload.casesSummary.armsCommunityCases))
+    })
+
+    it('should correctly map the armsLicenseCases field', function () {
+      expect(mappedWorkload.armsLicenseCases).to.eq(parseInt(stagingWorkload.casesSummary.armsLicenseCases))
+    })
   })
 
   describe('case details fields', function () {

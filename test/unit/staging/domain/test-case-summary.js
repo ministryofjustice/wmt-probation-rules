@@ -24,5 +24,7 @@ describe('points/domain/staging/case-summary', function () {
     expect(caseSummary.custodyTiers).to.be.an.instanceof(Tiers)
     expect(caseSummary.comIn1st16Weeks).to.be.a('string')
     expect(caseSummary.licIn1st16Weeks).to.be.a('string')
+    expect(caseSummary.armsCommunityCases).to.be.a('string')
+    expect(caseSummary.armsLicenseCases).to.be.a('string')
   })
 })
