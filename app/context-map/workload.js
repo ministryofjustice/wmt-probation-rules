@@ -30,8 +30,11 @@ module.exports = function (stagingWorkload, workloadOwnerId, workloadReportId) {
   var custodyTiers = mapTiers(custodySummary, custodyCaseDetails, Locations.CUSTODY)
   var licenseTiers = mapTiers(licenseSummary, licenseCaseDetails, Locations.LICENSE)
 
-  var licenseCasesLast16Weeks = zeroIfNull(stagingWorkload.casesSummary.comIn1st16Weeks)
-  var communityCasesLast16Weeks = zeroIfNull(stagingWorkload.casesSummary.licIn1st16Weeks)
+  var licenseCasesLast16Weeks = zeroIfNull(stagingWorkload.casesSummary.licIn1st16Weeks)
+  var communityCasesLast16Weeks = zeroIfNull(stagingWorkload.casesSummary.comIn1st16Weeks)
+
+  var armsCommunityCases = zeroIfNull(stagingWorkload.casesSummary.armsCommunityCases)
+  var armsLicenseCases = zeroIfNull(stagingWorkload.casesSummary.armsLicenseCases)
 
   var totalCases = communityTiers.total + custodyTiers.total + licenseTiers.total
 
@@ -50,6 +53,8 @@ module.exports = function (stagingWorkload, workloadOwnerId, workloadReportId) {
     licenseTiers,
     licenseCasesLast16Weeks,
     communityCasesLast16Weeks,
+    armsCommunityCases,
+    armsLicenseCases,
     stagingId,
     workloadReportId
   )
