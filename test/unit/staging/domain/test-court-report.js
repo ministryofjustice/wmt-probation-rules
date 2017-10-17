@@ -10,5 +10,6 @@ describe('points/domain/staging/court-reports', function () {
     expect(courtReport.sdrLast30).to.be.a('string')
     expect(courtReport.sdrConvLast30).to.be.a('string')
     expect(courtReport.sdrDueNext30).to.be.a('string')
+    expect(courtReport.oralReports).to.be.a('string')
   })
 })

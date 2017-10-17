@@ -1,5 +1,6 @@
 const Tiers = require('../../app/points/domain/tiers')
 const Workload = require('../../app/points/domain/workload')
+const CourtReports = require('../../app/points/domain/court-reports')
 const Tier = require('../../app/points/domain/tier')
 const TierCounts = require('../../app/points/domain/tier-counts')
 const Locations = require('../../app/staging/constants/locations')
@@ -15,6 +16,13 @@ module.exports.getTestWorkloadObject = function () {
                               module.exports.getTestTiersObject(Locations.COMMUNITY),
                               module.exports.getTestTiersObject(Locations.LICENSE), 1, 1, 1, 1)
   return workload
+}
+
+module.exports.getTestCourtReportsObject = function (workloadOwnerId, totalSdrs, totalFdrs, totalOralReports, stagingId, workloadReportId) {
+  var courtReports = new CourtReports(
+    workloadOwnerId, totalSdrs, totalFdrs, totalOralReports, stagingId, workloadReportId
+  )
+  return courtReports
 }
 
 module.exports.getTestTiersObject = function (location) {
