@@ -1,6 +1,7 @@
 const StagingWorkload = require('../staging/domain/om-workload')
 const Workload = require('../points/domain/workload')
 const Locations = require('../staging/constants/locations')
+const zeroIfNull = require('./helpers/zero-if-null')
 
 const mapTiers = require('./tiers')
 const assertObjectType = require('../points/domain/validation/assert-object-type')
@@ -64,11 +65,4 @@ var locationFilter = function (location) {
   return function (element) {
     return element.location === location
   }
-}
-
-var zeroIfNull = function (value = 0) {
-  if (value === null) {
-    value = 0
-  }
-  return parseInt(value, 10)
 }

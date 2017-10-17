@@ -1,5 +1,6 @@
 const Tiers = require('../points/domain/tiers')
 const TierCounts = require('../points/domain/tier-counts')
+const zeroIfNull = require('./helpers/zero-if-null')
 
 const CASE_TYPE_UNPAID = 'U'
 const CASE_TYPE_OVERDUE_TERMINATION = 'O'
@@ -49,11 +50,4 @@ var rowTypeFilter = function (rowType) {
   return function (element) {
     return element.rowType === rowType
   }
-}
-
-var zeroIfNull = function (value = 0) {
-  if (value === null) {
-    value = 0
-  }
-  return parseInt(value, 10)
 }

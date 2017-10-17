@@ -1,6 +1,6 @@
 const StagingCourtReports = require('../staging/domain/om-court-reports')
 const CourtReports = require('../points/domain/court-reports')
-
+const zeroIfNull = require('./helpers/zero-if-null')
 const assertObjectType = require('../points/domain/validation/assert-object-type')
 const assertNumber = require('../points/domain/validation/assert-number')
 
@@ -23,11 +23,4 @@ module.exports = function (stagingCourtReports, workloadOwnerId, workloadReportI
     stagingId,
     workloadReportId
   )
-}
-
-var zeroIfNull = function (value = 0) {
-  if (value === null) {
-    value = 0
-  }
-  return parseInt(value, 10)
 }
