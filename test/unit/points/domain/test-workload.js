@@ -8,6 +8,7 @@ describe('points/domain/Workload', function () {
   var workloadOwnerId = 1
   var stagingId = 10
   var totalCases = 1
+  var t2aCases = 1
   var monthlySdrs = 9
   var sdrsDueNext30Days = 8
   var paromsCompletedLast30Days = 6
@@ -24,6 +25,7 @@ describe('points/domain/Workload', function () {
   var validArgumentList = [
     workloadOwnerId,
     totalCases,
+    t2aCases,
     monthlySdrs,
     sdrsDueNext30Days,
     paromsCompletedLast30Days,
@@ -48,6 +50,7 @@ describe('points/domain/Workload', function () {
     var workload = pointsHelper.getTestWorkloadObject()
     expect(workload.workloadOwnerId).to.eql(workloadOwnerId)
     expect(workload.totalCases).to.eql(totalCases)
+    expect(workload.t2aCases).to.eql(t2aCases)
     expect(workload.monthlySdrs).to.eql(monthlySdrs)
     expect(workload.sdrsDueNext30Days).to.eql(sdrsDueNext30Days)
     expect(workload.paromsCompletedLast30Days).to.eql(paromsCompletedLast30Days)

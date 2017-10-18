@@ -1,6 +1,5 @@
 const Tiers = require('../../app/points/domain/tiers')
 const Workload = require('../../app/points/domain/workload')
-const Tier = require('../../app/points/domain/tier')
 const TierCounts = require('../../app/points/domain/tier-counts')
 const Locations = require('../../app/staging/constants/locations')
 const CaseTypeWeightings = require('../../app/points/domain/case-type-weightings')
@@ -12,6 +11,7 @@ const DefaultNominalTargets = require('../../app/points/domain/default-nominal-t
 module.exports.getTestWorkloadObject = function () {
   var workload = new Workload(1, // workload owner id
                               1, // total cases
+                              1, // t2a cases
                               9, // monthly sdrs
                               8, // sdrs due next 30 days
                               7, // sdr conversions last 30 days

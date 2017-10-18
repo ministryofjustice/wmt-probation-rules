@@ -3,7 +3,7 @@ const assertNumber = require('./validation/assert-number')
 const Tiers = require('./tiers.js')
 
 class Workload {
-  constructor (workloadOwnerId, totalCases, monthlySdrs,
+  constructor (workloadOwnerId, totalCases, t2aCases, monthlySdrs,
           sdrsDueNext30Days, sdrConversionsLast30Days,
           paromsCompletedLast30Days, paromsDueNext30Days, custodyTiers,
           communityTiers, licenseTiers, licenseCasesLast16Weeks,
@@ -11,6 +11,7 @@ class Workload {
           stagingId, workloadReportId) {
     this.workloadOwnerId = workloadOwnerId
     this.totalCases = totalCases
+    this.t2aCases = t2aCases
     this.monthlySdrs = monthlySdrs
     this.sdrsDueNext30Days = sdrsDueNext30Days
     this.sdrConversionsLast30Days = sdrConversionsLast30Days
@@ -31,6 +32,7 @@ class Workload {
   isValid () {
     assertNumber(this.workloadOwnerId, 'Workload Owner Id')
     assertNumber(this.totalCases, 'Total Cases')
+    assertNumber(this.t2aCases, 'T2A Cases')
     assertNumber(this.monthlySdrs, 'Monthly SDRs')
     assertNumber(this.sdrsDueNext30Days, 'SDRs Due Next 30 Days')
     assertNumber(this.sdrConversionsLast30Days, 'SDR Conversions Last 30 Days')
