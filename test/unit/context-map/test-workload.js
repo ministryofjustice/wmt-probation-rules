@@ -113,6 +113,22 @@ describe('context-map/workload', function () {
       var mappedWorkloadWith24T2aCases = mapper(workloadWith24T2aCases, ownerId, workloadReportId)
       expect(mappedWorkloadWith24T2aCases.t2aCases).to.equal(24)
     })
+
+    it('should correctly map the licenseCasesLast16Weeks field', function () {
+      expect(mappedWorkload.licenseCasesLast16Weeks).to.eq(parseInt(stagingWorkload.casesSummary.licIn1st16Weeks))
+    })
+
+    it('should correctly map the communityCasesLast16Weeks field', function () {
+      expect(mappedWorkload.communityCasesLast16Weeks).to.eq(parseInt(stagingWorkload.casesSummary.comIn1st16Weeks))
+    })
+
+    it('should correctly map the armsCommunityCases field', function () {
+      expect(mappedWorkload.armsCommunityCases).to.eq(parseInt(stagingWorkload.casesSummary.armsCommunityCases))
+    })
+
+    it('should correctly map the armsLicenseCases field', function () {
+      expect(mappedWorkload.armsLicenseCases).to.eq(parseInt(stagingWorkload.casesSummary.armsLicenseCases))
+    })
   })
 
   describe('case details fields', function () {

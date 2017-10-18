@@ -6,20 +6,26 @@ const Locations = require('../../../../app/staging/constants/locations')
 
 describe('points/domain/Workload', function () {
   var workloadOwnerId = 1
-  var stagingId = 1
+  var stagingId = 10
   var totalCases = 1
-  var monthlySdrs = 1
-  var sdrsDueNext30Days = 1
-  var paromsCompletedLast30Days = 1
-  var paromsDueNext30Days = 1
+  var t2aCases = 1
+  var monthlySdrs = 9
+  var sdrsDueNext30Days = 8
+  var paromsCompletedLast30Days = 6
+  var paromsDueNext30Days = 5
   var custodyTiers = pointsHelper.getTestTiersObject(Locations.CUSTODY)
   var communityTiers = pointsHelper.getTestTiersObject(Locations.COMMUNITY)
   var licenseTiers = pointsHelper.getTestTiersObject(Locations.LICENSE)
-  var workloadReportId = 1
+  var workloadReportId = 11
+  var armsCommunityCases = 2
+  var armsLicenseCases = 1
+  var licenseCasesLast16Weeks = 4
+  var communityCasesLast16Weeks = 3
 
   var validArgumentList = [
     workloadOwnerId,
     totalCases,
+    t2aCases,
     monthlySdrs,
     sdrsDueNext30Days,
     paromsCompletedLast30Days,
@@ -43,6 +49,8 @@ describe('points/domain/Workload', function () {
   it('all fields can be retrieved', function () {
     var workload = pointsHelper.getTestWorkloadObject()
     expect(workload.workloadOwnerId).to.eql(workloadOwnerId)
+    expect(workload.totalCases).to.eql(totalCases)
+    expect(workload.t2aCases).to.eql(t2aCases)
     expect(workload.monthlySdrs).to.eql(monthlySdrs)
     expect(workload.sdrsDueNext30Days).to.eql(sdrsDueNext30Days)
     expect(workload.paromsCompletedLast30Days).to.eql(paromsCompletedLast30Days)
@@ -50,6 +58,10 @@ describe('points/domain/Workload', function () {
     expect(workload.custodyTiers).to.be.an('object')
     expect(workload.communityTiers).to.be.an('object')
     expect(workload.licenseTiers).to.be.an('object')
+    expect(workload.communityCasesLast16Weeks).to.eql(communityCasesLast16Weeks)
+    expect(workload.licenseCasesLast16Weeks).to.eql(licenseCasesLast16Weeks)
+    expect(workload.armsCommunityCases).to.eql(armsCommunityCases)
+    expect(workload.armsLicenseCases).to.eql(armsLicenseCases)
     expect(workload.stagingId).to.eql(stagingId)
     expect(workload.workloadReportId).to.eql(workloadReportId)
   })

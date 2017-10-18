@@ -64,7 +64,9 @@ module.exports.getTestCaseSummary = function (omKey) {
     t2aLicenseTiers,
     t2aCustodyTiers,
     '15',
-    '11')
+    '11',
+    '13',
+    '14')
 }
 
 module.exports.getGeneratedCaseRefNo = function () {

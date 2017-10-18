@@ -9,10 +9,23 @@ const DefaultContractedHours = require('../../app/points/domain/default-contract
 const DefaultNominalTargets = require('../../app/points/domain/default-nominal-targets')
 
 module.exports.getTestWorkloadObject = function () {
-  var workload = new Workload(1, 1, 1, 1, 1, 1, 1, 1,
+  var workload = new Workload(1, // workload owner id
+                              1, // total cases
+                              1, // t2a cases
+                              9, // monthly sdrs
+                              8, // sdrs due next 30 days
+                              7, // sdr conversions last 30 days
+                              6, // paroms complete last 30 days
+                              5, // paroms due next 30 days
                               module.exports.getTestTiersObject(Locations.CUSTODY),
                               module.exports.getTestTiersObject(Locations.COMMUNITY),
-                              module.exports.getTestTiersObject(Locations.LICENSE), 1, 1, 1, 1)
+                              module.exports.getTestTiersObject(Locations.LICENSE),
+                              4, // license cases last 16 weeks
+                              3, // community cases last 16 weeks
+                              2, // arms community cases
+                              1, // arms license cases
+                              10, // staging id
+                              11) // workload report id
   return workload
 }
 
@@ -59,7 +72,7 @@ module.exports.getCaseTypeWeightings = function () {
             true, // paroms enabled
             8 // paroms
   )
-  return new CaseTypeWeightings(1, 2, 3, 4, 5, pointsConfig)
+  return new CaseTypeWeightings(10, 20, 30, 4, 5, pointsConfig)
   // warrants, unpaid, overdue, armsComm, armsLicense
 }
 
