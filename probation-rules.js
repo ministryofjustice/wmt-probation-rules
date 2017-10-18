@@ -23,6 +23,7 @@ const CaseDetails = require('./app/staging/domain/case-details')
 
 // Court Reports Object
 const OmCourtReports = require('./app/staging/domain/om-court-reports')
+const CourtReports = require('./app/points/domain/court-reports')
 
 // Workload dependencies
 const OffenderManager = require('./app/points/domain/offender-manager')
@@ -78,5 +79,6 @@ module.exports = {
   filterOmGradeCode: filterOmGradeCode,
   calculateContractedHours: calculateContractedHours,
   OmCourtReports: OmCourtReports,
-  mapCourtReports: mapCourtReports
+  mapCourtReports: mapCourtReports,
+  CourtReports: CourtReports
 }
