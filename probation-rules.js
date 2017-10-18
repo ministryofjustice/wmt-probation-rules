@@ -21,6 +21,10 @@ const CourtReport = require('./app/staging/domain/court-report')
 const InstitutionalReport = require('./app/staging/domain/institutional-report')
 const CaseDetails = require('./app/staging/domain/case-details')
 
+// Court Reports Object
+const OmCourtReports = require('./app/staging/domain/om-court-reports')
+const CourtReports = require('./app/points/domain/court-reports')
+
 // Workload dependencies
 const OffenderManager = require('./app/points/domain/offender-manager')
 const WorkloadOwner = require('./app/points/domain/workload-owner')
@@ -42,6 +46,7 @@ const calculateWorkloadPoints = require('./app/points/calculate-points-for-workl
 // Context Map
 const mapWorkload = require('./app/context-map/workload')
 const filterOmGradeCode = require('./app/context-map/om-grade-code')
+const mapCourtReports = require('./app/context-map/court-reports')
 
 module.exports = {
   CasesSummary: CasesSummary,
@@ -72,5 +77,8 @@ module.exports = {
   calculateWorkloadPoints: calculateWorkloadPoints,
   mapWorkload: mapWorkload,
   filterOmGradeCode: filterOmGradeCode,
-  calculateContractedHours: calculateContractedHours
+  calculateContractedHours: calculateContractedHours,
+  OmCourtReports: OmCourtReports,
+  mapCourtReports: mapCourtReports,
+  CourtReports: CourtReports
 }

@@ -4,7 +4,7 @@ const pointsHelper = require('../../helpers/points-helper')
 const Locations = require('../../../app/staging/constants/locations')
 
 describe('points/calculate-points-for-workload', function () {
-  describe('successful operation', function() {
+  describe('successful operation', function () {
     var workload = pointsHelper.getTestWorkloadObject()
     var caseTypeWeightings = pointsHelper.getCaseTypeWeightings()
     var armsCommunityPoints = 2 * 4 * 4
@@ -27,25 +27,25 @@ describe('points/calculate-points-for-workload', function () {
     expectedPoints += expectedSdrConversionPoints
     expectedPoints += expectedParomsPoints
 
-      it('should calculate total points correctly', function () {
-         expect(result.total).to.equal(expectedPoints)
-      })
+    it('should calculate total points correctly', function () {
+      expect(result.total).to.equal(expectedPoints)
+    })
 
-      it('should calculate arms points correctly', function () {
-         expect(result.armsPoints).to.equal(expectedArmsPoints)
-      })
+    it('should calculate arms points correctly', function () {
+      expect(result.armsPoints).to.equal(expectedArmsPoints)
+    })
 
-      it('should calculate sdr points correctly', function () {
-         expect(result.sdrPoints).to.equal(expectedSdrPoints)
-      })
+    it('should calculate sdr points correctly', function () {
+      expect(result.sdrPoints).to.equal(expectedSdrPoints)
+    })
 
-      it('should calculate sdr conversion points correctly', function () {
-         expect(result.sdrConversionPoints).to.equal(expectedSdrConversionPoints)
-      })
+    it('should calculate sdr conversion points correctly', function () {
+      expect(result.sdrConversionPoints).to.equal(expectedSdrConversionPoints)
+    })
 
-      it('should calculate paroms points correctly', function () {
-         expect(result.paromsPoints).to.equal(expectedParomsPoints)
-      })
+    it('should calculate paroms points correctly', function () {
+      expect(result.paromsPoints).to.equal(expectedParomsPoints)
+    })
   })
 
   it('should throw an error when Tiers is undefined', function () {
