@@ -7,6 +7,7 @@ describe('points/calculate-points-for-workload', function () {
   describe('successful operation', function () {
     var workload = pointsHelper.getTestWorkloadObject()
     var caseTypeWeightings = pointsHelper.getCaseTypeWeightings()
+    var t2aCaseTypeWeightings = pointsHelper.getCaseTypeWeightings()
     var armsCommunityPoints = 2 * 4 * 4
     var armsLicensePoints = 1 * 2 * 5
     var expectedArmsPoints = armsCommunityPoints + armsLicensePoints
@@ -14,11 +15,12 @@ describe('points/calculate-points-for-workload', function () {
     var expectedSdrConversionPoints = 7 * 5
     var expectedParomsPoints = 6 * 8
 
-    var result = calculateWorkloadPoints(workload, caseTypeWeightings)
+    var result = calculateWorkloadPoints(workload, caseTypeWeightings, t2aCaseTypeWeightings)
     var expectedPoints = 0
 
     for (var i = 1; i < 8; i++) {
-      expectedPoints += ((8 * i) - (1 * i * 0.9) - (2 * i * 0.8) - (3 * i * 0.7)) // all the tiers
+      expectedPoints += ((8 * i) - (1 * i * 0.9) - (2 * i * 0.8) - (3 * i * 0.7)) // all the tiers (non-t2a)
+      expectedPoints += ((8 * i) - (1 * i * 0.9) - (2 * i * 0.8) - (3 * i * 0.7)) // all the tiers for t2a
     }
 
     expectedPoints = expectedPoints * 3 // in each location
@@ -28,6 +30,7 @@ describe('points/calculate-points-for-workload', function () {
     expectedPoints += expectedParomsPoints
 
     it('should calculate total points correctly', function () {
+      console.log(result)
       expect(result.total).to.equal(expectedPoints)
     })
 
