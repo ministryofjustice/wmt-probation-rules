@@ -30,7 +30,6 @@ describe('points/calculate-points-for-workload', function () {
     expectedPoints += expectedParomsPoints
 
     it('should calculate total points correctly', function () {
-      console.log(result)
       expect(result.total).to.equal(expectedPoints)
     })
 

@@ -37,7 +37,7 @@ class Workload {
   isValid () {
     assertNumber(this.workloadOwnerId, 'Workload Owner Id')
     assertNumber(this.totalCases, 'Total Cases')
-    assertNumber(this.totalT2aCases, 'Total Cases')
+    assertNumber(this.totalT2aCases, 'Total T2A Cases')
     assertNumber(this.monthlySdrs, 'Monthly SDRs')
     assertNumber(this.sdrsDueNext30Days, 'SDRs Due Next 30 Days')
     assertNumber(this.sdrConversionsLast30Days, 'SDR Conversions Last 30 Days')
