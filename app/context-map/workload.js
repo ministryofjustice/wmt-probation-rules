@@ -15,6 +15,7 @@ module.exports = function (stagingWorkload, workloadOwnerId, workloadReportId) {
   var monthlySdrs = zeroIfNull(stagingWorkload.courtReports.sdrLast30)
   var sdrsDueNext30Days = zeroIfNull(stagingWorkload.courtReports.sdrDueNext30)
   var sdrsConversionsLast30Days = zeroIfNull(stagingWorkload.courtReports.sdrConvLast30)
+  var oralReports = zeroIfNull(stagingWorkload.courtReports.oralReports)
 
   var paromsCompletedLast30Days = zeroIfNull(stagingWorkload.instReports.paromCompLast30)
   var paromsDueNext30Days = zeroIfNull(stagingWorkload.instReports.paromDueNext30)
@@ -47,6 +48,7 @@ module.exports = function (stagingWorkload, workloadOwnerId, workloadReportId) {
     monthlySdrs,
     sdrsDueNext30Days,
     sdrsConversionsLast30Days,
+    oralReports,
     paromsCompletedLast30Days,
     paromsDueNext30Days,
     custodyTiers,
