@@ -13,6 +13,7 @@ const DefaultNominalTargets = require('../../app/points/domain/default-nominal-t
 module.exports.getTestWorkloadObject = function () {
   var workload = new Workload(1, // workload owner id
                               1, // total cases
+                              1, // total t2a cases
                               9, // monthly sdrs
                               8, // sdrs due next 30 days
                               7, // sdr conversions last 30 days
@@ -21,6 +22,9 @@ module.exports.getTestWorkloadObject = function () {
                               module.exports.getTestTiersObject(Locations.CUSTODY),
                               module.exports.getTestTiersObject(Locations.COMMUNITY),
                               module.exports.getTestTiersObject(Locations.LICENSE),
+                              module.exports.getTestTiersObject(Locations.CUSTODY), // t2a custody tiers
+                              module.exports.getTestTiersObject(Locations.COMMUNITY), // t2a community tiers
+                              module.exports.getTestTiersObject(Locations.LICENSE), // t2a lincese tiers
                               4, // license cases last 16 weeks
                               3, // community cases last 16 weeks
                               2, // arms community cases
