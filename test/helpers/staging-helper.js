@@ -51,6 +51,10 @@ module.exports.getTestCaseSummary = function (omKey) {
   const licenseTiers = module.exports.getMultipleTestTiers(locations.LICENSE)
   const custodyTiers = module.exports.getMultipleTestTiers(locations.CUSTODY)
 
+  const t2aCommunityTiers = module.exports.getMultipleTestTiers(locations.COMMUNITY)
+  const t2aLicenseTiers = module.exports.getMultipleTestTiers(locations.LICENSE)
+  const t2aCustodyTiers = module.exports.getMultipleTestTiers(locations.CUSTODY)
+
   return new CasesSummary(
     'Trust',
     'Region description',
@@ -66,6 +70,9 @@ module.exports.getTestCaseSummary = function (omKey) {
     communityTiers,
     licenseTiers,
     custodyTiers,
+    t2aCommunityTiers,
+    t2aLicenseTiers,
+    t2aCustodyTiers,
     '15',
     '11',
     '13',

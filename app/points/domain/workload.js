@@ -3,14 +3,17 @@ const assertNumber = require('./validation/assert-number')
 const Tiers = require('./tiers.js')
 
 class Workload {
-  constructor (workloadOwnerId, totalCases, monthlySdrs,
+  constructor (workloadOwnerId, totalCases, totalT2aCases, monthlySdrs,
           sdrsDueNext30Days, sdrConversionsLast30Days, oralReports,
-          paromsCompletedLast30Days, paromsDueNext30Days, custodyTiers,
-          communityTiers, licenseTiers, licenseCasesLast16Weeks,
-          communityCasesLast16Weeks, armsCommunityCases, armsLicenseCases,
+          paromsCompletedLast30Days, paromsDueNext30Days,
+          custodyTiers, communityTiers, licenseTiers,
+          t2aCustodyTiers, t2aCommunityTiers, t2aLicenseTiers,
+          licenseCasesLast16Weeks, communityCasesLast16Weeks,
+          armsCommunityCases, armsLicenseCases,
           stagingId, workloadReportId) {
     this.workloadOwnerId = workloadOwnerId
     this.totalCases = totalCases
+    this.totalT2aCases = totalT2aCases
     this.monthlySdrs = monthlySdrs
     this.sdrsDueNext30Days = sdrsDueNext30Days
     this.sdrConversionsLast30Days = sdrConversionsLast30Days
@@ -20,6 +23,9 @@ class Workload {
     this.custodyTiers = custodyTiers
     this.communityTiers = communityTiers
     this.licenseTiers = licenseTiers
+    this.t2aCustodyTiers = t2aCustodyTiers
+    this.t2aCommunityTiers = t2aCommunityTiers
+    this.t2aLicenseTiers = t2aLicenseTiers
     this.licenseCasesLast16Weeks = licenseCasesLast16Weeks
     this.communityCasesLast16Weeks = communityCasesLast16Weeks
     this.armsCommunityCases = armsCommunityCases
@@ -32,6 +38,7 @@ class Workload {
   isValid () {
     assertNumber(this.workloadOwnerId, 'Workload Owner Id')
     assertNumber(this.totalCases, 'Total Cases')
+    assertNumber(this.totalT2aCases, 'Total T2A Cases')
     assertNumber(this.monthlySdrs, 'Monthly SDRs')
     assertNumber(this.sdrsDueNext30Days, 'SDRs Due Next 30 Days')
     assertNumber(this.sdrConversionsLast30Days, 'SDR Conversions Last 30 Days')
@@ -41,6 +48,9 @@ class Workload {
     assertObjectType(this.custodyTiers, Tiers, 'Custody Tiers')
     assertObjectType(this.communityTiers, Tiers, 'Community Tiers')
     assertObjectType(this.licenseTiers, Tiers, 'License Tiers')
+    assertObjectType(this.t2aCustodyTiers, Tiers, 'Custody Tiers')
+    assertObjectType(this.t2aCommunityTiers, Tiers, 'Community Tiers')
+    assertObjectType(this.t2aLicenseTiers, Tiers, 'License Tiers')
     assertNumber(this.licenseCasesLast16Weeks, 'License Cases Last 16 Weeks')
     assertNumber(this.communityCasesLast16Weeks, 'Community Cases Last 16 Weeks')
     assertNumber(this.armsCommunityCases, 'ARMS Community Cases')
