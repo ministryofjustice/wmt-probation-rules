@@ -17,6 +17,7 @@ module.exports.getTestWorkloadObject = function () {
                               9, // monthly sdrs
                               8, // sdrs due next 30 days
                               7, // sdr conversions last 30 days
+                              5, // oral reports
                               6, // paroms complete last 30 days
                               5, // paroms due next 30 days
                               module.exports.getTestTiersObject(Locations.CUSTODY),

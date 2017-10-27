@@ -10,6 +10,7 @@ describe('points/domain/Workload', function () {
   var totalCases = 1
   var monthlySdrs = 9
   var sdrsDueNext30Days = 8
+  var oralReports = 5
   var paromsCompletedLast30Days = 6
   var paromsDueNext30Days = 5
   var custodyTiers = pointsHelper.getTestTiersObject(Locations.CUSTODY)
@@ -26,6 +27,7 @@ describe('points/domain/Workload', function () {
     totalCases,
     monthlySdrs,
     sdrsDueNext30Days,
+    oralReports,
     paromsCompletedLast30Days,
     paromsDueNext30Days,
     custodyTiers,
@@ -50,6 +52,7 @@ describe('points/domain/Workload', function () {
     expect(workload.totalCases).to.eql(totalCases)
     expect(workload.monthlySdrs).to.eql(monthlySdrs)
     expect(workload.sdrsDueNext30Days).to.eql(sdrsDueNext30Days)
+    expect(workload.oralReports).to.eql(oralReports)
     expect(workload.paromsCompletedLast30Days).to.eql(paromsCompletedLast30Days)
     expect(workload.paromsDueNext30Days).to.eql(paromsDueNext30Days)
     expect(workload.custodyTiers).to.be.an('object')
