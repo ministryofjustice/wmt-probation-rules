@@ -4,7 +4,7 @@ const Tiers = require('./tiers.js')
 
 class Workload {
   constructor (workloadOwnerId, totalCases, totalT2aCases, monthlySdrs,
-          sdrsDueNext30Days, sdrConversionsLast30Days, oralReports,
+          sdrsDueNext30Days, sdrConversionsLast30Days,
           paromsCompletedLast30Days, paromsDueNext30Days,
           custodyTiers, communityTiers, licenseTiers,
           t2aCustodyTiers, t2aCommunityTiers, t2aLicenseTiers,
@@ -17,7 +17,6 @@ class Workload {
     this.monthlySdrs = monthlySdrs
     this.sdrsDueNext30Days = sdrsDueNext30Days
     this.sdrConversionsLast30Days = sdrConversionsLast30Days
-    this.oralReports = oralReports
     this.paromsCompletedLast30Days = paromsCompletedLast30Days
     this.paromsDueNext30Days = paromsDueNext30Days
     this.custodyTiers = custodyTiers
@@ -42,7 +41,6 @@ class Workload {
     assertNumber(this.monthlySdrs, 'Monthly SDRs')
     assertNumber(this.sdrsDueNext30Days, 'SDRs Due Next 30 Days')
     assertNumber(this.sdrConversionsLast30Days, 'SDR Conversions Last 30 Days')
-    assertNumber(this.oralReports, 'Oral Reports')
     assertNumber(this.paromsCompletedLast30Days, 'PAROMS Completed Last 30 Days')
     assertNumber(this.paromsDueNext30Days, 'PAROMS Due Next 30 Days')
     assertObjectType(this.custodyTiers, Tiers, 'Custody Tiers')
