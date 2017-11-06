@@ -76,6 +76,6 @@ module.exports = function (stagingWorkload, workloadOwnerId, workloadReportId) {
 
 var locationFilter = function (location) {
   return function (element) {
-    return element.location === location
+    return element.location.toUpperCase() === location
   }
 }
