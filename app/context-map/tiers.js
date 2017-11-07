@@ -5,6 +5,7 @@ const zeroIfNull = require('./helpers/zero-if-null')
 const CASE_TYPE_UNPAID = 'U'
 const CASE_TYPE_OVERDUE_TERMINATION = 'O'
 const CASE_TYPE_WARRANT = 'W'
+const CASE_TYPE_SUSPENDED = 'S'
 
 module.exports = function (summary, details) {
   var total = zeroIfNull(summary.untiered) +
@@ -36,8 +37,12 @@ var getTierCounts = function (totalCases, tierDetails = []) {
   var unpaidWorkCount = tierDetails.filter(rowTypeFilter(CASE_TYPE_UNPAID)).length
   var warrantCount = tierDetails.filter(rowTypeFilter(CASE_TYPE_WARRANT)).length
   var overDueTermination = tierDetails.filter(rowTypeFilter(CASE_TYPE_OVERDUE_TERMINATION)).length
-
-  return new TierCounts(totalCases, warrantCount, unpaidWorkCount, overDueTermination)
+  var suspendedCount = tierDetails.filter(rowTypeFilter(CASE_TYPE_SUSPENDED)).length
+  try {
+    return new TierCounts(totalCases, warrantCount, unpaidWorkCount, overDueTermination, suspendedCount)
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 var tierCodeFilter = function (tierCode) {
