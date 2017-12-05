@@ -17,7 +17,7 @@ class TierCounts {
     assertNumber(this.overdueTermination, 'overdueTermination')
     assertNumber(this.suspended, 'suspended')
 
-    if (this.total < (this.warrants + this.unpaidWork + this.overdueTermination + this.suspended)) {
+    if (this.total < (this.warrants + this.unpaidWork + this.overdueTermination)) {
       throw new Error('total should be greater than case subtypes')
     }
   }
