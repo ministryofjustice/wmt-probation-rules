@@ -1,12 +1,13 @@
 const assertNumber = require('./validation/assert-number')
 
 class TierCounts {
-  constructor (total, warrants, unpaidWork, overdueTermination, suspended) {
+  constructor (total, warrants, unpaidWork, overdueTermination, suspended, t2a = false) {
     this.total = total
     this.warrants = warrants
     this.unpaidWork = unpaidWork
     this.overdueTermination = overdueTermination
     this.suspended = suspended
+    this.t2a = t2a
     this.isValid()
   }
 
@@ -17,8 +18,10 @@ class TierCounts {
     assertNumber(this.overdueTermination, 'overdueTermination')
     assertNumber(this.suspended, 'suspended')
 
-    if (this.total < (this.warrants + this.unpaidWork + this.overdueTermination)) {
-      throw new Error('total should be greater than case subtypes')
+    if (!this.t2a) {
+      if (this.total < (this.warrants + this.unpaidWork + this.overdueTermination)) {
+        throw new Error('total should be greater than case subtypes')
+      }
     }
   }
 }

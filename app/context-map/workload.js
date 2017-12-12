@@ -27,17 +27,17 @@ module.exports = function (stagingWorkload, workloadOwnerId, workloadReportId) {
   var custodySummary = stagingWorkload.casesSummary.custodyTiers
   var licenseSummary = stagingWorkload.casesSummary.licenseTiers
 
-  var communityTiers = mapTiers(communitySummary, communityCaseDetails, Locations.COMMUNITY)
-  var custodyTiers = mapTiers(custodySummary, custodyCaseDetails, Locations.CUSTODY)
-  var licenseTiers = mapTiers(licenseSummary, licenseCaseDetails, Locations.LICENSE)
+  var communityTiers = mapTiers(communitySummary, communityCaseDetails)
+  var custodyTiers = mapTiers(custodySummary, custodyCaseDetails)
+  var licenseTiers = mapTiers(licenseSummary, licenseCaseDetails)
 
   var t2aCommunitySummary = stagingWorkload.casesSummary.t2aCommunityTiers
   var t2aCustodySummary = stagingWorkload.casesSummary.t2aCustodyTiers
   var t2aLicenseSummary = stagingWorkload.casesSummary.t2aLicenseTiers
 
-  var t2aCommunityTiers = mapTiers(t2aCommunitySummary, communityCaseDetails, Locations.COMMUNITY)
-  var t2aCustodyTiers = mapTiers(t2aCustodySummary, custodyCaseDetails, Locations.CUSTODY)
-  var t2aLicenseTiers = mapTiers(t2aLicenseSummary, licenseCaseDetails, Locations.LICENSE)
+  var t2aCommunityTiers = mapTiers(t2aCommunitySummary, communityCaseDetails, true)
+  var t2aCustodyTiers = mapTiers(t2aCustodySummary, custodyCaseDetails, true)
+  var t2aLicenseTiers = mapTiers(t2aLicenseSummary, licenseCaseDetails, true)
 
   var licenseCasesLast16Weeks = zeroIfNull(stagingWorkload.casesSummary.licIn1st16Weeks)
   var communityCasesLast16Weeks = zeroIfNull(stagingWorkload.casesSummary.comIn1st16Weeks)
