@@ -15,15 +15,6 @@ describe('points/domain/TierCounts', function () {
     expect(function () { new TierCounts(1, 1, 'String', 1) }).to.throw(Error)
     expect(function () { new TierCounts(1, 1, 1, 'String') }).to.throw(Error)
   })
-  it('throws an error when the combined case types are greater than the total', function () {
-    expect(function () { new TierCounts(1, 1, 1, 1) }).to.throw(Error)
-  })
-  it('doesn\'t throw an error when the combined case types are the same as the total', function () {
-    expect(function () { new TierCounts(3, 1, 1, 1) }).not.to.throw(Error)
-  })
-  it('doesn\'t throw an error when the combined case types are less than the total', function () {
-    expect(function () { new TierCounts(5, 1, 1, 1) }).not.to.throw(Error)
-  })
   it('all fields can be retrieved', function () {
     var tierCounts = new TierCounts(5, 1, 1, 1)
     expect(tierCounts.total).to.equal(5)
