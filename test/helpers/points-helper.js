@@ -1,5 +1,6 @@
 const Tiers = require('../../app/points/domain/tiers')
 const Workload = require('../../app/points/domain/workload')
+const CourtReports = require('../../app/points/domain/court-reports')
 const Tier = require('../../app/points/domain/tier')
 const TierCounts = require('../../app/points/domain/tier-counts')
 const Locations = require('../../app/staging/constants/locations')
@@ -12,6 +13,7 @@ const DefaultNominalTargets = require('../../app/points/domain/default-nominal-t
 module.exports.getTestWorkloadObject = function () {
   var workload = new Workload(1, // workload owner id
                               1, // total cases
+                              1, // total t2a cases
                               9, // monthly sdrs
                               8, // sdrs due next 30 days
                               7, // sdr conversions last 30 days
@@ -20,6 +22,9 @@ module.exports.getTestWorkloadObject = function () {
                               module.exports.getTestTiersObject(Locations.CUSTODY),
                               module.exports.getTestTiersObject(Locations.COMMUNITY),
                               module.exports.getTestTiersObject(Locations.LICENSE),
+                              module.exports.getTestTiersObject(Locations.CUSTODY), // t2a custody tiers
+                              module.exports.getTestTiersObject(Locations.COMMUNITY), // t2a community tiers
+                              module.exports.getTestTiersObject(Locations.LICENSE), // t2a lincese tiers
                               4, // license cases last 16 weeks
                               3, // community cases last 16 weeks
                               2, // arms community cases
@@ -27,6 +32,13 @@ module.exports.getTestWorkloadObject = function () {
                               10, // staging id
                               11) // workload report id
   return workload
+}
+
+module.exports.getTestCourtReportsObject = function (workloadOwnerId, totalSdrs, totalFdrs, totalOralReports, stagingId, workloadReportId) {
+  var courtReports = new CourtReports(
+    workloadOwnerId, totalSdrs, totalFdrs, totalOralReports, stagingId, workloadReportId
+  )
+  return courtReports
 }
 
 module.exports.getTestTiersObject = function (location) {
@@ -43,7 +55,7 @@ module.exports.getTestTiersObject = function (location) {
 }
 
 module.exports.getTierCountsObject = function () {
-  var tierCounts = new TierCounts(8, 1, 2, 3) // total, warrants, unpaid, overdue
+  var tierCounts = new TierCounts(8, 1, 2, 3, 1) // total, warrants, unpaid, overdue, suspended
   return tierCounts
 }
 

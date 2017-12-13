@@ -3,6 +3,7 @@ const CasesSummary = require('../../app/staging/domain/cases-summary')
 const CourtReport = require('../../app/staging/domain/court-report')
 const InstReport = require('../../app/staging/domain/institutional-report')
 const OmWorkload = require('../../app/staging/domain/om-workload')
+const OmCourtReports = require('../../app/staging/domain/om-court-reports')
 const Tiers = require('../../app/staging/domain/tiers')
 const locations = require('../../app/staging/constants/locations')
 
@@ -17,12 +18,20 @@ module.exports.getTestOmWorkload = function (omKey, caseRefNo) {
   return omWorkload
 }
 
+module.exports.getTestOmCourtReports = function (omKey) {
+  var omCourtReports = new OmCourtReports(
+    1,
+    this.getTestCaseSummary(omKey),
+    this.getTestCourtReport(omKey)
+  )
+  return omCourtReports
+}
 module.exports.getTestInstitutionalReport = function (omKey, omTeamStaffGrade = 'B', paromDueNext30 = getRandomPoints(), paromCompLast30 = getRandomPoints()) {
   return new InstReport(omKey, omTeamStaffGrade, paromDueNext30, paromCompLast30)
 }
 
-module.exports.getTestCourtReport = function (omKey, omTeamStaffGrade = 'B', sdrLast30 = getRandomPoints(), sdrDueNext30 = getRandomPoints(), sdrConvLast30 = getRandomPoints()) {
-  return new CourtReport(omKey, omTeamStaffGrade, sdrLast30, sdrDueNext30, sdrConvLast30)
+module.exports.getTestCourtReport = function (omKey, omTeamStaffGrade = 'B', sdrLast30 = getRandomPoints(), sdrDueNext30 = getRandomPoints(), sdrConvLast30 = getRandomPoints(), oralReports = getRandomPoints()) {
+  return new CourtReport(omKey, omTeamStaffGrade, sdrLast30, sdrDueNext30, sdrConvLast30, oralReports)
 }
 
 module.exports.getTestCaseDetails = function (omKey, rowType = getRandomRowType(), caseRefNo = this.getGeneratedCaseRefNo(), tierCode = 'A', teamCode = 'W', omGradeCode = 'P', location = locations.COMMUNITY) {
@@ -42,6 +51,10 @@ module.exports.getTestCaseSummary = function (omKey) {
   const licenseTiers = module.exports.getMultipleTestTiers(locations.LICENSE)
   const custodyTiers = module.exports.getMultipleTestTiers(locations.CUSTODY)
 
+  const t2aCommunityTiers = module.exports.getMultipleTestTiers(locations.COMMUNITY)
+  const t2aLicenseTiers = module.exports.getMultipleTestTiers(locations.LICENSE)
+  const t2aCustodyTiers = module.exports.getMultipleTestTiers(locations.CUSTODY)
+
   return new CasesSummary(
     'Trust',
     'Region description',
@@ -57,6 +70,9 @@ module.exports.getTestCaseSummary = function (omKey) {
     communityTiers,
     licenseTiers,
     custodyTiers,
+    t2aCommunityTiers,
+    t2aLicenseTiers,
+    t2aCustodyTiers,
     '15',
     '11',
     '13',
