@@ -8,12 +8,13 @@ describe('context-map/om-grade-code', () => {
       expect(filterOmGradeCode('CRCC')).to.equal('SPO')
       expect(filterOmGradeCode('CRCK')).to.equal('TPO')
       expect(filterOmGradeCode('NPSY')).to.equal('PSO')
+      expect(filterOmGradeCode('')).to.equal('DMY')
+      expect(filterOmGradeCode(null)).to.equal('DMY')
     })
   })
   describe('invalid codes', () => {
     it('return an empty string', () => {
       expect(filterOmGradeCode('ABCD')).to.equal('')
-      expect(filterOmGradeCode('')).to.equal('')
       expect(filterOmGradeCode('1234*')).to.equal('')
     })
   })
