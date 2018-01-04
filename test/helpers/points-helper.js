@@ -1,7 +1,6 @@
 const Tiers = require('../../app/points/domain/tiers')
 const Workload = require('../../app/points/domain/workload')
 const CourtReports = require('../../app/points/domain/court-reports')
-const Tier = require('../../app/points/domain/tier')
 const TierCounts = require('../../app/points/domain/tier-counts')
 const Locations = require('../../app/staging/constants/locations')
 const CaseTypeWeightings = require('../../app/points/domain/case-type-weightings')
