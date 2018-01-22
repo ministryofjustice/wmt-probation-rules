@@ -55,9 +55,9 @@ describe('points/calculate-contracted-hours', function () {
     expect(result.defaultContractedHoursForBand).to.equal(12)
   })
 
-  it(`returns null when offender manager type ID is ${OM_TYPE_IDS.UNSUPPORTED_A}`, function () {
+  it(`returns null when offender manager type ID is ${OM_TYPE_IDS.UNSUPPORTED}`, function () {
     /* eslint-disable no-unused-expressions */
-    expect(calculateContractedHours(contractedHoursPerWeek, defaultContractedHours, OM_TYPE_IDS.UNSUPPORTED_A)).to.be.null
+    expect(calculateContractedHours(contractedHoursPerWeek, defaultContractedHours, OM_TYPE_IDS.UNSUPPORTED)).to.be.null
   })
 
   it(`returns default TPO contracted hours when offender manager type ID is ${OM_TYPE_IDS.TPO}`, function () {

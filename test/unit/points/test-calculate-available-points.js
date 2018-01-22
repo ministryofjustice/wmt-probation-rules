@@ -37,15 +37,6 @@ describe('points/calculate-available-points', function () {
       ).to.equal(VALID_BASE_CALCULATION_RESULT)
   })
 
-  it(`returns default PSO contracted hours when offender manager type ID is ${OM_TYPE_IDS.PSO_C}`, function () {
-    expect(
-        calculateAvailablePoints(
-          nominalTarget, OM_TYPE_IDS.PSO_C, contractedHoursPerWeek,
-          hoursReduction, defaultContractedHours
-        )
-      ).to.equal(VALID_BASE_CALCULATION_RESULT)
-  })
-
   it('returns other default contracted hours when offender manager type ID is an unexpected number', function () {
     expect(
         calculateAvailablePoints(
@@ -65,19 +56,10 @@ describe('points/calculate-available-points', function () {
     ).to.equal(7)
   })
 
-  it(`returns ${NON_PSO_BAND_RESULT} when offender manager type ID is ${OM_TYPE_IDS.UNSUPPORTED_A}`, function () {
+  it(`returns ${NON_PSO_BAND_RESULT} when offender manager type ID is ${OM_TYPE_IDS.UNSUPPORTED}`, function () {
     expect(
       calculateAvailablePoints(
-        nominalTarget, OM_TYPE_IDS.UNSUPPORTED_A, contractedHoursPerWeek,
-        hoursReduction, defaultContractedHours
-        )
-    ).to.equal(NON_PSO_BAND_RESULT)
-  })
-
-  it(`returns ${NON_PSO_BAND_RESULT} when offender manager type ID is ${OM_TYPE_IDS.UNSUPPORTED_B}`, function () {
-    expect(
-      calculateAvailablePoints(
-        nominalTarget, OM_TYPE_IDS.UNSUPPORTED_B, contractedHoursPerWeek,
+        nominalTarget, OM_TYPE_IDS.UNSUPPORTED, contractedHoursPerWeek,
         hoursReduction, defaultContractedHours
         )
     ).to.equal(NON_PSO_BAND_RESULT)
