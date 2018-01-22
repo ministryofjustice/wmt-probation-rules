@@ -79,7 +79,7 @@ module.exports.getCaseTypeWeightings = function () {
             4, // sdr
             5, // sdr conversions
             new DefaultNominalTargets(1, 2),
-            new DefaultContractedHours(1, 2),
+            new DefaultContractedHours(1, 2, 3),
             true, // paroms enabled
             8 // paroms
   )
@@ -93,6 +93,6 @@ module.exports.getDefaultNominalTargets = function () {
 }
 
 module.exports.getDefaultContractedHours = function () {
-  var defaultConntractedHours = new DefaultContractedHours(37.5, 37.5)
+  var defaultConntractedHours = new DefaultContractedHours(37.5, 37.5, 0)
   return defaultConntractedHours
 }

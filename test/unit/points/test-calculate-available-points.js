@@ -16,7 +16,7 @@ describe('points/calculate-available-points', function () {
     nominalTarget = 7
     contractedHoursPerWeek = 40
     hoursReduction = 0
-    defaultContractedHours = new DefaultContractedHours(12, 7)
+    defaultContractedHours = new DefaultContractedHours(12, 7, 0)
   })
 
   it(`returns default PSO contracted hours when offender manager type ID is ${OM_TYPE_IDS.PSO}`, function () {
