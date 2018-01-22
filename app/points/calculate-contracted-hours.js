@@ -10,7 +10,7 @@ module.exports = function (contractedHoursPerWeek, defaultContractedHours, offen
 
   const PSO_BANDS = [OM_TYPE_IDS.PSO, OM_TYPE_IDS.PSO_B]
 
-  if (offenderManagerTypeId != OM_TYPE_IDS.UNSUPPORTED) {
+  if (offenderManagerTypeId !== OM_TYPE_IDS.UNSUPPORTED) {
     var defaultContractedHoursForBand = 0
 
     if (PSO_BANDS.indexOf(offenderManagerTypeId) >= 0) {
