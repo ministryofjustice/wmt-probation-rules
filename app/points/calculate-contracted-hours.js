@@ -8,14 +8,15 @@ module.exports = function (contractedHoursPerWeek, defaultContractedHours, offen
     throw new Error('defaultContractedHours should be an instance of DefaultContractedHours')
   }
 
-  const UNSUPPORTED_BANDS = [OM_TYPE_IDS.UNSUPPORTED_A, OM_TYPE_IDS.UNSUPPORTED_B]
-  const PSO_BANDS = [OM_TYPE_IDS.PSO, OM_TYPE_IDS.PSO_B, OM_TYPE_IDS.PSO_C]
+  const PSO_BANDS = [OM_TYPE_IDS.PSO, OM_TYPE_IDS.PSO_B]
 
-  if (!(UNSUPPORTED_BANDS.indexOf(offenderManagerTypeId) >= 0)) {
+  if (offenderManagerTypeId !== OM_TYPE_IDS.UNSUPPORTED) {
     var defaultContractedHoursForBand = 0
 
     if (PSO_BANDS.indexOf(offenderManagerTypeId) >= 0) {
       defaultContractedHoursForBand = defaultContractedHours.pso
+    } else if (offenderManagerTypeId === OM_TYPE_IDS.SPO) {
+      defaultContractedHoursForBand = defaultContractedHours.spo
     } else {
       defaultContractedHoursForBand = defaultContractedHours.po
     }
