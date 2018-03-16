@@ -7,7 +7,7 @@ module.exports = function (omGradeCode) {
     'M', 'CRCM', 'NPSM', 'N', 'CRCN', 'NPSN', 'O', 'CRCO', 'NPSO'
   ]
   var spoList = ['C', 'CRCC', 'NPSC']
-  var tpoList = ['K', 'CRCK', 'NPSK', 'L', 'CRCL', 'NPSL', 'P', 'CRCP', 'NPSP']
+  var tpoList = ['K', 'CRCK', 'NPSK', 'L', 'CRCL', 'NPSL', 'P', 'CRCP', 'NPSP', 'NPQF']
   var psoList = ['Y', 'CRCY', 'NPSY', 'Z', 'CRCZ', 'NPSZ', 'Q', 'CRCQ', 'NPSQ']
 
   var dmyList = [
