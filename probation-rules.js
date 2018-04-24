@@ -59,6 +59,7 @@ module.exports = {
   InstitutionalReport: InstitutionalReport,
   Ldu: Ldu,
   Locations: Locations,
+  ExtractLocations: ExtractLocations,
   LocationPointsConfiguration: LocationPointsConfiguration,
   OffenderManager: OffenderManager,
   OmWorkload: OmWorkload,
