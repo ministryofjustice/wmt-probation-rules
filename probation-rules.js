@@ -1,5 +1,6 @@
 // Constants
 const Locations = require('./app/staging/constants/locations')
+const ExtractLocations = require('./app/staging/constants/extract-locations')
 
 // Configurations
 const PointsConfiguration = require('./app/points/domain/points-configuration')
@@ -58,6 +59,7 @@ module.exports = {
   InstitutionalReport: InstitutionalReport,
   Ldu: Ldu,
   Locations: Locations,
+  ExtractLocations: ExtractLocations,
   LocationPointsConfiguration: LocationPointsConfiguration,
   OffenderManager: OffenderManager,
   OmWorkload: OmWorkload,
