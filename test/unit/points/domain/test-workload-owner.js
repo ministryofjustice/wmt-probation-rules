@@ -8,14 +8,16 @@ describe('services/domain/workload-owner', function () {
   var offenderManagerId = 231
   var workingHoursId = 3242
   var teamId = 3223
+  var contractedHours = 37
 
   it('should construct a workload owner domain object', function () {
-    var workloadOwner = new WorkloadOwner(id, offenderManagerId, workingHoursId, teamId)
+    var workloadOwner = new WorkloadOwner(id, offenderManagerId, workingHoursId, teamId, contractedHours)
 
     expect(workloadOwner.id).to.equal(id)
     expect(workloadOwner.offenderManagerId).to.equal(offenderManagerId)
     expect(workloadOwner.workingHoursId).to.equal(workingHoursId)
     expect(workloadOwner.teamId).to.equal(teamId)
+    expect(workloadOwner.contractedHours).to.equal(contractedHours)
   })
 
   it('throws an error when any property is undefined', function () {
