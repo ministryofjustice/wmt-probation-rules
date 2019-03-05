@@ -8,7 +8,7 @@ describe('points/domain/Tier', function () {
     expect(function () { new Tier(undefined) }).to.throw(Error)
   })
   it('can retrieve points when they are defined', function () {
-    var tier = new Tier(new TierCount(4, 1, 1, 1, 1))
+    var tier = new Tier(new TierCount(4, 1, 1, 1, 1, 7))
     expect(tier.tierCounts).to.be.an('object')
   })
 })

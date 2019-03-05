@@ -1,13 +1,14 @@
 const assertNumber = require('./validation/assert-number')
 
 class TierCounts {
-  constructor (total, warrants, unpaidWork, overdueTermination, suspended, t2a = false) {
+  constructor (total, warrants, unpaidWork, overdueTermination, suspended, suspendedLifers, t2a = false) {
     this.total = total
     this.warrants = warrants
     this.unpaidWork = unpaidWork
     this.overdueTermination = overdueTermination
     this.suspended = suspended
     this.t2a = t2a
+    this.suspendedLifers = suspendedLifers
     this.isValid()
   }
 
@@ -17,6 +18,7 @@ class TierCounts {
     assertNumber(this.unpaidWork, 'unpaidWork')
     assertNumber(this.overdueTermination, 'overdueTermination')
     assertNumber(this.suspended, 'suspended')
+    assertNumber(this.suspendedLifers, 'suspendedLifers')
   }
 }
 
