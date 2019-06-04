@@ -54,7 +54,7 @@ module.exports.getTestTiersObject = function (location) {
 }
 
 module.exports.getTierCountsObject = function () {
-  var tierCounts = new TierCounts(8, 1, 2, 3, 1) // total, warrants, unpaid, overdue, suspended
+  var tierCounts = new TierCounts(8, 1, 2, 3, 1, 12) // total, warrants, unpaid, overdue, suspended, suspended lifers
   return tierCounts
 }
 
