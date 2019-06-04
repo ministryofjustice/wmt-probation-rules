@@ -6,7 +6,7 @@ const CASE_TYPE_UNPAID = 'U'
 const CASE_TYPE_OVERDUE_TERMINATION = 'O'
 const CASE_TYPE_WARRANT = 'W'
 const CASE_TYPE_SUSPENDED = 'S'
-const CASE_TYPE_SUSPENDED_LIFERS = 'SL'
+const CASE_TYPE_SUSPENDED_LIFERS = 'L'
 
 module.exports = function (summary, details, t2a = false) {
   var total = zeroIfNull(summary.untiered) +
