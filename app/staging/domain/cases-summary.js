@@ -20,7 +20,10 @@ class CaseSummary {
     comIn1st16Weeks,
     licIn1st16Weeks,
     armsCommunityCases,
-    armsLicenseCases
+    armsLicenseCases,
+    filteredCommunityTiers,
+    filteredLicenseTiers,
+    filteredCustodyTiers
   ) {
     this.trust = trust
     this.regionDesc = regionDesc
@@ -43,6 +46,9 @@ class CaseSummary {
     this.licIn1st16Weeks = licIn1st16Weeks
     this.armsCommunityCases = armsCommunityCases
     this.armsLicenseCases = armsLicenseCases
+    this.filteredCommunityTiers = filteredCommunityTiers
+    this.filteredLicenseTiers = filteredLicenseTiers
+    this.filteredCustodyTiers = filteredCustodyTiers
   }
 }
 
