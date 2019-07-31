@@ -10,7 +10,8 @@ class Workload {
           t2aCustodyTiers, t2aCommunityTiers, t2aLicenseTiers,
           licenseCasesLast16Weeks, communityCasesLast16Weeks,
           armsCommunityCases, armsLicenseCases,
-          stagingId, workloadReportId) {
+          stagingId, workloadReportId, filteredCommunityTiers,
+          filteredCustodyTiers, filteredLicenseTiers, totalFilteredCases) {
     this.workloadOwnerId = workloadOwnerId
     this.totalCases = totalCases
     this.totalT2aCases = totalT2aCases
@@ -31,6 +32,10 @@ class Workload {
     this.armsLicenseCases = armsLicenseCases
     this.stagingId = stagingId
     this.workloadReportId = workloadReportId
+    this.filteredCommunityTiers = filteredCommunityTiers
+    this.filteredCustodyTiers = filteredCustodyTiers
+    this.filteredLicenseTiers = filteredLicenseTiers
+    this.totalFilteredCases = totalFilteredCases
     this.isValid()
   }
 
@@ -55,6 +60,10 @@ class Workload {
     assertNumber(this.armsLicenseCases, 'ARMS License Cases')
     assertNumber(this.stagingId, 'Staging ID')
     assertNumber(this.workloadReportId, 'Workload Report ID')
+    assertObjectType(this.filteredCustodyTiers, Tiers, 'Filtered Custody Tiers')
+    assertObjectType(this.filteredCommunityTiers, Tiers, 'Filtered Community Tiers')
+    assertObjectType(this.filteredLicenseTiers, Tiers, 'Filtered License Tiers')
+    assertNumber(this.totalFilteredCases, 'Total Filtered Cases')
   }
 }
 

@@ -27,9 +27,17 @@ module.exports = function (stagingWorkload, workloadOwnerId, workloadReportId) {
   var custodySummary = stagingWorkload.casesSummary.custodyTiers
   var licenseSummary = stagingWorkload.casesSummary.licenseTiers
 
+  var filteredCommunitySummary = stagingWorkload.casesSummary.filteredCommunityTiers
+  var filteredCustodySummary = stagingWorkload.casesSummary.filteredCustodyTiers
+  var filteredLicenseSummary = stagingWorkload.casesSummary.filteredLicenseTiers
+
   var communityTiers = mapTiers(communitySummary, communityCaseDetails)
   var custodyTiers = mapTiers(custodySummary, custodyCaseDetails)
   var licenseTiers = mapTiers(licenseSummary, licenseCaseDetails)
+
+  var filteredCommunityTiers = mapTiers(filteredCommunitySummary, communityCaseDetails)
+  var filteredCustodyTiers = mapTiers(filteredCustodySummary, custodyCaseDetails)
+  var filteredLicenseTiers = mapTiers(filteredLicenseSummary, licenseCaseDetails)
 
   var t2aCommunitySummary = stagingWorkload.casesSummary.t2aCommunityTiers
   var t2aCustodySummary = stagingWorkload.casesSummary.t2aCustodyTiers
@@ -47,6 +55,7 @@ module.exports = function (stagingWorkload, workloadOwnerId, workloadReportId) {
 
   var totalT2aCases = t2aCommunityTiers.total + t2aCustodyTiers.total + t2aLicenseTiers.total
   var totalCases = communityTiers.total + custodyTiers.total + licenseTiers.total + totalT2aCases
+  var totalFilteredCases = filteredCommunityTiers.total + filteredCustodyTiers.total + filteredLicenseTiers.total
 
   var stagingId = stagingWorkload.stagingId
 
@@ -70,7 +79,11 @@ module.exports = function (stagingWorkload, workloadOwnerId, workloadReportId) {
     armsCommunityCases,
     armsLicenseCases,
     stagingId,
-    workloadReportId
+    workloadReportId,
+    filteredCommunityTiers,
+    filteredCustodyTiers,
+    filteredLicenseTiers,
+    totalFilteredCases
   )
 }
 

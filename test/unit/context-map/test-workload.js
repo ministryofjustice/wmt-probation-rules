@@ -311,6 +311,9 @@ describe('context-map/workload', function () {
     var communityTiers
     var licenceTiers
     var custodyTiers
+    var filteredCommunityTiers
+    var filteredLicenceTiers
+    var filteredCustodyTiers
     var t2aCommunityTiers
     var t2aLicenceTiers
     var t2aCustodyTiers
@@ -324,12 +327,15 @@ describe('context-map/workload', function () {
       communityTiers = new StagingTiers(Locations.COMMUNITY, 0, 1, 2, 3, 4, 5, 6, 7)
       licenceTiers = new StagingTiers(Locations.LICENSE, 10, 11, 12, 13, 14, 15, 16, 17)
       custodyTiers = new StagingTiers(Locations.CUSTODY, 20, 21, 22, 23, 24, 25, 26, 27)
+      filteredCommunityTiers = new StagingTiers(Locations.COMMUNITY, 0, 0, 1, 2, 3, 4, 5, 6)
+      filteredLicenceTiers = new StagingTiers(Locations.LICENSE, 9, 10, 11, 12, 13, 14, 15, 16)
+      filteredCustodyTiers = new StagingTiers(Locations.CUSTODY, 19, 20, 21, 22, 23, 25, 25, 26)
       t2aCommunityTiers = new StagingTiers(Locations.COMMUNITY, 20, 21, 22, 23, 24, 25, 26, 27)
       t2aLicenceTiers = new StagingTiers(Locations.LICENSE, 0, 1, 2, 3, 4, 5, 6, 7)
       t2aCustodyTiers = new StagingTiers(Locations.CUSTODY, 10, 11, 12, 13, 14, 15, 16, 17)
       casesSummary = new CasesSummary(
         'NPS', 'NPS North West', 'N01', 'Cheshire', 'N01CHS', 'Chester NPS OMU', 'N01CA3', 'Bloggs', 'Joe', 'NPSM', 'TEST100',
-        communityTiers, licenceTiers, custodyTiers, t2aCommunityTiers, t2aLicenceTiers, t2aCustodyTiers, 1, 2, 3, 4
+        communityTiers, licenceTiers, custodyTiers, t2aCommunityTiers, t2aLicenceTiers, t2aCustodyTiers, 1, 2, 3, 4, filteredCommunityTiers, filteredLicenceTiers, filteredCustodyTiers
       )
       courtReports = new CourtReport('TEST100', 'NPSM', 5, 6, 7)
       instReports = new InstitutionalReport('TEST100', 'NPSM', 8, 9)
