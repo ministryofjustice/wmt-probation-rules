@@ -24,13 +24,19 @@ var invertWeightingPercentage = function (weightingPercentage) {
   return multiplier
 }
 
-module.exports = function (tierCounts, tierPoints, caseTypeWeightings) {
+module.exports = function (tierCounts, tierPoints, caseTypeWeightings, subtractInactiveCases = false) {
   assertObjectType(tierCounts, TierCounts, 'Tier-counts')
   assertNumber(tierPoints, 'Tier Points')
   var pointsForTier = calculateWeightedPoints(tierCounts.total, tierPoints)
-  pointsForTier -= calculateWeightedPoints(tierCounts.warrants, tierPoints, caseTypeWeightings.warrants)
-  pointsForTier -= calculateWeightedPoints(tierCounts.unpaidWork, tierPoints, caseTypeWeightings.unpaidWork)
-  pointsForTier -= calculateWeightedPoints(tierCounts.overdueTermination, tierPoints, caseTypeWeightings.overdueTermination)
+  // As of WMT0115, the wmt_extract_filtered worksheet is used for tier totals
+  // This tab already has inactive case totals removed so no need to subtract them here
+  // t2a cases still have inactive case totals in the t2a worksheet so we still need to subtract the points for
+  // these cases, the variable subtractInactiveCases is used to allow this
+  if (subtractInactiveCases) {
+    pointsForTier -= calculateWeightedPoints(tierCounts.warrants, tierPoints, caseTypeWeightings.warrants)
+    pointsForTier -= calculateWeightedPoints(tierCounts.unpaidWork, tierPoints, caseTypeWeightings.unpaidWork)
+    pointsForTier -= calculateWeightedPoints(tierCounts.overdueTermination, tierPoints, caseTypeWeightings.overdueTermination)
+  }
 
   return pointsForTier
 }
