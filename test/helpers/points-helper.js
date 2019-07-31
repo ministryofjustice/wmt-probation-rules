@@ -23,13 +23,17 @@ module.exports.getTestWorkloadObject = function () {
                               module.exports.getTestTiersObject(Locations.LICENSE),
                               module.exports.getTestTiersObject(Locations.CUSTODY), // t2a custody tiers
                               module.exports.getTestTiersObject(Locations.COMMUNITY), // t2a community tiers
-                              module.exports.getTestTiersObject(Locations.LICENSE), // t2a lincese tiers
+                              module.exports.getTestTiersObject(Locations.LICENSE), // t2a licence tiers
                               4, // license cases last 16 weeks
                               3, // community cases last 16 weeks
                               2, // arms community cases
                               1, // arms license cases
                               10, // staging id
-                              11) // workload report id
+                              11, // workload report id
+                              module.exports.getTestTiersObject(Locations.COMMUNITY), // filtered community tiers
+                              module.exports.getTestTiersObject(Locations.CUSTODY), // filtered custody tiers
+                              module.exports.getTestTiersObject(Locations.LICENSE), // filtered licence tiers
+                              92)
   return workload
 }
 
