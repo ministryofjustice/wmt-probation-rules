@@ -19,8 +19,8 @@ describe('points/calculate-points-for-workload', function () {
     var expectedPoints = 0
 
     for (var i = 1; i < 8; i++) {
-      expectedPoints += ((8 * i) - (1 * i * 0.9) - (2 * i * 0.8) - (3 * i * 0.7)) // all the tiers (non-t2a)
-      expectedPoints += ((8 * i) - (1 * i * 0.9) - (2 * i * 0.8) - (3 * i * 0.7)) // all the tiers for t2a
+      expectedPoints += ((8 * i)) // - (1 * i * 0.9) - (2 * i * 0.8) - (3 * i * 0.7)) // all the tiers (non-t2a)
+      expectedPoints += ((8 * i) - (1 * i * 1) - (2 * i * 0) - (3 * i * 1)) // all the tiers for t2a
     }
 
     expectedPoints = expectedPoints * 3 // in each location

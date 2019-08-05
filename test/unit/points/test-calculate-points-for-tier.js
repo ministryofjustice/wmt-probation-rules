@@ -25,24 +25,48 @@ describe('points/calculate-points-for-tier', function () {
     tierCounts = new TierCounts(10, 10, 0, 0, 0, 0)
     caseTypeWeightings = new CaseTypeWeightings(0, 100, 100, 100, 100)
 
-    var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings)
+    var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, true)
     expect(tierPoints).to.equal(0)
+  })
+
+  it('Does not reduce the tierPoints by the warrants weighting multiplied by the warrants case count', function () {
+    tierCounts = new TierCounts(10, 10, 0, 0, 0, 0)
+    caseTypeWeightings = new CaseTypeWeightings(0, 100, 100, 100, 100)
+
+    var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, false)
+    expect(tierPoints).to.equal(100)
   })
 
   it('reduces the tierPoints by the unpaidWork weighting multiplied by the unpaidWork case count', function () {
     tierCounts = new TierCounts(10, 0, 10, 0, 0, 0)
     caseTypeWeightings = new CaseTypeWeightings(100, 0, 100, 100, 100)
 
-    var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings)
+    var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, true)
     expect(tierPoints).to.equal(0)
+  })
+
+  it('Does not reduce the tierPoints by the unpaidWork weighting multiplied by the unpaidWork case count', function () {
+    tierCounts = new TierCounts(10, 0, 10, 0, 0, 0)
+    caseTypeWeightings = new CaseTypeWeightings(100, 0, 100, 100, 100)
+
+    var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, false)
+    expect(tierPoints).to.equal(100)
   })
 
   it('reduces the tierPoints by the overdueTermination weighting multiplied by the overdueTermination case count', function () {
     tierCounts = new TierCounts(10, 0, 0, 10, 0, 0)
     caseTypeWeightings = new CaseTypeWeightings(100, 100, 0, 100, 100)
 
-    var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings)
+    var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, true)
     expect(tierPoints).to.equal(0)
+  })
+
+  it('Does not reduce the tierPoints by the overdueTermination weighting multiplied by the overdueTermination case count', function () {
+    tierCounts = new TierCounts(10, 0, 0, 10, 0, 0)
+    caseTypeWeightings = new CaseTypeWeightings(100, 100, 0, 100, 100)
+
+    var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, false)
+    expect(tierPoints).to.equal(100)
   })
 
   it('reduces the tierPoints by each case type', function () {
@@ -50,8 +74,17 @@ describe('points/calculate-points-for-tier', function () {
     caseTypeWeightings = new CaseTypeWeightings(0, 0, 0, 100, 100)
     points = 1
 
-    var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings)
+    var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, true)
     expect(tierPoints).to.equal(7)
+  })
+
+  it('Does not reduce the tierPoints by each case type', function () {
+    tierCounts = new TierCounts(10, 1, 1, 1, 1, 1)
+    caseTypeWeightings = new CaseTypeWeightings(0, 0, 0, 100, 100)
+    points = 1
+
+    var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, false)
+    expect(tierPoints).to.equal(10)
   })
 
   it('reduces the tierPoints by each case type when decimal numbers are used', function () {
@@ -59,7 +92,7 @@ describe('points/calculate-points-for-tier', function () {
     caseTypeWeightings = new CaseTypeWeightings(75, 50, 50, 100, 100)
     points = 1
 
-    var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings)
+    var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, true)
     expect(tierPoints).to.equal(8.75)
   })
   it('should throw an error when tierCounts is undefined', function () {
@@ -71,6 +104,6 @@ describe('points/calculate-points-for-tier', function () {
   })
   it('should throw an error when caseTypeWeightings is undefined', function () {
     tierCounts = new TierCounts(10, 1, 1, 1, 1, 1)
-    expect(function () { calculatePointsForTier(tierCounts, points, undefined) }).to.throw(Error)
+    expect(function () { calculatePointsForTier(tierCounts, points, undefined, true) }).to.throw(Error)
   })
 })
