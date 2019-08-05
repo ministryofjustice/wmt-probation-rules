@@ -335,7 +335,8 @@ describe('context-map/workload', function () {
       t2aCustodyTiers = new StagingTiers(Locations.CUSTODY, 10, 11, 12, 13, 14, 15, 16, 17)
       casesSummary = new CasesSummary(
         'NPS', 'NPS North West', 'N01', 'Cheshire', 'N01CHS', 'Chester NPS OMU', 'N01CA3', 'Bloggs', 'Joe', 'NPSM', 'TEST100',
-        communityTiers, licenceTiers, custodyTiers, t2aCommunityTiers, t2aLicenceTiers, t2aCustodyTiers, 1, 2, 3, 4, filteredCommunityTiers, filteredLicenceTiers, filteredCustodyTiers
+        communityTiers, licenceTiers, custodyTiers, t2aCommunityTiers, t2aLicenceTiers, t2aCustodyTiers, 1, 2, 3, 4,
+        filteredCommunityTiers, filteredLicenceTiers, filteredCustodyTiers
       )
       courtReports = new CourtReport('TEST100', 'NPSM', 5, 6, 7)
       instReports = new InstitutionalReport('TEST100', 'NPSM', 8, 9)

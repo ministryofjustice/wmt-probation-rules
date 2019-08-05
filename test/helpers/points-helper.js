@@ -87,7 +87,7 @@ module.exports.getCaseTypeWeightings = function () {
             true, // paroms enabled
             8 // paroms
   )
-  return new CaseTypeWeightings(10, 20, 30, 4, 5, pointsConfig)
+  return new CaseTypeWeightings(0, 100, 0, 4, 5, pointsConfig)
   // warrants, unpaid, overdue, armsComm, armsLicense
 }
 
