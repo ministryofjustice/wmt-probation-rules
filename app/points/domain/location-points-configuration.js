@@ -1,5 +1,7 @@
 const assertNumber = require('./validation/assert-number')
 
+// WMT0160: Create Community version of this class
+
 class TierPointsConfiguration {
   constructor (tierOne, tierTwo, tierThree, tierFour, tierFive, tierSix, tierSeven) {
     this.tierOne = tierOne

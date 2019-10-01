@@ -6,7 +6,7 @@ const CASE_TYPE_UNPAID = 'U'
 const CASE_TYPE_OVERDUE_TERMINATION = 'O'
 const CASE_TYPE_WARRANT = 'W'
 const CASE_TYPE_SUSPENDED = 'S'
-
+// WMT0160: Change this module to handle community cases, these have different tiers than all others
 module.exports = function (summary, details, t2a = false) {
   var total = zeroIfNull(summary.untiered) +
     zeroIfNull(summary.d2) +

@@ -1,7 +1,7 @@
 const assertLocation = require('./validation/assert-location')
 const assertObjectType = require('./validation/assert-object-type')
 const TierCounts = require('./tier-counts')
-
+// WMT0160: Create Community version of this class
 class Tiers {
   constructor (location, untiered, d2, d1, c2, c1, b2, b1, a, total) {
     this.location = location

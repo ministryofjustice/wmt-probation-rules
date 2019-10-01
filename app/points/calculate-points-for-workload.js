@@ -7,6 +7,7 @@ const Workload = require('../../app/points/domain/workload')
 const CaseTypeWeightings = require('../../app/points/domain/case-type-weightings')
 const assertObjectType = require('../../app/points/domain/validation/assert-object-type')
 
+// WMT0160: Update this module to handle Community Tiers
 module.exports = function (workload, caseTypeWeightings, t2aCaseTypeWeightings) {
   assertObjectType(workload, Workload, 'workload')
   assertObjectType(caseTypeWeightings, CaseTypeWeightings, 'CaseTypeWeightings')

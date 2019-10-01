@@ -4,7 +4,7 @@ const assertBoolean = require('./validation/assert-boolean')
 const LocationPointsConfiguration = require('./location-points-configuration')
 const DefaultContractedHours = require('./default-contracted-hours')
 const DefaultNominalTargets = require('./default-nominal-targets')
-
+// WMT0160: Add reference to community version of LocationPointsConfiguration
 class PointsConfiguration {
   constructor (communityTierPointsConfig, licenseTierPointsConfig, custodyTierPointsConfig,
               sdr, sdrConversion, defaultNominalTargets, defaultContractedHours, paromsEnabled, parom) {

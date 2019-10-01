@@ -1,3 +1,5 @@
+// WMT0160: Create Community version of this class
+
 class Tiers {
   constructor (location, untiered, d2, d1, c2, c1, b2, b1, a) {
     this.location = location
