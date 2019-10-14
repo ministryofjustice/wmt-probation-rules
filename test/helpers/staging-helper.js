@@ -101,6 +101,22 @@ module.exports.getTestTiers = function (location) {
   return new Tiers(location, getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), tierACount)
 }
 
+module.exports.getFilteredTiers = function (location) {
+  var tiers
+  switch(location) {
+    case locations.COMMUNITY:
+      tiers = new Tiers(location, 0, 1, 2, 3, 4, 5, 6, 7)
+      break
+    case locations.CUSTODY:
+      tiers = new Tiers(location, 10, 11, 12, 13, 14, 15, 16, 17)
+      break
+    case locations.CUSTODY:
+      tiers = new Tiers(location, 20, 21, 22, 23, 24, 25, 26, 27)
+      break
+  }
+  return tiers
+}
+
 module.exports.getCountableTestTiers = function (location) {
   return new Tiers(location, 1, 1, 1, 1, 1, 1, 1, 1)
 }

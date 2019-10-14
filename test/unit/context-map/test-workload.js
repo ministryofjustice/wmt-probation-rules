@@ -322,6 +322,7 @@ describe('context-map/workload', function () {
     var casesSummary
     var workload
     var caseDetails = []
+    var mappedWorkloads
 
     before(function () {
       communityTiers = new StagingTiers(Locations.COMMUNITY, 0, 1, 2, 3, 4, 5, 6, 7)
@@ -329,7 +330,7 @@ describe('context-map/workload', function () {
       custodyTiers = new StagingTiers(Locations.CUSTODY, 20, 21, 22, 23, 24, 25, 26, 27)
       filteredCommunityTiers = new StagingTiers(Locations.COMMUNITY, 0, 0, 1, 2, 3, 4, 5, 6)
       filteredLicenceTiers = new StagingTiers(Locations.LICENSE, 9, 10, 11, 12, 13, 14, 15, 16)
-      filteredCustodyTiers = new StagingTiers(Locations.CUSTODY, 19, 20, 21, 22, 23, 25, 25, 26)
+      filteredCustodyTiers = new StagingTiers(Locations.CUSTODY, 19, 20, 21, 22, 23, 24, 25, 26)
       t2aCommunityTiers = new StagingTiers(Locations.COMMUNITY, 20, 21, 22, 23, 24, 25, 26, 27)
       t2aLicenceTiers = new StagingTiers(Locations.LICENSE, 0, 1, 2, 3, 4, 5, 6, 7)
       t2aCustodyTiers = new StagingTiers(Locations.CUSTODY, 10, 11, 12, 13, 14, 15, 16, 17)
@@ -358,10 +359,10 @@ describe('context-map/workload', function () {
       caseDetails.push(new CaseDetails('L', 'CASEREF1015', 6, 'N01CA3', 'NPSM', 'TEST100', Locations.LICENSE))
       caseDetails.push(new CaseDetails('L', 'CASEREF1016', 6, 'N01CA3', 'NPSM', 'TEST100', Locations.LICENSE))
       workload = new OmWorkload(2019, casesSummary, courtReports, instReports, caseDetails)
+      mappedWorkloads = mapper(workload, 22, 6)
     })
 
     it('should create a valid mapped workload with the correct Suspended Lifer Totals', function () {
-      var mappedWorkloads = mapper(workload, 22, 6)
       expect(mappedWorkloads.communityTiers.untiered.suspendedLifers, 'Untiered Community Suspended Lifers total should equal 1').to.be.equal(1)
       expect(mappedWorkloads.communityTiers.d2.suspendedLifers, 'D2 Community Suspended Lifers total should equal 2').to.be.equal(2)
       expect(mappedWorkloads.custodyTiers.d1.suspendedLifers, 'D1 Custody Suspended Lifers total should equal 2').to.be.equal(2)
@@ -370,6 +371,43 @@ describe('context-map/workload', function () {
       expect(mappedWorkloads.licenseTiers.b2.suspendedLifers, 'B2 Licence Suspended Lifers total should equal 1').to.be.equal(1)
       expect(mappedWorkloads.licenseTiers.b1.suspendedLifers, 'B2 Licence Suspended Lifers total should equal 5').to.be.equal(5)
       expect(mappedWorkloads.licenseTiers.a.suspendedLifers, 'A Licence Suspended Lifers total should equal 3').to.be.equal(3)
+    })
+
+    it('should create a valid mapped workload with the correct filtered community tiers', function () {
+      expect(mappedWorkloads.filteredCommunityTiers.untiered.total, 'Untiered Community total should equal 0').to.be.equal(0)
+      expect(mappedWorkloads.filteredCommunityTiers.d2.total, 'D2 Community total should equal 0').to.be.equal(0)
+      expect(mappedWorkloads.filteredCommunityTiers.d1.total, 'D1 Community total should equal 1').to.be.equal(1)
+      expect(mappedWorkloads.filteredCommunityTiers.c2.total, 'C2 Community total should equal 2').to.be.equal(2)
+      expect(mappedWorkloads.filteredCommunityTiers.c1.total, 'C1 Community total should equal 3').to.be.equal(3)
+      expect(mappedWorkloads.filteredCommunityTiers.b2.total, 'B2 Community total should equal 4').to.be.equal(4)
+      expect(mappedWorkloads.filteredCommunityTiers.b1.total, 'B2 Community total should equal 5').to.be.equal(5)
+      expect(mappedWorkloads.filteredCommunityTiers.a.total, 'A Community total should equal 6').to.be.equal(6)
+      expect(mappedWorkloads.filteredCommunityTiers.total, 'Community overall filtered total should equal 21').to.be.equal(21)
+    })
+
+    it('should create a valid mapped workload with the correct filtered custody tiers', function () {
+      expect(mappedWorkloads.filteredCustodyTiers.untiered.total, 'Untiered Custody total should equal 19').to.be.equal(19)
+      expect(mappedWorkloads.filteredCustodyTiers.d2.total, 'D2 Custody total should equal 20').to.be.equal(20)
+      expect(mappedWorkloads.filteredCustodyTiers.d1.total, 'D1 Custody total should equal 21').to.be.equal(21)
+      expect(mappedWorkloads.filteredCustodyTiers.c2.total, 'C2 Custody total should equal 22').to.be.equal(22)
+      expect(mappedWorkloads.filteredCustodyTiers.c1.total, 'C1 Custody total should equal 23').to.be.equal(23)
+      expect(mappedWorkloads.filteredCustodyTiers.b2.total, 'B2 Custody total should equal 24').to.be.equal(24)
+      expect(mappedWorkloads.filteredCustodyTiers.b1.total, 'B2 Custody total should equal 25').to.be.equal(25)
+      expect(mappedWorkloads.filteredCustodyTiers.a.total, 'A Custody total should equal 26').to.be.equal(26)
+      expect(mappedWorkloads.filteredCustodyTiers.total, 'Custody overall filtered total should equal 180').to.be.equal(180)
+    })
+
+    it('should create a valid mapped workload with the correct filtered licence tiers', function () {
+      expect(mappedWorkloads.filteredLicenseTiers.untiered.total, 'Untiered Licence total should equal 9').to.be.equal(9)
+      expect(mappedWorkloads.filteredLicenseTiers.d2.total, 'D2 Licence total should equal 10').to.be.equal(10)
+      expect(mappedWorkloads.filteredLicenseTiers.d1.total, 'D1 Licence total should equal 11').to.be.equal(11)
+      expect(mappedWorkloads.filteredLicenseTiers.c2.total, 'C2 Licence total should equal 12').to.be.equal(12)
+      expect(mappedWorkloads.filteredLicenseTiers.c1.total, 'C1 Licence total should equal 13').to.be.equal(13)
+      expect(mappedWorkloads.filteredLicenseTiers.b2.total, 'B2 Licence total should equal 14').to.be.equal(14)
+      expect(mappedWorkloads.filteredLicenseTiers.b1.total, 'B2 Licence total should equal 15').to.be.equal(15)
+      expect(mappedWorkloads.filteredLicenseTiers.a.total, 'A Licence total should equal 16').to.be.equal(16)
+      expect(mappedWorkloads.filteredLicenseTiers.total, 'Licence overall filtered total should equal 100').to.be.equal(100)
+
     })
   })
 })
