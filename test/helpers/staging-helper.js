@@ -55,6 +55,10 @@ module.exports.getTestCaseSummary = function (omKey) {
   const t2aLicenseTiers = module.exports.getMultipleTestTiers(locations.LICENSE)
   const t2aCustodyTiers = module.exports.getMultipleTestTiers(locations.CUSTODY)
 
+  const filteredCommunityTiers = module.exports.getMultipleTestTiers(locations.COMMUNITY)
+  const filteredLicenseTiers = module.exports.getMultipleTestTiers(locations.LICENSE)
+  const filteredCustodyTiers = module.exports.getMultipleTestTiers(locations.CUSTODY)
+
   return new CasesSummary(
     'Trust',
     'Region description',
@@ -76,7 +80,11 @@ module.exports.getTestCaseSummary = function (omKey) {
     '15',
     '11',
     '13',
-    '14')
+    '14',
+    filteredCommunityTiers,
+    filteredLicenseTiers,
+    filteredCustodyTiers
+    )
 }
 
 module.exports.getGeneratedCaseRefNo = function () {
@@ -91,6 +99,22 @@ module.exports.getMultipleTestTiers = function (location, count) {
 module.exports.getTestTiers = function (location) {
   var tierACount = null
   return new Tiers(location, getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), tierACount)
+}
+
+module.exports.getFilteredTiers = function (location) {
+  var tiers
+  switch(location) {
+    case locations.COMMUNITY:
+      tiers = new Tiers(location, 0, 1, 2, 3, 4, 5, 6, 7)
+      break
+    case locations.CUSTODY:
+      tiers = new Tiers(location, 10, 11, 12, 13, 14, 15, 16, 17)
+      break
+    case locations.CUSTODY:
+      tiers = new Tiers(location, 20, 21, 22, 23, 24, 25, 26, 27)
+      break
+  }
+  return tiers
 }
 
 module.exports.getCountableTestTiers = function (location) {

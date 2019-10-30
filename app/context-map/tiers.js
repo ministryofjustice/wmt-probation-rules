@@ -6,7 +6,10 @@ const CASE_TYPE_UNPAID = 'U'
 const CASE_TYPE_OVERDUE_TERMINATION = 'O'
 const CASE_TYPE_WARRANT = 'W'
 const CASE_TYPE_SUSPENDED = 'S'
+const CASE_TYPE_SUSPENDED_LIFERS = 'L'
+
 // WMT0160: Change this module to handle community cases, these have different tiers than all others
+
 module.exports = function (summary, details, t2a = false) {
   var total = zeroIfNull(summary.untiered) +
     zeroIfNull(summary.d2) +
@@ -54,8 +57,9 @@ var getTierCounts = function (totalCases, tierDetails = []) {
   var warrantCount = tierDetails.filter(rowTypeFilter(CASE_TYPE_WARRANT)).length
   var overDueTermination = tierDetails.filter(rowTypeFilter(CASE_TYPE_OVERDUE_TERMINATION)).length
   var suspendedCount = tierDetails.filter(rowTypeFilter(CASE_TYPE_SUSPENDED)).length
+  var suspendedLifersCount = tierDetails.filter(rowTypeFilter(CASE_TYPE_SUSPENDED_LIFERS)).length
   try {
-    return new TierCounts(totalCases, warrantCount, unpaidWorkCount, overDueTermination, suspendedCount)
+    return new TierCounts(totalCases, warrantCount, unpaidWorkCount, overDueTermination, suspendedCount, suspendedLifersCount)
   } catch (error) {
     console.log(error)
   }
