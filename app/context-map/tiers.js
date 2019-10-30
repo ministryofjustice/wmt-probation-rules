@@ -8,10 +8,11 @@ const CASE_TYPE_WARRANT = 'W'
 const CASE_TYPE_SUSPENDED = 'S'
 const CASE_TYPE_SUSPENDED_LIFERS = 'L'
 
-// WMT0160: Change this module to handle community cases, these have different tiers than all others
-
 module.exports = function (summary, details, t2a = false) {
   var total = zeroIfNull(summary.untiered) +
+    zeroIfNull(summary.g) +
+    zeroIfNull(summary.f) +
+    zeroIfNull(summary.e) +
     zeroIfNull(summary.d2) +
     zeroIfNull(summary.d1) +
     zeroIfNull(summary.c2) +
@@ -25,6 +26,9 @@ module.exports = function (summary, details, t2a = false) {
     return new Tiers(
       summary.location,
       getTierCounts(zeroIfNull(summary.untiered)),
+      getTierCounts(zeroIfNull(summary.g)),
+      getTierCounts(zeroIfNull(summary.f)),
+      getTierCounts(zeroIfNull(summary.e)),
       getTierCounts(zeroIfNull(summary.d2)),
       getTierCounts(zeroIfNull(summary.d1)),
       getTierCounts(zeroIfNull(summary.c2)),
@@ -40,6 +44,9 @@ module.exports = function (summary, details, t2a = false) {
     return new Tiers(
       summary.location,
       getTierCounts(zeroIfNull(summary.untiered), details.filter(tierCodeFilter('0'))),
+      getTierCounts(zeroIfNull(summary.g), details.filter(tierCodeFilter('10'))),
+      getTierCounts(zeroIfNull(summary.f), details.filter(tierCodeFilter('9'))),
+      getTierCounts(zeroIfNull(summary.e), details.filter(tierCodeFilter('8'))),
       getTierCounts(zeroIfNull(summary.d2), details.filter(tierCodeFilter('1'))),
       getTierCounts(zeroIfNull(summary.d1), details.filter(tierCodeFilter('2'))),
       getTierCounts(zeroIfNull(summary.c2), details.filter(tierCodeFilter('3'))),

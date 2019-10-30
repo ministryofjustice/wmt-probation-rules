@@ -53,6 +53,9 @@ module.exports.getTestTiersObject = function (location) {
                         module.exports.getTierCountsObject(),
                         module.exports.getTierCountsObject(),
                         module.exports.getTierCountsObject(),
+                        module.exports.getTierCountsObject(),
+                        module.exports.getTierCountsObject(),
+                        module.exports.getTierCountsObject(),
                         module.exports.getTierCountsObject())
   return tiers
 }
@@ -71,7 +74,7 @@ module.exports.getTierCountsList = function (numberOfTierCounts) {
 }
 
 module.exports.getLocationPointsConfiguration = function () {
-  var locationPointsConfiguration = new LocationPointsConfiguration(1, 2, 3, 4, 5, 6, 7)
+  var locationPointsConfiguration = new LocationPointsConfiguration(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
   return locationPointsConfiguration
 }
 

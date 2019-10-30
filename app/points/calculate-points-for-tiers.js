@@ -4,7 +4,6 @@ const Tiers = require('../../app/points/domain/tiers')
 const LocationPointsConfiguration = require('../../app/points/domain/location-points-configuration')
 const assertObjectType = require('../../app/points/domain/validation/assert-object-type')
 
-// WMT0160: Update this module to handle Community Tiers
 module.exports = function (locationTiers, locationPointsConfiguration, caseTypeWeightings, subtractInactiveCases = false) {
   assertObjectType(locationTiers, Tiers, 'Tiers')
   assertObjectType(locationPointsConfiguration, LocationPointsConfiguration, 'LocationPointsConfiguration')

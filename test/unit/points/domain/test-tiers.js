@@ -6,7 +6,7 @@ const pointsHelper = require('../../../helpers/points-helper')
 const Locations = require('../../../../app/staging/constants/locations')
 
 describe('points/domain/Tiers', function () {
-  const NUMBER_OF_TIERS_IN_WORKLOAD = 8
+  const NUMBER_OF_TIERS_IN_WORKLOAD = 11
   var validArgumentList = [Locations.COMMUNITY]
 
   for (var i = 0; i < NUMBER_OF_TIERS_IN_WORKLOAD; i++) {
@@ -29,6 +29,9 @@ describe('points/domain/Tiers', function () {
     var tiers = new Tiers(...validArgumentList)
     expect(tiers.location).to.be.a('string')
     expect(tiers.untiered).to.be.an('object')
+    expect(tiers.g).to.be.an('object')
+    expect(tiers.f).to.be.an('object')
+    expect(tiers.e).to.be.an('object')
     expect(tiers.d2).to.be.an('object')
     expect(tiers.d1).to.be.an('object')
     expect(tiers.c2).to.be.an('object')

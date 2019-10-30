@@ -2,8 +2,6 @@ const assertObjectType = require('./validation/assert-object-type')
 const assertNumber = require('./validation/assert-number')
 const Tiers = require('./tiers.js')
 
-// WMT0160: Add reference to Community version of "Tiers"
-
 class Workload {
   constructor (workloadOwnerId, totalCases, totalT2aCases, monthlySdrs,
           sdrsDueNext30Days, sdrConversionsLast30Days,

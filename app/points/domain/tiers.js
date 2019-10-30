@@ -1,11 +1,14 @@
 const assertLocation = require('./validation/assert-location')
 const assertObjectType = require('./validation/assert-object-type')
 const TierCounts = require('./tier-counts')
-// WMT0160: Create Community version of this class
+
 class Tiers {
-  constructor (location, untiered, d2, d1, c2, c1, b2, b1, a, total) {
+  constructor (location, untiered, g, f, e, d2, d1, c2, c1, b2, b1, a, total) {
     this.location = location
     this.untiered = untiered
+    this.g = g
+    this.f = f
+    this.e = e
     this.d2 = d2
     this.d1 = d1
     this.c2 = c2
@@ -25,6 +28,9 @@ class Tiers {
     assertObjectType(this.c2, TierCounts, 'TierCounts c2')
     assertObjectType(this.d1, TierCounts, 'TierCounts d1')
     assertObjectType(this.d2, TierCounts, 'TierCounts d2')
+    assertObjectType(this.e, TierCounts, 'TierCounts e')
+    assertObjectType(this.f, TierCounts, 'TierCounts f')
+    assertObjectType(this.g, TierCounts, 'TierCounts g')
     assertObjectType(this.untiered, TierCounts, 'TierCounts untiered')
     assertLocation(this.location, 'location')
   }
@@ -38,6 +44,9 @@ class Tiers {
       this.c2,
       this.d1,
       this.d2,
+      this.e,
+      this.f,
+      this.g,
       this.untiered
     ]
     return list
