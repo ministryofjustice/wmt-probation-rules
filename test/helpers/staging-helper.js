@@ -98,11 +98,27 @@ module.exports.getMultipleTestTiers = function (location, count) {
 
 module.exports.getTestTiers = function (location) {
   var tierACount = null
-  return new Tiers(location, getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), tierACount)
+  return new Tiers(location, getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), tierACount, getRandomPoints(), getRandomPoints(), getRandomPoints())
+}
+
+module.exports.getFilteredTiers = function (location) {
+  var tiers
+  switch(location) {
+    case locations.COMMUNITY:
+      tiers = new Tiers(location, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+      break
+    case locations.CUSTODY:
+      tiers = new Tiers(location, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
+      break
+    case locations.CUSTODY:
+      tiers = new Tiers(location, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30)
+      break
+  }
+  return tiers
 }
 
 module.exports.getCountableTestTiers = function (location) {
-  return new Tiers(location, 1, 1, 1, 1, 1, 1, 1, 1)
+  return new Tiers(location, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
 }
 
 function getRandomRegionCode () {

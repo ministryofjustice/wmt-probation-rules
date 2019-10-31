@@ -46,19 +46,22 @@ module.exports.getTestCourtReportsObject = function (workloadOwnerId, totalSdrs,
 
 module.exports.getTestTiersObject = function (location) {
   var tiers = new Tiers(location,
-                        module.exports.getTierCountsObject(),
-                        module.exports.getTierCountsObject(),
-                        module.exports.getTierCountsObject(),
-                        module.exports.getTierCountsObject(),
-                        module.exports.getTierCountsObject(),
-                        module.exports.getTierCountsObject(),
-                        module.exports.getTierCountsObject(),
-                        module.exports.getTierCountsObject())
+                        module.exports.getTierCountsObject(0),
+                        module.exports.getTierCountsObject(10),
+                        module.exports.getTierCountsObject(9),
+                        module.exports.getTierCountsObject(8),
+                        module.exports.getTierCountsObject(1),
+                        module.exports.getTierCountsObject(2),
+                        module.exports.getTierCountsObject(3),
+                        module.exports.getTierCountsObject(4),
+                        module.exports.getTierCountsObject(5),
+                        module.exports.getTierCountsObject(6),
+                        module.exports.getTierCountsObject(7))
   return tiers
 }
 
-module.exports.getTierCountsObject = function () {
-  var tierCounts = new TierCounts(8, 1, 2, 3, 1, 12) // total, warrants, unpaid, overdue, suspended, suspended lifers
+module.exports.getTierCountsObject = function (tierCode) {
+  var tierCounts = new TierCounts(8, 1, 2, 3, 1, 12, tierCode) // total, warrants, unpaid, overdue, suspended, suspended lifers
   return tierCounts
 }
 
@@ -71,7 +74,7 @@ module.exports.getTierCountsList = function (numberOfTierCounts) {
 }
 
 module.exports.getLocationPointsConfiguration = function () {
-  var locationPointsConfiguration = new LocationPointsConfiguration(1, 2, 3, 4, 5, 6, 7)
+  var locationPointsConfiguration = new LocationPointsConfiguration(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
   return locationPointsConfiguration
 }
 
