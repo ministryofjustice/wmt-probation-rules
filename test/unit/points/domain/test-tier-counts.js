@@ -6,7 +6,7 @@ describe('points/domain/TierCounts', function () {
   it('throws an error when any property is undefined', function () {
     expect(function () { new TierCounts(undefined, 1, 1, 1, 1, 1, 1) }).to.throw(Error)
     expect(function () { new TierCounts(1, undefined, 1, 1, 1, 1, 1) }).to.throw(Error)
-    expect(function () { new TierCounts(1, 1, undefined, 1, 1, 1, ) }).to.throw(Error)
+    expect(function () { new TierCounts(1, 1, undefined, 1, 1, 1, 1) }).to.throw(Error)
     expect(function () { new TierCounts(1, 1, 1, undefined, 1, 1, 1) }).to.throw(Error)
     expect(function () { new TierCounts(1, 1, 1, 1, undefined, 1, 1) }).to.throw(Error)
     expect(function () { new TierCounts(1, 1, 1, 1, 1, undefined, 1) }).to.throw(Error)
