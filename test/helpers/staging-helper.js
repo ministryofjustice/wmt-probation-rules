@@ -98,7 +98,7 @@ module.exports.getMultipleTestTiers = function (location, count) {
 
 module.exports.getTestTiers = function (location) {
   var tierACount = null
-  return new Tiers(location, getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), tierACount)
+  return new Tiers(location, getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), tierACount, getRandomPoints(), getRandomPoints(), getRandomPoints())
 }
 
 module.exports.getFilteredTiers = function (location) {

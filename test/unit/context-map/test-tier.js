@@ -5,17 +5,18 @@ const mapper = require('../../../app/context-map/tier')
 describe('context-map/tier', function () {
   describe('valid states', function () {
     it('returns an instance of points/tier', function () {
-      var output = mapper(4, 1, 1, 1, 1, 6)
+      var output = mapper(4, 1, 1, 1, 1, 6, 0)
       expect(output).to.be.an.instanceof(DestinationTier)
     })
     it('populates the points/tier object with the correct values', function () {
-      var output = mapper(10, 1, 2, 3, 4, 8)
+      var output = mapper(10, 1, 2, 3, 4, 8, 0)
       expect(output.tierCounts.total).to.equal(10)
       expect(output.tierCounts.warrants).to.equal(1)
       expect(output.tierCounts.unpaidWork).to.equal(2)
       expect(output.tierCounts.overdueTermination).to.equal(3)
       expect(output.tierCounts.suspended).to.equal(4)
       expect(output.tierCounts.suspendedLifers).to.equal(8)
+      expect(output.tierCounts.tierCode).to.equal(0)
     })
   })
   describe('invalid states', function () {

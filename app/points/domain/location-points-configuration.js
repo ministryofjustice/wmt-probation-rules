@@ -5,16 +5,16 @@ const assertNumber = require('./validation/assert-number')
 // i.e. tierTen, tierNine, tierEight, tierOne, tierTwo ...
 class TierPointsConfiguration {
   constructor (tierOne, tierTwo, tierThree, tierFour, tierFive, tierSix, tierSeven, tierEight, tierNine, tierTen) {
-    this.tierOne = tierOne
-    this.tierTwo = tierTwo
-    this.tierThree = tierThree
-    this.tierFour = tierFour
-    this.tierFive = tierFive
-    this.tierSix = tierSix
-    this.tierSeven = tierSeven
-    this.tierEight = tierEight
-    this.tierNine = tierNine
-    this.tierTen = tierTen
+    this.tierOne = tierOne // Tier D2
+    this.tierTwo = tierTwo // Tier D1
+    this.tierThree = tierThree // Tier C2
+    this.tierFour = tierFour // Tier C1
+    this.tierFive = tierFive // Tier B2
+    this.tierSix = tierSix // Tier B1
+    this.tierSeven = tierSeven // Tier A
+    this.tierEight = tierEight // Tier E
+    this.tierNine = tierNine // Tier F
+    this.tierTen = tierTen // Tier G
     this.isValid()
   }
 
@@ -33,16 +33,16 @@ class TierPointsConfiguration {
 
   asTierList () {
     return [
-      this.tierTen,
-      this.tierNine,
-      this.tierEight,
       this.tierOne,
       this.tierTwo,
       this.tierThree,
       this.tierFour,
       this.tierFive,
       this.tierSix,
-      this.tierSeven
+      this.tierSeven,
+      this.tierEight,
+      this.tierNine,
+      this.tierTen
     ]
   }
 }

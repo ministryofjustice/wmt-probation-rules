@@ -25,17 +25,17 @@ module.exports = function (summary, details, t2a = false) {
     // For T2A cases they are identical to normal cases and there are no different
     return new Tiers(
       summary.location,
-      getTierCounts(zeroIfNull(summary.untiered)),
-      getTierCounts(zeroIfNull(summary.g)),
-      getTierCounts(zeroIfNull(summary.f)),
-      getTierCounts(zeroIfNull(summary.e)),
-      getTierCounts(zeroIfNull(summary.d2)),
-      getTierCounts(zeroIfNull(summary.d1)),
-      getTierCounts(zeroIfNull(summary.c2)),
-      getTierCounts(zeroIfNull(summary.c1)),
-      getTierCounts(zeroIfNull(summary.b2)),
-      getTierCounts(zeroIfNull(summary.b1)),
-      getTierCounts(zeroIfNull(summary.a)),
+      getTierCounts(zeroIfNull(summary.untiered), [], 0),
+      getTierCounts(zeroIfNull(summary.d2), [], 1),
+      getTierCounts(zeroIfNull(summary.d1), [], 2),
+      getTierCounts(zeroIfNull(summary.c2), [], 3),
+      getTierCounts(zeroIfNull(summary.c1), [], 4),
+      getTierCounts(zeroIfNull(summary.b2), [], 5),
+      getTierCounts(zeroIfNull(summary.b1), [], 6),
+      getTierCounts(zeroIfNull(summary.a), [], 7),
+      getTierCounts(zeroIfNull(summary.e), [], 8),
+      getTierCounts(zeroIfNull(summary.f), [], 9),
+      getTierCounts(zeroIfNull(summary.g), [], 10),
       total
     )
   } else {
@@ -43,30 +43,30 @@ module.exports = function (summary, details, t2a = false) {
     // one sort method which categorises each entry into an appropriate array
     return new Tiers(
       summary.location,
-      getTierCounts(zeroIfNull(summary.untiered), details.filter(tierCodeFilter('0'))),
-      getTierCounts(zeroIfNull(summary.g), details.filter(tierCodeFilter('10'))),
-      getTierCounts(zeroIfNull(summary.f), details.filter(tierCodeFilter('9'))),
-      getTierCounts(zeroIfNull(summary.e), details.filter(tierCodeFilter('8'))),
-      getTierCounts(zeroIfNull(summary.d2), details.filter(tierCodeFilter('1'))),
-      getTierCounts(zeroIfNull(summary.d1), details.filter(tierCodeFilter('2'))),
-      getTierCounts(zeroIfNull(summary.c2), details.filter(tierCodeFilter('3'))),
-      getTierCounts(zeroIfNull(summary.c1), details.filter(tierCodeFilter('4'))),
-      getTierCounts(zeroIfNull(summary.b2), details.filter(tierCodeFilter('5'))),
-      getTierCounts(zeroIfNull(summary.b1), details.filter(tierCodeFilter('6'))),
-      getTierCounts(zeroIfNull(summary.a), details.filter(tierCodeFilter('7'))),
+      getTierCounts(zeroIfNull(summary.untiered), details.filter(tierCodeFilter('0')), 0),
+      getTierCounts(zeroIfNull(summary.d2), details.filter(tierCodeFilter('1')), 1),
+      getTierCounts(zeroIfNull(summary.d1), details.filter(tierCodeFilter('2')), 2),
+      getTierCounts(zeroIfNull(summary.c2), details.filter(tierCodeFilter('3')), 3),
+      getTierCounts(zeroIfNull(summary.c1), details.filter(tierCodeFilter('4')), 4),
+      getTierCounts(zeroIfNull(summary.b2), details.filter(tierCodeFilter('5')), 5),
+      getTierCounts(zeroIfNull(summary.b1), details.filter(tierCodeFilter('6')), 6),
+      getTierCounts(zeroIfNull(summary.a), details.filter(tierCodeFilter('7')), 7),
+      getTierCounts(zeroIfNull(summary.e), details.filter(tierCodeFilter('8')), 8),
+      getTierCounts(zeroIfNull(summary.f), details.filter(tierCodeFilter('9')), 9),
+      getTierCounts(zeroIfNull(summary.g), details.filter(tierCodeFilter('10')), 10),
       total
     )
   }
 }
 
-var getTierCounts = function (totalCases, tierDetails = []) {
+var getTierCounts = function (totalCases, tierDetails = [], tierCode) {
   var unpaidWorkCount = tierDetails.filter(rowTypeFilter(CASE_TYPE_UNPAID)).length
   var warrantCount = tierDetails.filter(rowTypeFilter(CASE_TYPE_WARRANT)).length
   var overDueTermination = tierDetails.filter(rowTypeFilter(CASE_TYPE_OVERDUE_TERMINATION)).length
   var suspendedCount = tierDetails.filter(rowTypeFilter(CASE_TYPE_SUSPENDED)).length
   var suspendedLifersCount = tierDetails.filter(rowTypeFilter(CASE_TYPE_SUSPENDED_LIFERS)).length
   try {
-    return new TierCounts(totalCases, warrantCount, unpaidWorkCount, overDueTermination, suspendedCount, suspendedLifersCount)
+    return new TierCounts(totalCases, warrantCount, unpaidWorkCount, overDueTermination, suspendedCount, suspendedLifersCount, tierCode)
   } catch (error) {
     console.log(error)
   }
