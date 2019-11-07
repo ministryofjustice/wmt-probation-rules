@@ -51,7 +51,7 @@ describe('points/calculate-arms-points', function () {
             licenseWeighting,
             communityWeighting)
 
-    expect(armsPoints).to.equal(2)
+    expect(armsPoints).to.equal(1)
   })
 
   it('returns 1 when there is 1 license case and the license weighting is 0.5', function () {
@@ -64,7 +64,7 @@ describe('points/calculate-arms-points', function () {
             licenseWeighting,
             communityWeighting)
 
-    expect(armsPoints).to.equal(1)
+    expect(armsPoints).to.equal(0.5)
   })
 
   it('returns 4 when there is 1 community case and the community weighting is 1', function () {
@@ -77,7 +77,7 @@ describe('points/calculate-arms-points', function () {
             licenseWeighting,
             communityWeighting)
 
-    expect(armsPoints).to.equal(4)
+    expect(armsPoints).to.equal(1)
   })
 
   it('returns 2 when there is 1 community case and the community weighting is 0.5', function () {
@@ -90,7 +90,7 @@ describe('points/calculate-arms-points', function () {
             licenseWeighting,
             communityWeighting)
 
-    expect(armsPoints).to.equal(2)
+    expect(armsPoints).to.equal(0.5)
   })
 
   it('returns 6 when there is 1 of each case and the both weightings are 1', function () {
@@ -105,7 +105,7 @@ describe('points/calculate-arms-points', function () {
             licenseWeighting,
             communityWeighting)
 
-    expect(armsPoints).to.equal(6)
+    expect(armsPoints).to.equal(2)
   })
 
   it('returns 5 when there is 1 of each case and the license weighting is 0.5', function () {
@@ -120,7 +120,7 @@ describe('points/calculate-arms-points', function () {
             licenseWeighting,
             communityWeighting)
 
-    expect(armsPoints).to.equal(5)
+    expect(armsPoints).to.equal(1.5)
   })
 
   it('returns 4 when there is 1 of each case and the community weighting is 0.5', function () {
@@ -135,6 +135,6 @@ describe('points/calculate-arms-points', function () {
             licenseWeighting,
             communityWeighting)
 
-    expect(armsPoints).to.equal(4)
+    expect(armsPoints).to.equal(1.5)
   })
 })

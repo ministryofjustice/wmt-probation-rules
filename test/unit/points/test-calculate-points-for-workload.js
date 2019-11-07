@@ -8,8 +8,8 @@ describe('points/calculate-points-for-workload', function () {
     var workload = pointsHelper.getTestWorkloadObject()
     var caseTypeWeightings = pointsHelper.getCaseTypeWeightings()
     var t2aCaseTypeWeightings = pointsHelper.getCaseTypeWeightings()
-    var armsCommunityPoints = 2 * 4 * 4
-    var armsLicensePoints = 1 * 2 * 5
+    var armsCommunityPoints = 2 * 1 * 4
+    var armsLicensePoints = 1 * 1 * 5
     var expectedArmsPoints = armsCommunityPoints + armsLicensePoints
     var expectedSdrPoints = 9 * 4
     var expectedSdrConversionPoints = 7 * 5
