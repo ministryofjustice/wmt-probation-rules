@@ -6,6 +6,7 @@ class DefaultNominalTargets {
     this.po = poTarget
     this.isValid()
   }
+
   isValid () {
     assertNumber(this.pso, 'PSO')
     assertNumber(this.po, 'PO')

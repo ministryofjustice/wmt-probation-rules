@@ -18,4 +18,4 @@ gulp.task('mocha', function () {
       .pipe(mocha({ reporter: 'spec' }))
 })
 
-gulp.task('test', ['standard', 'mocha'])
+gulp.task('test', gulp.series('standard', 'mocha'))
