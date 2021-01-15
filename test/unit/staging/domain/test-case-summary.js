@@ -5,9 +5,9 @@ const moment = require('moment')
 
 describe('points/domain/staging/case-summary', function () {
   it('should allow all fields to be retrieved', function () {
-    var omKey = '1234'
-    var datestamp = moment.toString()
-    var caseSummary = stagingHelper.getTestCaseSummary(omKey, datestamp)
+    const omKey = '1234'
+    const datestamp = moment.toString()
+    const caseSummary = stagingHelper.getTestCaseSummary(omKey, datestamp)
     expect(caseSummary.omKey).to.equal(omKey)
     expect(caseSummary.trust).to.be.a('string')
     expect(caseSummary.regionCode).to.be.a('string')

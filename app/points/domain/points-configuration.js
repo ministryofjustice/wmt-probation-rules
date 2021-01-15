@@ -7,7 +7,7 @@ const DefaultNominalTargets = require('./default-nominal-targets')
 // WMT0160: Add reference to community version of LocationPointsConfiguration
 class PointsConfiguration {
   constructor (communityTierPointsConfig, licenseTierPointsConfig, custodyTierPointsConfig,
-              sdr, sdrConversion, defaultNominalTargets, defaultContractedHours, paromsEnabled, parom) {
+    sdr, sdrConversion, defaultNominalTargets, defaultContractedHours, paromsEnabled, parom) {
     this.communityTierPointsConfig = communityTierPointsConfig
     this.licenseTierPointsConfig = licenseTierPointsConfig
     this.custodyTierPointsConfig = custodyTierPointsConfig

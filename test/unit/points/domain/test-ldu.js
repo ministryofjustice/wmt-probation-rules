@@ -5,15 +5,15 @@ const moment = require('moment')
 const Ldu = require('../../../../app/points/domain/ldu')
 
 describe('services/domain/ldu', function () {
-  var id = 1231
-  var regionId = 3423
-  var code = '420A1F'
-  var description = 'test description'
-  var effectiveFrom = moment([2012, 4, 22])
-  var effectiveTo = moment([2015, 4, 22])
+  const id = 1231
+  const regionId = 3423
+  const code = '420A1F'
+  const description = 'test description'
+  const effectiveFrom = moment([2012, 4, 22])
+  const effectiveTo = moment([2015, 4, 22])
 
   it('should construct a ldu domain object', function () {
-    var ldu = new Ldu(id, regionId, code, description, effectiveFrom, effectiveTo)
+    const ldu = new Ldu(id, regionId, code, description, effectiveFrom, effectiveTo)
 
     expect(ldu.id).to.equal(id)
     expect(ldu.regionId).to.equal(regionId)

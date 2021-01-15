@@ -4,13 +4,13 @@ const expect = require('chai').expect
 const WorkingHours = require('../../../../app/points/domain/working-hours')
 
 describe('services/domain/working-hours', function () {
-  var id = 123
-  var contractedHours = 40
-  var reduction = 5
-  var notes = 'test notes'
+  const id = 123
+  const contractedHours = 40
+  const reduction = 5
+  const notes = 'test notes'
 
   it('should construct a working hours domain object', function () {
-    var workingHours = new WorkingHours(id, contractedHours, reduction, notes)
+    const workingHours = new WorkingHours(id, contractedHours, reduction, notes)
 
     expect(workingHours.id).to.equal(id)
     expect(workingHours.contractedHours).to.equal(contractedHours)

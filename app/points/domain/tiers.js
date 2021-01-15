@@ -36,7 +36,7 @@ class Tiers {
   }
 
   getTiersAsList () {
-    var list = [
+    const list = [
       this.d2,
       this.d1,
       this.c2,

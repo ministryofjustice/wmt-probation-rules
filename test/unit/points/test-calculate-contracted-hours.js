@@ -5,9 +5,9 @@ const expect = require('chai').expect
 const OM_TYPE_IDS = require('../../../app/points/constants/offender-manager-type-ids')
 
 describe('points/calculate-contracted-hours', function () {
-  var contractedHoursPerWeek
-  var defaultContractedHours
-  var offenderManagerTypeId
+  let contractedHoursPerWeek
+  let defaultContractedHours
+  let offenderManagerTypeId
 
   beforeEach(function () {
     contractedHoursPerWeek = 7
@@ -20,28 +20,28 @@ describe('points/calculate-contracted-hours', function () {
   })
 
   it(`returns default PSO contracted hours when offender manager type ID is ${OM_TYPE_IDS.PSO}`, function () {
-    var result = calculateContractedHours(contractedHoursPerWeek, defaultContractedHours, OM_TYPE_IDS.PSO)
+    const result = calculateContractedHours(contractedHoursPerWeek, defaultContractedHours, OM_TYPE_IDS.PSO)
     expect(result).to.be.an('object')
     expect(result.baseHours).to.equal(7)
     expect(result.defaultContractedHoursForBand).to.equal(12)
   })
 
   it(`returns default PSO contracted hours when offender manager type ID is ${OM_TYPE_IDS.PSO_B}`, function () {
-    var result = calculateContractedHours(contractedHoursPerWeek, defaultContractedHours, OM_TYPE_IDS.PSO_B)
+    const result = calculateContractedHours(contractedHoursPerWeek, defaultContractedHours, OM_TYPE_IDS.PSO_B)
     expect(result).to.be.an('object')
     expect(result.baseHours).to.equal(7)
     expect(result.defaultContractedHoursForBand).to.equal(12)
   })
 
   it(`returns default SPO contracted hours when offender manager type ID is ${OM_TYPE_IDS.SPO}`, function () {
-    var result = calculateContractedHours(contractedHoursPerWeek, defaultContractedHours, OM_TYPE_IDS.SPO)
+    const result = calculateContractedHours(contractedHoursPerWeek, defaultContractedHours, OM_TYPE_IDS.SPO)
     expect(result).to.be.an('object')
     expect(result.baseHours).to.equal(7)
     expect(result.defaultContractedHoursForBand).to.equal(0)
   })
 
   it('returns other default contracted hours when offender manager type ID is an unexpected number', function () {
-    var result = calculateContractedHours(contractedHoursPerWeek, defaultContractedHours, 1)
+    const result = calculateContractedHours(contractedHoursPerWeek, defaultContractedHours, 1)
     expect(result).to.be.an('object')
     expect(result.baseHours).to.equal(7)
     expect(result.defaultContractedHoursForBand).to.equal(7)
@@ -49,7 +49,7 @@ describe('points/calculate-contracted-hours', function () {
 
   it('uses defaultContractedHoursForBand when contractedHoursPerWeek is not provided', function () {
     // TODO: check if zero for this is an acceptable answer or should it use defaultContractedHoursForBand too.
-    var result = calculateContractedHours(null, defaultContractedHours, OM_TYPE_IDS.PSO_B)
+    const result = calculateContractedHours(null, defaultContractedHours, OM_TYPE_IDS.PSO_B)
     expect(result).to.be.an('object')
     expect(result.baseHours).to.equal(12)
     expect(result.defaultContractedHoursForBand).to.equal(12)
@@ -61,7 +61,7 @@ describe('points/calculate-contracted-hours', function () {
   })
 
   it(`returns default TPO contracted hours when offender manager type ID is ${OM_TYPE_IDS.TPO}`, function () {
-    var result = calculateContractedHours(contractedHoursPerWeek, defaultContractedHours, OM_TYPE_IDS.TPO)
+    const result = calculateContractedHours(contractedHoursPerWeek, defaultContractedHours, OM_TYPE_IDS.TPO)
     expect(result).to.be.an('object')
     expect(result.baseHours).to.equal(7)
     expect(result.defaultContractedHoursForBand).to.equal(7)

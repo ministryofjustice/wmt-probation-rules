@@ -5,15 +5,15 @@ const moment = require('moment')
 const Team = require('../../../../app/points/domain/team')
 
 describe('services/domain/team', function () {
-  var id = 1231
-  var lduId = 2311
-  var code = '19DS0F'
-  var description = 'test description'
-  var effectiveFrom = moment([2012, 4, 22])
-  var effectiveTo = moment([2015, 4, 22])
+  const id = 1231
+  const lduId = 2311
+  const code = '19DS0F'
+  const description = 'test description'
+  const effectiveFrom = moment([2012, 4, 22])
+  const effectiveTo = moment([2015, 4, 22])
 
   it('should construct a team domain object', function () {
-    var team = new Team(id, lduId, code, description, effectiveFrom, effectiveTo)
+    const team = new Team(id, lduId, code, description, effectiveFrom, effectiveTo)
 
     expect(team.id).to.equal(id)
     expect(team.lduId).to.equal(lduId)

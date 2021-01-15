@@ -1,18 +1,18 @@
- /* eslint-disable no-new */
+/* eslint-disable no-new */
 
 const expect = require('chai').expect
 const OffenderManager = require('../../../../app/points/domain/offender-manager')
 
 describe('services/domain/offender-manager', function () {
-  var id = 1231
-  var key = 2311
-  var forename = 'Tony'
-  var surname = 'Tester'
-  var typeId = 'U'
-  var gradeCode = 'L'
+  const id = 1231
+  const key = 2311
+  const forename = 'Tony'
+  const surname = 'Tester'
+  const typeId = 'U'
+  const gradeCode = 'L'
 
   it('should construct an offender manager domain object', function () {
-    var offenderManager = new OffenderManager(id, key, forename, surname, typeId, gradeCode)
+    const offenderManager = new OffenderManager(id, key, forename, surname, typeId, gradeCode)
 
     expect(offenderManager.id).to.equal(id)
     expect(offenderManager.key).to.equal(key)

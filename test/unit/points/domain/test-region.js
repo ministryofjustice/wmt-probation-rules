@@ -4,12 +4,12 @@ const expect = require('chai').expect
 const Region = require('../../../../app/points/domain/region')
 
 describe('services/domain/region', function () {
-  var id = 1231
-  var code = '304AF'
-  var description = 'test description'
+  const id = 1231
+  const code = '304AF'
+  const description = 'test description'
 
   it('should construct a region domain object', function () {
-    var region = new Region(id, code, description)
+    const region = new Region(id, code, description)
 
     expect(region.id).to.equal(id)
     expect(region.code).to.equal(code)

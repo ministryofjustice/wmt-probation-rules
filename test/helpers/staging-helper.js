@@ -8,7 +8,7 @@ const Tiers = require('../../app/staging/domain/tiers')
 const locations = require('../../app/staging/constants/locations')
 
 module.exports.getTestOmWorkload = function (omKey, caseRefNo) {
-  var omWorkload = new OmWorkload(
+  const omWorkload = new OmWorkload(
     1,
     this.getTestCaseSummary(omKey),
     this.getTestCourtReport(omKey),
@@ -19,7 +19,7 @@ module.exports.getTestOmWorkload = function (omKey, caseRefNo) {
 }
 
 module.exports.getTestOmCourtReports = function (omKey) {
-  var omCourtReports = new OmCourtReports(
+  const omCourtReports = new OmCourtReports(
     1,
     this.getTestCaseSummary(omKey),
     this.getTestCourtReport(omKey)
@@ -39,8 +39,8 @@ module.exports.getTestCaseDetails = function (omKey, rowType = getRandomRowType(
 }
 
 module.exports.getMultipleTestCaseDetails = function (omKey, rowType, caseRefNo, tierCode, teamCode, omGradeCode, location, count) {
-  var caseDetails = []
-  for (var i = 0; i < count; i++) {
+  const caseDetails = []
+  for (let i = 0; i < count; i++) {
     caseDetails.push(this.getTestCaseDetails(omKey, rowType, caseRefNo, tierCode, teamCode, omGradeCode, location))
   }
   return caseDetails
@@ -84,11 +84,11 @@ module.exports.getTestCaseSummary = function (omKey) {
     filteredCommunityTiers,
     filteredLicenseTiers,
     filteredCustodyTiers
-    )
+  )
 }
 
 module.exports.getGeneratedCaseRefNo = function () {
-  var refno = Math.floor(Math.random() * 90000) + 10000
+  const refno = Math.floor(Math.random() * 90000) + 10000
   return `REF-${refno}`
 }
 
@@ -97,20 +97,20 @@ module.exports.getMultipleTestTiers = function (location, count) {
 }
 
 module.exports.getTestTiers = function (location) {
-  var tierACount = null
+  const tierACount = null
   return new Tiers(location, getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), getRandomPoints(), tierACount, getRandomPoints(), getRandomPoints(), getRandomPoints())
 }
 
 module.exports.getFilteredTiers = function (location) {
-  var tiers
-  switch(location) {
+  let tiers
+  switch (location) {
     case locations.COMMUNITY:
       tiers = new Tiers(location, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
       break
     case locations.CUSTODY:
       tiers = new Tiers(location, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
       break
-    case locations.CUSTODY:
+    case locations.LICENSE:
       tiers = new Tiers(location, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30)
       break
   }
@@ -122,7 +122,7 @@ module.exports.getCountableTestTiers = function (location) {
 }
 
 function getRandomRegionCode () {
-  var index = Math.floor(Math.random() * 7) + 1
+  const index = Math.floor(Math.random() * 7) + 1
   return `N${index}`
 }
 

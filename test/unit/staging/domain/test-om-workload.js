@@ -8,10 +8,10 @@ const moment = require('moment')
 
 describe('points/domain/staging/om-workload', function () {
   it('should allow all fields to be retrieved', function () {
-    var omKey = '1234'
-    var caseRefNo = stagingHelper.getGeneratedCaseRefNo()
-    var timestamp = moment.toString()
-    var omWorkload = stagingHelper.getTestOmWorkload(omKey, caseRefNo, timestamp)
+    const omKey = '1234'
+    const caseRefNo = stagingHelper.getGeneratedCaseRefNo()
+    const timestamp = moment.toString()
+    const omWorkload = stagingHelper.getTestOmWorkload(omKey, caseRefNo, timestamp)
 
     expect(omWorkload.stagingId).to.be.a('number')
     expect(omWorkload.casesSummary).to.be.instanceOf(CasesSummary)

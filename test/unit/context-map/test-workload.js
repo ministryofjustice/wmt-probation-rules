@@ -11,11 +11,11 @@ const CaseDetails = require('../../../app/staging/domain/case-details')
 const StagingTiers = require('../../../app/staging/domain/tiers')
 
 describe('context-map/workload', function () {
-  var caseRefNo = stagingHelper.getGeneratedCaseRefNo()
-  var omKey = '1234'
-  var stagingWorkload = stagingHelper.getTestOmWorkload(caseRefNo, omKey, Locations.COMMUNITY)
-  var ownerId = 10
-  var workloadReportId = 5
+  const caseRefNo = stagingHelper.getGeneratedCaseRefNo()
+  const omKey = '1234'
+  const stagingWorkload = stagingHelper.getTestOmWorkload(caseRefNo, omKey, Locations.COMMUNITY)
+  const ownerId = 10
+  const workloadReportId = 5
 
   it('should validate the parameters are as expected', function () {
     expect(() => mapper({}, ownerId)).to.throw(Error)
@@ -32,13 +32,13 @@ describe('context-map/workload', function () {
   })
 
   describe('case summary fields', function () {
-    var communityTiers = stagingHelper.getTestTiers(Locations.COMMUNITY)
-    var custodyTiers = stagingHelper.getTestTiers(Locations.CUSTODY)
-    var licenseTiers = stagingHelper.getTestTiers(Locations.LICENSE)
+    const communityTiers = stagingHelper.getTestTiers(Locations.COMMUNITY)
+    const custodyTiers = stagingHelper.getTestTiers(Locations.CUSTODY)
+    const licenseTiers = stagingHelper.getTestTiers(Locations.LICENSE)
 
-    var t2aCommunityTiers = stagingHelper.getTestTiers(Locations.COMMUNITY)
-    var t2aCustodyTiers = stagingHelper.getTestTiers(Locations.CUSTODY)
-    var t2aLicenseTiers = stagingHelper.getTestTiers(Locations.LICENSE)
+    const t2aCommunityTiers = stagingHelper.getTestTiers(Locations.COMMUNITY)
+    const t2aCustodyTiers = stagingHelper.getTestTiers(Locations.CUSTODY)
+    const t2aLicenseTiers = stagingHelper.getTestTiers(Locations.LICENSE)
 
     stagingWorkload.casesSummary.communityTiers = communityTiers
     stagingWorkload.casesSummary.custodyTiers = custodyTiers
@@ -48,14 +48,14 @@ describe('context-map/workload', function () {
     stagingWorkload.casesSummary.t2aCustodyTiers = t2aCustodyTiers
     stagingWorkload.casesSummary.t2aLicenseTiers = t2aLicenseTiers
 
-    var mappedWorkload = mapper(stagingWorkload, ownerId, workloadReportId)
+    const mappedWorkload = mapper(stagingWorkload, ownerId, workloadReportId)
 
     it('should correctly map the workload owner id', function () {
       expect(mappedWorkload.workloadOwnerId).to.equal(ownerId)
     })
 
     it('should correctly calculate the total number of cases', function () {
-      var workloadWith48Cases = stagingHelper.getTestOmWorkload(caseRefNo, omKey, undefined)
+      const workloadWith48Cases = stagingHelper.getTestOmWorkload(caseRefNo, omKey, undefined)
 
       workloadWith48Cases.casesSummary.communityTiers = stagingHelper.getCountableTestTiers(Locations.COMMUNITY)
       workloadWith48Cases.casesSummary.custodyTiers = stagingHelper.getCountableTestTiers(Locations.CUSTODY)
@@ -64,7 +64,7 @@ describe('context-map/workload', function () {
       workloadWith48Cases.casesSummary.t2aCustodyTiers = stagingHelper.getCountableTestTiers(Locations.CUSTODY)
       workloadWith48Cases.casesSummary.t2aLicenseTiers = stagingHelper.getCountableTestTiers(Locations.LICENSE)
 
-      var mappedWorkloadWith48Cases = mapper(workloadWith48Cases, ownerId, workloadReportId)
+      const mappedWorkloadWith48Cases = mapper(workloadWith48Cases, ownerId, workloadReportId)
       expect(mappedWorkloadWith48Cases.totalCases).to.equal(66)
     })
 
@@ -108,7 +108,7 @@ describe('context-map/workload', function () {
     })
 
     it('should correctly calculate the total number of t2a cases', function () {
-      var workloadWith24T2aCases = stagingHelper.getTestOmWorkload(caseRefNo, omKey, undefined)
+      const workloadWith24T2aCases = stagingHelper.getTestOmWorkload(caseRefNo, omKey, undefined)
 
       workloadWith24T2aCases.casesSummary.communityTiers = stagingHelper.getCountableTestTiers(Locations.COMMUNITY)
       workloadWith24T2aCases.casesSummary.custodyTiers = stagingHelper.getCountableTestTiers(Locations.CUSTODY)
@@ -117,7 +117,7 @@ describe('context-map/workload', function () {
       workloadWith24T2aCases.casesSummary.t2aCustodyTiers = stagingHelper.getCountableTestTiers(Locations.CUSTODY)
       workloadWith24T2aCases.casesSummary.t2aLicenseTiers = stagingHelper.getCountableTestTiers(Locations.LICENSE)
 
-      var mappedWorkloadWith24T2aCases = mapper(workloadWith24T2aCases, ownerId, workloadReportId)
+      const mappedWorkloadWith24T2aCases = mapper(workloadWith24T2aCases, ownerId, workloadReportId)
       expect(mappedWorkloadWith24T2aCases.totalT2aCases).to.equal(33)
     })
 
@@ -139,19 +139,19 @@ describe('context-map/workload', function () {
   })
 
   describe('case details fields', function () {
-    var communityMultiplier = 10
-    var custodyMultiplier = 20
-    var licenseMultiplier = 30
+    const communityMultiplier = 10
+    const custodyMultiplier = 20
+    const licenseMultiplier = 30
 
-    var overdueTerminationsSeed = 100
-    var activeWarrantsSeed = 200
-    var unpaidWorkSeed = 300
+    const overdueTerminationsSeed = 100
+    const activeWarrantsSeed = 200
+    const unpaidWorkSeed = 300
 
-    var caseDetails = []
+    const caseDetails = []
 
-    for (var i = 0; i < 8; i++) {
-      var tierCode = i
-      var tierSeed = i + 1
+    for (let i = 0; i < 8; i++) {
+      const tierCode = i
+      const tierSeed = i + 1
 
       if (i === 7) {
         caseDetails.push(...stagingHelper.getMultipleTestCaseDetails(omKey, 'W', undefined, tierCode.toString(), undefined, undefined, Locations.CUSTODY, 0))
@@ -181,7 +181,7 @@ describe('context-map/workload', function () {
     }
 
     stagingWorkload.caseDetails = caseDetails
-    var mappedWorkload = mapper(stagingWorkload, ownerId, workloadReportId)
+    const mappedWorkload = mapper(stagingWorkload, ownerId, workloadReportId)
 
     it('should correctly map the custody overdue terminations', function () {
       expect(mappedWorkload.custodyTiers.untiered.overdueTermination).to.eq(1 + overdueTerminationsSeed + custodyMultiplier)
@@ -284,7 +284,7 @@ describe('context-map/workload', function () {
   })
 
   describe('court report fields', function () {
-    var mappedWorkload = mapper(stagingWorkload, ownerId, workloadReportId)
+    const mappedWorkload = mapper(stagingWorkload, ownerId, workloadReportId)
 
     it('correctly maps monthly SDRs', function () {
       expect(mappedWorkload.monthlySdrs).to.eq(parseInt(stagingWorkload.courtReports.sdrLast30))
@@ -296,7 +296,7 @@ describe('context-map/workload', function () {
   })
 
   describe('institutional report fields', function () {
-    var mappedWorkload = mapper(stagingWorkload, ownerId, workloadReportId)
+    const mappedWorkload = mapper(stagingWorkload, ownerId, workloadReportId)
 
     it('correctly maps paroms completed last 30 days', function () {
       expect(mappedWorkload.paromsCompletedLast30Days).to.eq(parseInt(stagingWorkload.instReports.paromCompLast30))
@@ -308,21 +308,21 @@ describe('context-map/workload', function () {
   })
 
   describe('Suspended lifers', function () {
-    var communityTiers
-    var licenceTiers
-    var custodyTiers
-    var filteredCommunityTiers
-    var filteredLicenceTiers
-    var filteredCustodyTiers
-    var t2aCommunityTiers
-    var t2aLicenceTiers
-    var t2aCustodyTiers
-    var instReports
-    var courtReports
-    var casesSummary
-    var workload
-    var caseDetails = []
-    var mappedWorkloads
+    let communityTiers
+    let licenceTiers
+    let custodyTiers
+    let filteredCommunityTiers
+    let filteredLicenceTiers
+    let filteredCustodyTiers
+    let t2aCommunityTiers
+    let t2aLicenceTiers
+    let t2aCustodyTiers
+    let instReports
+    let courtReports
+    let casesSummary
+    let workload
+    const caseDetails = []
+    let mappedWorkloads
 
     before(function () {
       communityTiers = new StagingTiers(Locations.COMMUNITY, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
@@ -389,7 +389,7 @@ describe('context-map/workload', function () {
     })
 
     it('should create a valid mapped workload with the correct filtered custody tiers', function () {
-      expect(mappedWorkloads.filteredCustodyTiers.untiered.total, 'Untiered Custody total should equal 19').to.be.equal(19)      
+      expect(mappedWorkloads.filteredCustodyTiers.untiered.total, 'Untiered Custody total should equal 19').to.be.equal(19)
       expect(mappedWorkloads.filteredCustodyTiers.d2.total, 'D2 Custody total should equal 20').to.be.equal(20)
       expect(mappedWorkloads.filteredCustodyTiers.d1.total, 'D1 Custody total should equal 21').to.be.equal(21)
       expect(mappedWorkloads.filteredCustodyTiers.c2.total, 'C2 Custody total should equal 22').to.be.equal(22)
@@ -416,7 +416,6 @@ describe('context-map/workload', function () {
       expect(mappedWorkloads.filteredLicenseTiers.f.total, 'F Licence total should equal 18').to.be.equal(18)
       expect(mappedWorkloads.filteredLicenseTiers.g.total, 'G Licence total should equal 19').to.be.equal(19)
       expect(mappedWorkloads.filteredLicenseTiers.total, 'Licence overall filtered total should equal 154').to.be.equal(154)
-
     })
   })
 })

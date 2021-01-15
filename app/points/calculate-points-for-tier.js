@@ -2,8 +2,8 @@ const TierCounts = require('../../app/points/domain/tier-counts')
 const assertObjectType = require('../../app/points/domain/validation/assert-object-type')
 const assertNumber = require('../../app/points/domain/validation/assert-number')
 
-var calculateWeightedPoints = function (count, points, weighting) {
-  var weightedPoints = points
+const calculateWeightedPoints = function (count, points, weighting) {
+  let weightedPoints = points
 
   if (weighting !== undefined) {
     weightedPoints = points * invertWeightingPercentage(weighting)
@@ -12,8 +12,8 @@ var calculateWeightedPoints = function (count, points, weighting) {
   return count * weightedPoints
 }
 
-var invertWeightingPercentage = function (weightingPercentage) {
-  var multiplier
+const invertWeightingPercentage = function (weightingPercentage) {
+  let multiplier
   if (weightingPercentage >= 100) {
     multiplier = 0
   } else if (weightingPercentage <= 0) {
@@ -27,7 +27,7 @@ var invertWeightingPercentage = function (weightingPercentage) {
 module.exports = function (tierCounts, tierPoints, caseTypeWeightings, subtractInactiveCases = false) {
   assertObjectType(tierCounts, TierCounts, 'Tier-counts')
   assertNumber(tierPoints, 'Tier Points')
-  var pointsForTier = calculateWeightedPoints(tierCounts.total, tierPoints)
+  let pointsForTier = calculateWeightedPoints(tierCounts.total, tierPoints)
   // As of WMT0115, the wmt_extract_filtered worksheet is used for tier totals
   // This tab already has inactive case totals removed so no need to subtract them here
   // t2a cases still have inactive case totals in the t2a worksheet so we still need to subtract the points for

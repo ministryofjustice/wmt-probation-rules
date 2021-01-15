@@ -4,14 +4,14 @@ const Tiers = require('./tiers.js')
 
 class Workload {
   constructor (workloadOwnerId, totalCases, totalT2aCases, monthlySdrs,
-          sdrsDueNext30Days, sdrConversionsLast30Days,
-          paromsCompletedLast30Days, paromsDueNext30Days,
-          custodyTiers, communityTiers, licenseTiers,
-          t2aCustodyTiers, t2aCommunityTiers, t2aLicenseTiers,
-          licenseCasesLast16Weeks, communityCasesLast16Weeks,
-          armsCommunityCases, armsLicenseCases,
-          stagingId, workloadReportId, filteredCommunityTiers,
-          filteredCustodyTiers, filteredLicenseTiers, totalFilteredCases) {
+    sdrsDueNext30Days, sdrConversionsLast30Days,
+    paromsCompletedLast30Days, paromsDueNext30Days,
+    custodyTiers, communityTiers, licenseTiers,
+    t2aCustodyTiers, t2aCommunityTiers, t2aLicenseTiers,
+    licenseCasesLast16Weeks, communityCasesLast16Weeks,
+    armsCommunityCases, armsLicenseCases,
+    stagingId, workloadReportId, filteredCommunityTiers,
+    filteredCustodyTiers, filteredLicenseTiers, totalFilteredCases) {
     this.workloadOwnerId = workloadOwnerId
     this.totalCases = totalCases
     this.totalT2aCases = totalT2aCases

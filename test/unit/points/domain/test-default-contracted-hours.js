@@ -17,7 +17,7 @@ describe('points/domain/default-contracted-hours', function () {
     expect(function () { new DefaultContractedHours(1, 1, 1) }).not.to.throw(Error)
   })
   it('correctly retrieves all fields', function () {
-    var defaultContractedHours = new DefaultContractedHours(1, 2, 3)
+    const defaultContractedHours = new DefaultContractedHours(1, 2, 3)
     expect(defaultContractedHours.pso).to.equal(1)
     expect(defaultContractedHours.po).to.equal(2)
     expect(defaultContractedHours.spo).to.equal(3)

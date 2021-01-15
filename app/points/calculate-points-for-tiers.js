@@ -9,13 +9,13 @@ module.exports = function (locationTiers, locationPointsConfiguration, caseTypeW
   assertObjectType(locationPointsConfiguration, LocationPointsConfiguration, 'LocationPointsConfiguration')
   assertObjectType(caseTypeWeightings, CaseTypeWeightings, 'CaseTypeWeightings')
 
-  var points = 0
-  var tiersPointConfigurationAsList = locationPointsConfiguration.asTierList()
+  let points = 0
+  const tiersPointConfigurationAsList = locationPointsConfiguration.asTierList()
 
-  var tiers = locationTiers.getTiersAsList()
+  const tiers = locationTiers.getTiersAsList()
 
   // purposely leave out the untiered cases
-  for (var i = 0; i < tiers.length - 1; i++) {
+  for (let i = 0; i < tiers.length - 1; i++) {
     points += calculatePointsForTier(tiers[i], tiersPointConfigurationAsList[i], caseTypeWeightings, subtractInactiveCases)
   }
   return points

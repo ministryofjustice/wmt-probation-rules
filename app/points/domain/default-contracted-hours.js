@@ -7,6 +7,7 @@ class DefaultContractedHours {
     this.spo = spoHours
     this.isValid()
   }
+
   isValid () {
     assertNumber(this.pso, 'PSO')
     assertNumber(this.po, 'other')

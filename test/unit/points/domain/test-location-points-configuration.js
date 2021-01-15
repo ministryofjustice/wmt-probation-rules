@@ -16,7 +16,7 @@ describe('points/domain/location-points-configuration', function () {
     expect(function () { new LocationPointsConfiguration(1, 1, 1, 1, 1, 1, 1, 1, 1, undefined) }).to.throw(Error)
   })
   it('retrieves all values', function () {
-    var locationPointsConfiguration = new LocationPointsConfiguration(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    const locationPointsConfiguration = new LocationPointsConfiguration(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
     expect(locationPointsConfiguration.tierOne).to.equal(1)
     expect(locationPointsConfiguration.tierTwo).to.equal(2)
     expect(locationPointsConfiguration.tierThree).to.equal(3)
