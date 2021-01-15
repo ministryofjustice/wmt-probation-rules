@@ -3,10 +3,10 @@ const expect = require('chai').expect
 const calculateArmsPoints = require('../../../app/points/calculate-arms-points')
 
 describe('points/calculate-arms-points', function () {
-  var licenseCasesCount
-  var communityCasesCount
-  var licenseWeighting
-  var communityWeighting
+  let licenseCasesCount
+  let communityCasesCount
+  let licenseWeighting
+  let communityWeighting
 
   beforeEach(function () {
     licenseCasesCount = 0
@@ -19,11 +19,11 @@ describe('points/calculate-arms-points', function () {
     communityWeighting = 1
     licenseWeighting = 1
 
-    var armsPoints = calculateArmsPoints(
-            licenseCasesCount,
-            communityCasesCount,
-            licenseWeighting,
-            communityWeighting)
+    const armsPoints = calculateArmsPoints(
+      licenseCasesCount,
+      communityCasesCount,
+      licenseWeighting,
+      communityWeighting)
 
     expect(armsPoints).to.equal(0)
   })
@@ -32,11 +32,11 @@ describe('points/calculate-arms-points', function () {
     communityCasesCount = 1
     licenseCasesCount = 1
 
-    var armsPoints = calculateArmsPoints(
-            licenseCasesCount,
-            communityCasesCount,
-            licenseWeighting,
-            communityWeighting)
+    const armsPoints = calculateArmsPoints(
+      licenseCasesCount,
+      communityCasesCount,
+      licenseWeighting,
+      communityWeighting)
 
     expect(armsPoints).to.equal(0)
   })
@@ -45,11 +45,11 @@ describe('points/calculate-arms-points', function () {
     licenseCasesCount = 1
     licenseWeighting = 1
 
-    var armsPoints = calculateArmsPoints(
-            licenseCasesCount,
-            communityCasesCount,
-            licenseWeighting,
-            communityWeighting)
+    const armsPoints = calculateArmsPoints(
+      licenseCasesCount,
+      communityCasesCount,
+      licenseWeighting,
+      communityWeighting)
 
     expect(armsPoints).to.equal(1)
   })
@@ -58,11 +58,11 @@ describe('points/calculate-arms-points', function () {
     licenseCasesCount = 1
     licenseWeighting = 0.5
 
-    var armsPoints = calculateArmsPoints(
-            licenseCasesCount,
-            communityCasesCount,
-            licenseWeighting,
-            communityWeighting)
+    const armsPoints = calculateArmsPoints(
+      licenseCasesCount,
+      communityCasesCount,
+      licenseWeighting,
+      communityWeighting)
 
     expect(armsPoints).to.equal(0.5)
   })
@@ -71,11 +71,11 @@ describe('points/calculate-arms-points', function () {
     communityCasesCount = 1
     communityWeighting = 1
 
-    var armsPoints = calculateArmsPoints(
-            licenseCasesCount,
-            communityCasesCount,
-            licenseWeighting,
-            communityWeighting)
+    const armsPoints = calculateArmsPoints(
+      licenseCasesCount,
+      communityCasesCount,
+      licenseWeighting,
+      communityWeighting)
 
     expect(armsPoints).to.equal(1)
   })
@@ -84,11 +84,11 @@ describe('points/calculate-arms-points', function () {
     communityCasesCount = 1
     communityWeighting = 0.5
 
-    var armsPoints = calculateArmsPoints(
-            licenseCasesCount,
-            communityCasesCount,
-            licenseWeighting,
-            communityWeighting)
+    const armsPoints = calculateArmsPoints(
+      licenseCasesCount,
+      communityCasesCount,
+      licenseWeighting,
+      communityWeighting)
 
     expect(armsPoints).to.equal(0.5)
   })
@@ -99,11 +99,11 @@ describe('points/calculate-arms-points', function () {
     licenseWeighting = 1
     communityWeighting = 1
 
-    var armsPoints = calculateArmsPoints(
-            licenseCasesCount,
-            communityCasesCount,
-            licenseWeighting,
-            communityWeighting)
+    const armsPoints = calculateArmsPoints(
+      licenseCasesCount,
+      communityCasesCount,
+      licenseWeighting,
+      communityWeighting)
 
     expect(armsPoints).to.equal(2)
   })
@@ -114,11 +114,11 @@ describe('points/calculate-arms-points', function () {
     licenseWeighting = 0.5
     communityWeighting = 1
 
-    var armsPoints = calculateArmsPoints(
-            licenseCasesCount,
-            communityCasesCount,
-            licenseWeighting,
-            communityWeighting)
+    const armsPoints = calculateArmsPoints(
+      licenseCasesCount,
+      communityCasesCount,
+      licenseWeighting,
+      communityWeighting)
 
     expect(armsPoints).to.equal(1.5)
   })
@@ -129,11 +129,11 @@ describe('points/calculate-arms-points', function () {
     licenseWeighting = 1
     communityWeighting = 0.5
 
-    var armsPoints = calculateArmsPoints(
-            licenseCasesCount,
-            communityCasesCount,
-            licenseWeighting,
-            communityWeighting)
+    const armsPoints = calculateArmsPoints(
+      licenseCasesCount,
+      communityCasesCount,
+      licenseWeighting,
+      communityWeighting)
 
     expect(armsPoints).to.equal(1.5)
   })

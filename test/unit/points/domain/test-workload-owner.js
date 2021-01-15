@@ -4,14 +4,14 @@ const expect = require('chai').expect
 const WorkloadOwner = require('../../../../app/points/domain/workload-owner')
 
 describe('services/domain/workload-owner', function () {
-  var id = 123
-  var offenderManagerId = 231
-  var workingHoursId = 3242
-  var teamId = 3223
-  var contractedHours = 37
+  const id = 123
+  const offenderManagerId = 231
+  const workingHoursId = 3242
+  const teamId = 3223
+  const contractedHours = 37
 
   it('should construct a workload owner domain object', function () {
-    var workloadOwner = new WorkloadOwner(id, offenderManagerId, workingHoursId, teamId, contractedHours)
+    const workloadOwner = new WorkloadOwner(id, offenderManagerId, workingHoursId, teamId, contractedHours)
 
     expect(workloadOwner.id).to.equal(id)
     expect(workloadOwner.offenderManagerId).to.equal(offenderManagerId)

@@ -5,20 +5,20 @@ const Locations = require('../../../app/staging/constants/locations')
 
 describe('points/calculate-points-for-workload', function () {
   describe('successful operation', function () {
-    var workload = pointsHelper.getTestWorkloadObject()
-    var caseTypeWeightings = pointsHelper.getCaseTypeWeightings()
-    var t2aCaseTypeWeightings = pointsHelper.getCaseTypeWeightings()
-    var armsCommunityPoints = 2 * 1 * 4
-    var armsLicensePoints = 1 * 1 * 5
-    var expectedArmsPoints = armsCommunityPoints + armsLicensePoints
-    var expectedSdrPoints = 9 * 4
-    var expectedSdrConversionPoints = 7 * 5
-    var expectedParomsPoints = 6 * 8
+    const workload = pointsHelper.getTestWorkloadObject()
+    const caseTypeWeightings = pointsHelper.getCaseTypeWeightings()
+    const t2aCaseTypeWeightings = pointsHelper.getCaseTypeWeightings()
+    const armsCommunityPoints = 2 * 1 * 4
+    const armsLicensePoints = 1 * 1 * 5
+    const expectedArmsPoints = armsCommunityPoints + armsLicensePoints
+    const expectedSdrPoints = 9 * 4
+    const expectedSdrConversionPoints = 7 * 5
+    const expectedParomsPoints = 6 * 8
 
-    var result = calculateOmicWorkloadPoints(workload, caseTypeWeightings, t2aCaseTypeWeightings)
-    var expectedPoints = 0
+    const result = calculateOmicWorkloadPoints(workload, caseTypeWeightings, t2aCaseTypeWeightings)
+    let expectedPoints = 0
 
-    for (var i = 1; i < 11; i++) {
+    for (let i = 1; i < 11; i++) {
       expectedPoints += ((8 * i)) // - (1 * i * 0.9) - (2 * i * 0.8) - (3 * i * 0.7)) // all the tiers (non-t2a)
       expectedPoints += ((8 * i) - (1 * i * 1) - (2 * i * 0) - (3 * i * 1)) // all the tiers for t2a
     }
@@ -51,12 +51,12 @@ describe('points/calculate-points-for-workload', function () {
   })
 
   it('should throw an error when Tiers is undefined', function () {
-    var caseTypeWeightings = pointsHelper.getCaseTypeWeightings()
+    const caseTypeWeightings = pointsHelper.getCaseTypeWeightings()
     expect(function () { calculateOmicWorkloadPoints(undefined, caseTypeWeightings) }).to.throw(Error)
   })
 
   it('should throw an error when caseTypeWeightings is undefined', function () {
-    var workload = pointsHelper.getTestWorkloadObject(Locations.LICENSE)
+    const workload = pointsHelper.getTestWorkloadObject(Locations.LICENSE)
     expect(function () { calculateOmicWorkloadPoints(workload, undefined) }).to.throw(Error)
   })
 })

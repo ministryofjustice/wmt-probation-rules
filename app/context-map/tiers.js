@@ -9,7 +9,7 @@ const CASE_TYPE_SUSPENDED = 'S'
 const CASE_TYPE_SUSPENDED_LIFERS = 'L'
 
 module.exports = function (summary, details, t2a = false) {
-  var total = zeroIfNull(summary.untiered) +
+  const total = zeroIfNull(summary.untiered) +
     zeroIfNull(summary.g) +
     zeroIfNull(summary.f) +
     zeroIfNull(summary.e) +
@@ -59,12 +59,12 @@ module.exports = function (summary, details, t2a = false) {
   }
 }
 
-var getTierCounts = function (totalCases, tierDetails = [], tierCode) {
-  var unpaidWorkCount = tierDetails.filter(rowTypeFilter(CASE_TYPE_UNPAID)).length
-  var warrantCount = tierDetails.filter(rowTypeFilter(CASE_TYPE_WARRANT)).length
-  var overDueTermination = tierDetails.filter(rowTypeFilter(CASE_TYPE_OVERDUE_TERMINATION)).length
-  var suspendedCount = tierDetails.filter(rowTypeFilter(CASE_TYPE_SUSPENDED)).length
-  var suspendedLifersCount = tierDetails.filter(rowTypeFilter(CASE_TYPE_SUSPENDED_LIFERS)).length
+const getTierCounts = function (totalCases, tierDetails = [], tierCode) {
+  const unpaidWorkCount = tierDetails.filter(rowTypeFilter(CASE_TYPE_UNPAID)).length
+  const warrantCount = tierDetails.filter(rowTypeFilter(CASE_TYPE_WARRANT)).length
+  const overDueTermination = tierDetails.filter(rowTypeFilter(CASE_TYPE_OVERDUE_TERMINATION)).length
+  const suspendedCount = tierDetails.filter(rowTypeFilter(CASE_TYPE_SUSPENDED)).length
+  const suspendedLifersCount = tierDetails.filter(rowTypeFilter(CASE_TYPE_SUSPENDED_LIFERS)).length
   try {
     return new TierCounts(totalCases, warrantCount, unpaidWorkCount, overDueTermination, suspendedCount, suspendedLifersCount, tierCode)
   } catch (error) {
@@ -72,13 +72,13 @@ var getTierCounts = function (totalCases, tierDetails = [], tierCode) {
   }
 }
 
-var tierCodeFilter = function (tierCode) {
+const tierCodeFilter = function (tierCode) {
   return function (element) {
     return element.tierCode.toString() === tierCode.toString()
   }
 }
 
-var rowTypeFilter = function (rowType) {
+const rowTypeFilter = function (rowType) {
   return function (element) {
     return element.rowType === rowType
   }

@@ -9,11 +9,11 @@ module.exports = function (stagingCourtReports, workloadOwnerId, workloadReportI
   assertNumber(workloadOwnerId, 'Workload Owner Id')
   assertNumber(workloadReportId, 'Workload Report Id')
 
-  var totalSdrs = zeroIfNull(stagingCourtReports.courtReports.sdrLast30)
-  var totalFdrs = zeroIfNull(stagingCourtReports.courtReports.sdrConvLast30)
-  var totalOralReports = zeroIfNull(stagingCourtReports.courtReports.oralReports)
+  const totalSdrs = zeroIfNull(stagingCourtReports.courtReports.sdrLast30)
+  const totalFdrs = zeroIfNull(stagingCourtReports.courtReports.sdrConvLast30)
+  const totalOralReports = zeroIfNull(stagingCourtReports.courtReports.oralReports)
 
-  var stagingId = stagingCourtReports.stagingId
+  const stagingId = stagingCourtReports.stagingId
 
   return new CourtReports(
     workloadOwnerId,

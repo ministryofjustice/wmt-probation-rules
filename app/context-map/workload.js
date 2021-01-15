@@ -12,52 +12,52 @@ module.exports = function (stagingWorkload, workloadOwnerId, workloadReportId) {
   assertNumber(workloadOwnerId, 'Workload Owner Id')
   assertNumber(workloadReportId, 'Workload Report Id')
 
-  var monthlySdrs = zeroIfNull(stagingWorkload.courtReports.sdrLast30)
-  var sdrsDueNext30Days = zeroIfNull(stagingWorkload.courtReports.sdrDueNext30)
-  var sdrsConversionsLast30Days = zeroIfNull(stagingWorkload.courtReports.sdrConvLast30)
+  const monthlySdrs = zeroIfNull(stagingWorkload.courtReports.sdrLast30)
+  const sdrsDueNext30Days = zeroIfNull(stagingWorkload.courtReports.sdrDueNext30)
+  const sdrsConversionsLast30Days = zeroIfNull(stagingWorkload.courtReports.sdrConvLast30)
 
-  var paromsCompletedLast30Days = zeroIfNull(stagingWorkload.instReports.paromCompLast30)
-  var paromsDueNext30Days = zeroIfNull(stagingWorkload.instReports.paromDueNext30)
+  const paromsCompletedLast30Days = zeroIfNull(stagingWorkload.instReports.paromCompLast30)
+  const paromsDueNext30Days = zeroIfNull(stagingWorkload.instReports.paromDueNext30)
 
-  var communityCaseDetails = stagingWorkload.caseDetails.filter(locationFilter(Locations.COMMUNITY))
-  var custodyCaseDetails = stagingWorkload.caseDetails.filter(locationFilter(Locations.CUSTODY))
-  var licenseCaseDetails = stagingWorkload.caseDetails.filter(locationFilter(Locations.LICENSE))
+  const communityCaseDetails = stagingWorkload.caseDetails.filter(locationFilter(Locations.COMMUNITY))
+  const custodyCaseDetails = stagingWorkload.caseDetails.filter(locationFilter(Locations.CUSTODY))
+  const licenseCaseDetails = stagingWorkload.caseDetails.filter(locationFilter(Locations.LICENSE))
 
-  var communitySummary = stagingWorkload.casesSummary.communityTiers
-  var custodySummary = stagingWorkload.casesSummary.custodyTiers
-  var licenseSummary = stagingWorkload.casesSummary.licenseTiers
+  const communitySummary = stagingWorkload.casesSummary.communityTiers
+  const custodySummary = stagingWorkload.casesSummary.custodyTiers
+  const licenseSummary = stagingWorkload.casesSummary.licenseTiers
 
-  var filteredCommunitySummary = stagingWorkload.casesSummary.filteredCommunityTiers
-  var filteredCustodySummary = stagingWorkload.casesSummary.filteredCustodyTiers
-  var filteredLicenseSummary = stagingWorkload.casesSummary.filteredLicenseTiers
+  const filteredCommunitySummary = stagingWorkload.casesSummary.filteredCommunityTiers
+  const filteredCustodySummary = stagingWorkload.casesSummary.filteredCustodyTiers
+  const filteredLicenseSummary = stagingWorkload.casesSummary.filteredLicenseTiers
 
-  var communityTiers = mapTiers(communitySummary, communityCaseDetails)
-  var custodyTiers = mapTiers(custodySummary, custodyCaseDetails)
-  var licenseTiers = mapTiers(licenseSummary, licenseCaseDetails)
+  const communityTiers = mapTiers(communitySummary, communityCaseDetails)
+  const custodyTiers = mapTiers(custodySummary, custodyCaseDetails)
+  const licenseTiers = mapTiers(licenseSummary, licenseCaseDetails)
 
-  var filteredCommunityTiers = mapTiers(filteredCommunitySummary, communityCaseDetails)
-  var filteredCustodyTiers = mapTiers(filteredCustodySummary, custodyCaseDetails)
-  var filteredLicenseTiers = mapTiers(filteredLicenseSummary, licenseCaseDetails)
+  const filteredCommunityTiers = mapTiers(filteredCommunitySummary, communityCaseDetails)
+  const filteredCustodyTiers = mapTiers(filteredCustodySummary, custodyCaseDetails)
+  const filteredLicenseTiers = mapTiers(filteredLicenseSummary, licenseCaseDetails)
 
-  var t2aCommunitySummary = stagingWorkload.casesSummary.t2aCommunityTiers
-  var t2aCustodySummary = stagingWorkload.casesSummary.t2aCustodyTiers
-  var t2aLicenseSummary = stagingWorkload.casesSummary.t2aLicenseTiers
+  const t2aCommunitySummary = stagingWorkload.casesSummary.t2aCommunityTiers
+  const t2aCustodySummary = stagingWorkload.casesSummary.t2aCustodyTiers
+  const t2aLicenseSummary = stagingWorkload.casesSummary.t2aLicenseTiers
 
-  var t2aCommunityTiers = mapTiers(t2aCommunitySummary, communityCaseDetails, true)
-  var t2aCustodyTiers = mapTiers(t2aCustodySummary, custodyCaseDetails, true)
-  var t2aLicenseTiers = mapTiers(t2aLicenseSummary, licenseCaseDetails, true)
+  const t2aCommunityTiers = mapTiers(t2aCommunitySummary, communityCaseDetails, true)
+  const t2aCustodyTiers = mapTiers(t2aCustodySummary, custodyCaseDetails, true)
+  const t2aLicenseTiers = mapTiers(t2aLicenseSummary, licenseCaseDetails, true)
 
-  var licenseCasesLast16Weeks = zeroIfNull(stagingWorkload.casesSummary.licIn1st16Weeks)
-  var communityCasesLast16Weeks = zeroIfNull(stagingWorkload.casesSummary.comIn1st16Weeks)
+  const licenseCasesLast16Weeks = zeroIfNull(stagingWorkload.casesSummary.licIn1st16Weeks)
+  const communityCasesLast16Weeks = zeroIfNull(stagingWorkload.casesSummary.comIn1st16Weeks)
 
-  var armsCommunityCases = zeroIfNull(stagingWorkload.casesSummary.armsCommunityCases)
-  var armsLicenseCases = zeroIfNull(stagingWorkload.casesSummary.armsLicenseCases)
+  const armsCommunityCases = zeroIfNull(stagingWorkload.casesSummary.armsCommunityCases)
+  const armsLicenseCases = zeroIfNull(stagingWorkload.casesSummary.armsLicenseCases)
 
-  var totalT2aCases = t2aCommunityTiers.total + t2aCustodyTiers.total + t2aLicenseTiers.total
-  var totalCases = communityTiers.total + custodyTiers.total + licenseTiers.total + totalT2aCases
-  var totalFilteredCases = filteredCommunityTiers.total + filteredCustodyTiers.total + filteredLicenseTiers.total
+  const totalT2aCases = t2aCommunityTiers.total + t2aCustodyTiers.total + t2aLicenseTiers.total
+  const totalCases = communityTiers.total + custodyTiers.total + licenseTiers.total + totalT2aCases
+  const totalFilteredCases = filteredCommunityTiers.total + filteredCustodyTiers.total + filteredLicenseTiers.total
 
-  var stagingId = stagingWorkload.stagingId
+  const stagingId = stagingWorkload.stagingId
 
   return new Workload(
     workloadOwnerId,
@@ -87,7 +87,7 @@ module.exports = function (stagingWorkload, workloadOwnerId, workloadReportId) {
   )
 }
 
-var locationFilter = function (location) {
+const locationFilter = function (location) {
   return function (element) {
     return element.location.toUpperCase() === location
   }

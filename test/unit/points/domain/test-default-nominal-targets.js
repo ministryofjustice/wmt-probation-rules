@@ -15,7 +15,7 @@ describe('points/domain/DefaultNominalTargets', function () {
     expect(function () { new DefaultNominalTargets(1, 1) }).not.to.throw(Error)
   })
   it('correctly retrieves all fields', function () {
-    var defaultNominalTargets = new DefaultNominalTargets(1, 2)
+    const defaultNominalTargets = new DefaultNominalTargets(1, 2)
     expect(defaultNominalTargets.pso).to.equal(1)
     expect(defaultNominalTargets.po).to.equal(2)
   })

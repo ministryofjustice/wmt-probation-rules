@@ -3,10 +3,10 @@ const mapper = require('../../../app/context-map/court-reports')
 const stagingHelper = require('../../helpers/staging-helper')
 
 describe('context-map/court-reports', function () {
-  var omKey = '1234'
-  var stagingCourtReports = stagingHelper.getTestOmCourtReports(omKey)
-  var ownerId = 10
-  var workloadReportId = 5
+  const omKey = '1234'
+  const stagingCourtReports = stagingHelper.getTestOmCourtReports(omKey)
+  const ownerId = 10
+  const workloadReportId = 5
 
   it('should validate the parameters are as expected', function () {
     expect(() => mapper({}, ownerId, workloadReportId)).to.throw(Error)
@@ -25,7 +25,7 @@ describe('context-map/court-reports', function () {
   })
 
   describe('court report fields', function () {
-    var mappedCourtReports = mapper(stagingCourtReports, ownerId, workloadReportId)
+    const mappedCourtReports = mapper(stagingCourtReports, ownerId, workloadReportId)
 
     it('correctly maps total fdrs', function () {
       expect(mappedCourtReports.totalSdrs).to.eq(parseInt(stagingCourtReports.courtReports.sdrLast30))

@@ -6,7 +6,7 @@ module.exports = function (offenderManagerTypeId, defaultNominalTargets) {
     throw new Error('defaultNominalTargets should be an instance of DefaultNominalTargets')
   }
 
-  var target = defaultNominalTargets.po
+  let target = defaultNominalTargets.po
 
   if (offenderManagerTypeId === OM_TYPE_IDS.PSO) {
     target = defaultNominalTargets.pso

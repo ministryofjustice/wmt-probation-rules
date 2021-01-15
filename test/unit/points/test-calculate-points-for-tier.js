@@ -5,9 +5,9 @@ const expect = require('chai').expect
 const calculatePointsForTier = require('../../../app/points/calculate-points-for-tier')
 
 describe('points/calculate-points-for-tier', function () {
-  var tierCounts
-  var points
-  var caseTypeWeightings
+  let tierCounts
+  let points
+  let caseTypeWeightings
 
   beforeEach(function () {
     tierCounts = new TierCounts(0, 0, 0, 0, 0, 0, 1)
@@ -17,7 +17,7 @@ describe('points/calculate-points-for-tier', function () {
 
   it('multiplies total case count for a tier with the points for that tier', function () {
     tierCounts = new TierCounts(10, 0, 0, 0, 0, 0, 1)
-    var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings)
+    const tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings)
     expect(tierPoints).to.equal(100)
   })
 
@@ -25,7 +25,7 @@ describe('points/calculate-points-for-tier', function () {
     tierCounts = new TierCounts(10, 10, 0, 0, 0, 0, 1)
     caseTypeWeightings = new CaseTypeWeightings(0, 100, 100, 100, 100)
 
-    var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, true)
+    const tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, true)
     expect(tierPoints).to.equal(0)
   })
 
@@ -33,7 +33,7 @@ describe('points/calculate-points-for-tier', function () {
     tierCounts = new TierCounts(10, 10, 0, 0, 0, 0, 1)
     caseTypeWeightings = new CaseTypeWeightings(0, 100, 100, 100, 100)
 
-    var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, false)
+    const tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, false)
     expect(tierPoints).to.equal(100)
   })
 
@@ -41,7 +41,7 @@ describe('points/calculate-points-for-tier', function () {
     tierCounts = new TierCounts(10, 0, 10, 0, 0, 0, 1)
     caseTypeWeightings = new CaseTypeWeightings(100, 0, 100, 100, 100)
 
-    var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, true)
+    const tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, true)
     expect(tierPoints).to.equal(0)
   })
 
@@ -49,7 +49,7 @@ describe('points/calculate-points-for-tier', function () {
     tierCounts = new TierCounts(10, 0, 10, 0, 0, 0, 1)
     caseTypeWeightings = new CaseTypeWeightings(100, 0, 100, 100, 100)
 
-    var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, false)
+    const tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, false)
     expect(tierPoints).to.equal(100)
   })
 
@@ -57,7 +57,7 @@ describe('points/calculate-points-for-tier', function () {
     tierCounts = new TierCounts(10, 0, 0, 10, 0, 0, 1)
     caseTypeWeightings = new CaseTypeWeightings(100, 100, 0, 100, 100)
 
-    var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, true)
+    const tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, true)
     expect(tierPoints).to.equal(0)
   })
 
@@ -65,7 +65,7 @@ describe('points/calculate-points-for-tier', function () {
     tierCounts = new TierCounts(10, 0, 0, 10, 0, 0, 1)
     caseTypeWeightings = new CaseTypeWeightings(100, 100, 0, 100, 100)
 
-    var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, false)
+    const tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, false)
     expect(tierPoints).to.equal(100)
   })
 
@@ -74,7 +74,7 @@ describe('points/calculate-points-for-tier', function () {
     caseTypeWeightings = new CaseTypeWeightings(0, 0, 0, 100, 100)
     points = 1
 
-    var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, true)
+    const tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, true)
     expect(tierPoints).to.equal(7)
   })
 
@@ -83,7 +83,7 @@ describe('points/calculate-points-for-tier', function () {
     caseTypeWeightings = new CaseTypeWeightings(0, 0, 0, 100, 100)
     points = 1
 
-    var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, false)
+    const tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, false)
     expect(tierPoints).to.equal(10)
   })
 
@@ -92,7 +92,7 @@ describe('points/calculate-points-for-tier', function () {
     caseTypeWeightings = new CaseTypeWeightings(75, 50, 50, 100, 100)
     points = 1
 
-    var tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, true)
+    const tierPoints = calculatePointsForTier(tierCounts, points, caseTypeWeightings, true)
     expect(tierPoints).to.equal(8.75)
   })
   it('should throw an error when tierCounts is undefined', function () {

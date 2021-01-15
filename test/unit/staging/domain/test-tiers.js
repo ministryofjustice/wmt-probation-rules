@@ -4,8 +4,8 @@ const stagingHelper = require('../../../helpers/staging-helper')
 
 describe('points/domain/staging/test-tiers', function () {
   it('should allow all fields to be retrieved', function () {
-    var location = locations.COMMUNITY
-    var tiers = stagingHelper.getTestTiers(location)
+    const location = locations.COMMUNITY
+    const tiers = stagingHelper.getTestTiers(location)
     expect(tiers.location).to.equal(locations.COMMUNITY)
     expect(tiers.a).to.be.eql(null)
     expect(tiers.b1).to.be.a('string')
