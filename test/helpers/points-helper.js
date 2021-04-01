@@ -47,16 +47,22 @@ module.exports.getTestCourtReportsObject = function (workloadOwnerId, totalSdrs,
 module.exports.getTestTiersObject = function (location) {
   const tiers = new Tiers(location,
     module.exports.getTierCountsObject(0),
+    module.exports.getTierCountsObject(16),
+    module.exports.getTierCountsObject(15),
+    module.exports.getTierCountsObject(14),
+    module.exports.getTierCountsObject(13),
+    module.exports.getTierCountsObject(12),
+    module.exports.getTierCountsObject(11),
     module.exports.getTierCountsObject(10),
     module.exports.getTierCountsObject(9),
     module.exports.getTierCountsObject(8),
-    module.exports.getTierCountsObject(1),
-    module.exports.getTierCountsObject(2),
-    module.exports.getTierCountsObject(3),
-    module.exports.getTierCountsObject(4),
-    module.exports.getTierCountsObject(5),
+    module.exports.getTierCountsObject(7),
     module.exports.getTierCountsObject(6),
-    module.exports.getTierCountsObject(7))
+    module.exports.getTierCountsObject(5),
+    module.exports.getTierCountsObject(4),
+    module.exports.getTierCountsObject(3),
+    module.exports.getTierCountsObject(2),
+    module.exports.getTierCountsObject(1))
   return tiers
 }
 
@@ -74,7 +80,7 @@ module.exports.getTierCountsList = function (numberOfTierCounts) {
 }
 
 module.exports.getLocationPointsConfiguration = function () {
-  const locationPointsConfiguration = new LocationPointsConfiguration(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+  const locationPointsConfiguration = new LocationPointsConfiguration(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16)
   return locationPointsConfiguration
 }
 
