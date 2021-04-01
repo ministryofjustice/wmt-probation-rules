@@ -18,7 +18,7 @@ describe('points/calculate-points-for-workload', function () {
     const result = calculateWorkloadPoints(workload, caseTypeWeightings, t2aCaseTypeWeightings)
     let expectedPoints = 0
 
-    for (let i = 1; i < 11; i++) {
+    for (let i = 1; i < 17; i++) {
       expectedPoints += ((8 * i)) // - (1 * i * 0.9) - (2 * i * 0.8) - (3 * i * 0.7)) // all the tiers (non-t2a)
       expectedPoints += ((8 * i) - (1 * i * 1) - (2 * i * 0) - (3 * i * 1)) // all the tiers for t2a
     }
