@@ -10,7 +10,7 @@ module.exports = function (locationTiers, locationPointsConfiguration, caseTypeW
   assertObjectType(caseTypeWeightings, CaseTypeWeightings, 'CaseTypeWeightings')
 
   let points = 0
-  const tiersPointConfigurationAsList = locationPointsConfiguration.asTierList().reverse()
+  const tiersPointConfigurationAsList = locationPointsConfiguration.asTierList()
 
   const tiers = locationTiers.getTiersAsList()
 
