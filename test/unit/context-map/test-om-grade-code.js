@@ -10,12 +10,13 @@ describe('context-map/om-grade-code', () => {
       expect(filterOmGradeCode('NPSY')).to.equal('PSO')
       expect(filterOmGradeCode('')).to.equal('DMY')
       expect(filterOmGradeCode(null)).to.equal('DMY')
+      expect(filterOmGradeCode('CPQF')).to.equal('TPO')
     })
   })
   describe('invalid codes', () => {
-    it('return an empty string', () => {
-      expect(filterOmGradeCode('ABCD')).to.equal('')
-      expect(filterOmGradeCode('1234*')).to.equal('')
+    it('return the DMY code as default', () => {
+      expect(filterOmGradeCode('ABCD')).to.equal('DMY')
+      expect(filterOmGradeCode('1234*')).to.equal('DMY')
     })
   })
 })
