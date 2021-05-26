@@ -1,4 +1,3 @@
-
 module.exports = function (omGradeCode) {
   let newGradeCode = 'DMY'
   const poList = [
@@ -8,11 +7,11 @@ module.exports = function (omGradeCode) {
   ]
   const spoList = ['C', 'CRCC', 'NPSC']
   const tpoList = ['K', 'CRCK', 'NPSK', 'L', 'CRCL', 'NPSL', 'P', 'CRCP', 'NPSP', 'NPQF', 'CPQF']
-  const psoList = ['Y', 'CRCY', 'NPSY', 'Z', 'CRCZ', 'NPSZ', 'Q', 'CRCQ', 'NPSQ']
+  const psoList = ['Y', 'CRCY', 'NPSY', 'Z', 'CRCZ', 'NPSZ', 'Q', 'CRCQ', 'NPSQ', 'CRC1']
 
   const dmyList = [
     '-1', 'A', 'CRCA', 'NPSA', 'B', 'CRCB', 'NPSB', 'R', 'CRCR', 'NPSR', 'S',
-    'CRCS', 'NPSS', 'T', 'CRCT', 'NPST', 'OG01', 'CRC1', 'NPS1', 'OG02', 'CRC2',
+    'CRCS', 'NPSS', 'T', 'CRCT', 'NPST', 'OG01', 'NPS1', 'OG02', 'CRC2',
     'NPS2', 'OG03', 'CRC3', 'NPS3', 'OG04', 'CRC4', 'NPS4', 'OG05', 'CRC5',
     'NPS5', 'OG06', 'CRC6', 'NPS6', '', null, undefined, ' '
   ]
