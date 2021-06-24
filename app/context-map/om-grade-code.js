@@ -1,19 +1,22 @@
 module.exports = function (omGradeCode) {
   let newGradeCode = 'DMY'
   const poList = [
-    'D', 'CRCD', 'NPSD', 'E', 'CRCE', 'NPSE', 'F', 'CRCF',
-    'NPSF', 'G', 'CRCG', 'NPSG', 'H', 'CRCH', 'NPSH', 'J', 'CRCJ', 'NPSJ',
-    'M', 'CRCM', 'NPSM', 'N', 'CRCN', 'NPSN', 'O', 'CRCO', 'NPSO'
+    'M', 'E', 'D', 'O', 'J', 'H', 'N', 'G', 'F', 'CRCM',
+    'CRCO', 'CRCN', 'NPSM', 'NPSO', 'NPSN', 'PSM', 'PSO',
+    'PSN'
   ]
-  const spoList = ['C', 'CRCC', 'NPSC']
-  const tpoList = ['K', 'CRCK', 'NPSK', 'L', 'CRCL', 'NPSL', 'P', 'CRCP', 'NPSP', 'NPQF', 'CPQF']
-  const psoList = ['Y', 'CRCY', 'NPSY', 'Z', 'CRCZ', 'NPSZ', 'Q', 'CRCQ', 'NPSQ', 'CRC1']
+  const spoList = ['C', 'CRCC', 'NPSC', 'PSC']
+  const tpoList = ['P', 'L', 'K', 'CRCP', 'NPSP', 'PSP']
+  const psoList = ['Q', 'Z', 'Y', 'CRCQ', 'NPSQ', 'PSQ']
 
   const dmyList = [
-    '-1', 'A', 'CRCA', 'NPSA', 'B', 'CRCB', 'NPSB', 'R', 'CRCR', 'NPSR', 'S',
-    'CRCS', 'NPSS', 'T', 'CRCT', 'NPST', 'OG01', 'NPS1', 'OG02', 'CRC2',
-    'NPS2', 'OG03', 'CRC3', 'NPS3', 'OG04', 'CRC4', 'NPS4', 'OG05', 'CRC5',
-    'NPS5', 'OG06', 'CRC6', 'NPS6', '', null, undefined, ' '
+    'B', 'OG06', 'R', 'A', 'OG08', 'OG07', 'CPQF', 'OG02',
+    'OG05', 'NPQF', 'OG01', 'S', 'T', 'OG04', 'OG03', 'CRCB',
+    'CRC6', 'CRCR', 'CRCA', 'CRC2', 'CRC1', 'CRC01', 'CRCS',
+    'CRCT', 'CRC4', 'CRC3', 'NPSB', 'NPS6', 'NPSR', 'NPSA',
+    'NPS2', 'NPS1', 'NPS01', 'NPSS', 'NPST', 'NPS4', 'NPS3',
+    'PSB', 'PS6', 'PSR', 'PSA', 'PS2', 'PS1', 'PS01', 'PS4', 'PS3',
+    '', null, undefined, ' '
   ]
 
   if (poList.includes(omGradeCode)) {
