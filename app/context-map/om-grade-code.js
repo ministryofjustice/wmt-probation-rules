@@ -10,7 +10,7 @@ module.exports = function (omGradeCode) {
     'PSB', 'PSA', 'B', 'A'
   ]
   const tpoList = [
-    'P', 'L', 'K', 'CRCP', 'NPSP', 'PSP',
+    'P', 'L', 'K', 'CRCP', 'NPSP', 'PSP', 'CPQF',
     'CRC - PQF', 'NPS - PQF', 'CRC-PQF', 'NPS-PQF',
     'CRC — PQF', 'NPS — PQF', 'CRC—PQF', 'NPS—PQF',
     'CRC – PQF', 'NPS – PQF', 'CRC–PQF', 'NPS–PQF'
@@ -18,7 +18,7 @@ module.exports = function (omGradeCode) {
   const psoList = ['Q', 'Z', 'Y', 'CRCQ', 'NPSQ', 'PSQ']
 
   const dmyList = [
-    'OG06', 'R', 'OG08', 'OG07', 'CPQF', 'OG02',
+    'OG06', 'R', 'OG08', 'OG07', 'OG02',
     'OG05', 'NPQF', 'OG01', 'S', 'T', 'OG04', 'OG03',
     'CRC6', 'CRCR', 'CRC2', 'CRC1', 'CRC01', 'CRCS',
     'CRCT', 'CRC4', 'CRC3', 'NPS6', 'NPSR', 'NPSA',
