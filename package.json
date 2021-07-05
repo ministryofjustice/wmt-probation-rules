@@ -4,7 +4,7 @@
   "description": "The business logic required to process probation cases in the Workload Management Tool",
   "main": "probation-rules.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "nyc gulp test"
   },
   "standard": {
     "ignore": [
@@ -22,9 +22,10 @@
   "devDependencies": {
     "chai": "4.3.x",
     "gulp": "4.0.x",
-    "gulp-standard": "14.0.x",
     "gulp-mocha": "8.0.x",
+    "gulp-standard": "14.0.x",
     "mocha": "9.0.x",
+    "nyc": "^15.1.0",
     "standard": "16.0.x"
   },
   "dependencies": {
